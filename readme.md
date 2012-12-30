@@ -1,10 +1,13 @@
-Your Project Name
-=================
-A brief summary of your project
+remotestorage.io
+================
+Umbrella website for all things remoteStorage
 
 ### Setup / Installation
-Some instructions on how to set up and/or install this project
 
-### Staging/Production
-This site is staged at http://example.com [u: admin p: example]    
-This site is live at http://example.com
+This website is using [roots](http://roots.cx/), a toolbox for static web sites
+and apps. Getting started is easy as pie:
+
+    curl roots.cx/get | sh
+
+Then clone this repository, `cd` into it, and run `roots watch` for
+auto-compilation and live-reload of your browser window.
