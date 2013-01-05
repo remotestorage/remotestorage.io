@@ -10,9 +10,15 @@ html
 
     link(rel='stylesheet', href='/css/screen.css')
   body
-    include _header
+    #wrapper
+      include _header
 
-    != yield
+      #wrapper-content
+        != yield
+        .space // ugly hack
+          &nbsp;
+
+    include _footer
 
   //- add other scripts through require.js, not here
   script(data-main="js/main", src="js/require.js")
