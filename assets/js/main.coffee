@@ -8,5 +8,6 @@ js = ["http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"]
 require js, ->
   $ ->
     # FIXME hacky as hell
-    area = window.location.pathname.match(/\/(.+)\./)
+    # (latest roots with path variable now released)
+    area = window.location.pathname.match(/\/(.+)\//)
     $("header nav .#{area[1]} a").addClass("active") if area
