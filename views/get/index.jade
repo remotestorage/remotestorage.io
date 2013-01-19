@@ -1,11 +1,65 @@
 .hero
   .container
     section.content
-      h2 Own your storage
+      h2 Own your data
       p.claim.
         Get a storage account or set up your own
 
 .container
   section.content
-    :markdown
-      /view/get/index.html
+    .get-storage
+
+      .providers
+        h3 Get an account with a hoster
+        ul
+          li
+            :markdown
+              #### [5apps](https://5apps.com)
+              An HTML5 app deployment platform and remoteStorage provider.
+              Introducing dedicated storage plans very soon.
+          li
+            :markdown
+              #### [heahdk](https://heahdk.net/)
+              A simple and unassuming remoteStorage provider. Mainly for testing
+              purposes.
+
+      .selfhost
+        h3 Host your own storage server
+        ul
+          li
+            h4
+              a(href="https://github.com/jcoglan/restore") reStore
+            :markdown
+              remoteStorage server based on node.js. Supports both Redis and the
+              filesystem as storage backend.
+          li
+            h4
+              a(href="https://github.com/RemoteStorage/remotestorage-ruby") remoteStorage-ruby
+            :markdown
+              Basic remoteStorage server written in Ruby, storing data in PostgreSQL.
+          li
+            h4
+              a(href="https://github.com/5apps/liquor-cabinet") Liquor Cabinet
+            :markdown
+              remoteStorage server API based on Sinatra (Ruby). Excludes the
+              OAuth portion! Supports multiple backends, but only Riak is
+              implemented at the moment.
+          li
+            h4
+              a(href="http://owncloud.org") OwnCloud
+            :markdown
+              Open-source personal cloud platform, running on the LAMP stack.
+              Currently needs [an
+              extension](https://github.com/michielbdejong/owncloud-owa), which
+              will be included by default soon.
+          li
+            h4
+              a(href="https://github.com/fkooman/php-remoteStorage") php-remoteStorage
+            :markdown
+              remoteStorage server written in PHP. Missing Webfinger, so not 100%
+              compatible at the moment.
+          li
+            h4 Add yours!
+            :markdown
+              Why not [create your own storage server](/provide)? If you do, [add it to this
+              list](https://github.com/RemoteStorage/remotestorage.io/edit/master/views/get/index.jade)!
