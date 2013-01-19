@@ -11,6 +11,9 @@
 
       .providers
         h3 Get an account with a hoster
+        :markdown
+          Hosting services are still preparing for the brandnew remoteStorage.
+          In the meantime, you can get an account with one of these services:
         ul
           li
             :markdown
@@ -22,9 +25,17 @@
               #### [heahdk](https://heahdk.net/)
               A simple and unassuming remoteStorage provider. Mainly for testing
               purposes.
+          li
+            :markdown
+              #### Add yours!
+              Providing remoteStorage to users, but not on this list? [Add your
+              service](https://github.com/RemoteStorage/remotestorage.io/edit/master/views/get/index.jade)!
 
       .selfhost
         h3 Host your own storage server
+        :markdown
+          You can set up remoteStorage on your own server by either using one
+          of the following implementations, or [creating your own](/provide):
         ul
           li
             h4
@@ -59,7 +70,7 @@
               remoteStorage server written in PHP. Missing Webfinger, so not 100%
               compatible at the moment.
           li
-            h4 Add yours!
             :markdown
+              #### Add yours!
               Why not [create your own storage server](/provide)? If you do, [add it to this
               list](https://github.com/RemoteStorage/remotestorage.io/edit/master/views/get/index.jade)!
