@@ -7,5 +7,37 @@
 
 .container
   section.content
-    :markdown
-      /view/integrate/index.html
+    .integrate
+      :markdown
+
+        By making your app support remoteStorage you give your users the choice where to store their personal data. Additionally you don't have to bother implementing your own backend solution. remoteStorage.js is a JavaScript library that does the heavy-lifting of connecting to any remoteStorage backend, caching, synchronizing and storing user data.
+
+        Before starting to code you should take care of a few general aspects:
+
+        #### Let your users connect
+
+        <img class="widget" src="/img/widget.png" alt="widget">
+
+        The remoteStorage widget allows your users to connect to their personal storage server. By default it is part of every app that uses remoteStorage.js. It thus serves as an indicator for users to immediately see that they can use their own storage with an app.
+
+        Find out more about integrating the widget in the API docs:
+        [displayWidget](http://remotestoragejs.com/doc/code/files/remoteStorage-js.html#remoteStorage.displayWidget)
+
+        #### Define your data
+        The next step is to decide what data you want to store from your app. This is done by using a module. You can either choose from a variety of common and custom modules that already exist, or build your own.
+        For each module that your app uses, you need to claim access. The user will see which modules your app requests access to, when connecting to their remoteStorage server.
+
+        Find out more:
+        [claimAccess](http://remotestoragejs.com/doc/code/files/remoteStorage-js.html#remoteStorage.claimAccess),
+        [defineModule](http://remotestoragejs.com/doc/code/files/remoteStorage-js.html#remoteStorage.defineModule),
+        [BaseClient](http://remotestoragejs.com/doc/code/files/lib/baseClient-js.html)
+
+        ### Digging deeper
+
+        …
+
+        ### Resources
+
+        Check out the demo app ["My Favorite Drink"](http://remotestorage.github.com/myfavoritedrinks/) ([view source](https://github.com/RemoteStorage/myfavoritedrinks)). There‘s also a [minimal code example](https://github.com/RemoteStorage/remoteStorage.js/blob/master/example/minimal/index.html) so you can read source code without the distraction of tasty drinks.
+
+        [API docs](http://remotestoragejs.com/doc/code/)
