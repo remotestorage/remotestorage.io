@@ -1,0 +1,41 @@
+<!DOCTYPE html><html><head><meta charset=utf8><meta http-equiv=X-UA-Compatible content="IE=edge, chrome=1"><meta name=description content="description of your site"><meta name=author content="author of the site"><title>remoteStorage – An open protocol for per-user storage</title><link rel=stylesheet href="/css/screen.css"><link rel="shortcut icon" href="/favicon.png"><link rel=apple-touch-icon-precomposed href="/favicon-touch.png"></head><body><div id=wrapper><header><div class=container><div class=logo><h1><a href="/">remoteStorage</a></h1></div><nav><ul><li class=get><a href="/get">Get Storage</a></li><li class=integrate><a href="/integrate">Integrate Storage</a></li><li class=provide><a href="/provide">Provide Storage</a></li><li class=community><a href="/community">Community</a></li><li class=guides><a href="http://remotestoragejs.com/doc/code/files2/howto-include-txt.html#">Guides</a></li><li class=api><a href="http://remotestoragejs.com/doc/code/files/remoteStorage-js.html#">API</a></li></ul></nav></div></header><div id=wrapper-content><div class=hero><div class=container><section class=content><h2>Integrate storage</h2><p class=claim>Add remoteStorage to your app
+</p></section></div></div><div class=container><section class=content><div class=integrate><p>By making your app support remoteStorage you give your users the choice where to store their personal data. Additionally you don&#39;t have to bother implementing your own backend solution. remoteStorage.js is a JavaScript library that does the heavy-lifting of connecting to any remoteStorage backend, caching, synchronizing and storing user data.
+
+</p>
+<p>Before starting to code you should take care of a few general aspects:
+
+</p>
+<h4>Let your users connect</h4>
+<p><img class=widget src="/img/widget.png" alt=widget>
+
+</p>
+<p>The remoteStorage widget allows your users to connect to their personal storage server. By default it is part of every app that uses remoteStorage.js. It thus serves as an indicator for users to immediately see that they can use their own storage with an app.
+
+</p>
+<p>Find out more about integrating the widget in the API docs:
+<a href="http://remotestoragejs.com/doc/code/files/remoteStorage-js.html#remoteStorage.displayWidget">displayWidget</a>
+
+</p>
+<h4>Define your data</h4>
+<p>The next step is to decide what data you want to store from your app. This is done by using a module. You can either choose from a variety of common and custom modules that already exist, or build your own.
+For each module that your app uses, you need to claim access. The user will see which modules your app requests access to, when connecting to their remoteStorage server.
+
+</p>
+<p>Find out more:
+<a href="http://remotestoragejs.com/doc/code/files/remoteStorage-js.html#remoteStorage.claimAccess">claimAccess</a>,
+<a href="http://remotestoragejs.com/doc/code/files/remoteStorage-js.html#remoteStorage.defineModule">defineModule</a>,
+<a href="http://remotestoragejs.com/doc/code/files/lib/baseClient-js.html">BaseClient</a>
+
+</p>
+<h3>Digging deeper</h3>
+<p>…
+
+</p>
+<h3>Resources</h3>
+<p>Check out the demo app <a href="http://remotestorage.github.com/myfavoritedrinks/">&quot;My Favorite Drink&quot;</a> (<a href="https://github.com/RemoteStorage/myfavoritedrinks">view source</a>). There‘s also a <a href="https://github.com/RemoteStorage/remoteStorage.js/blob/master/example/minimal/index.html">minimal code example</a> so you can read source code without the distraction of tasty drinks.
+
+</p>
+<p><a href="http://remotestoragejs.com/doc/code/">API docs</a>
+</p>
+</div><div class=unfinished><p>This page is still incomplete. Check back soon.</p>
+</div></section></div><div class=space></div></div></div><footer><div class=container><p>&copy; 2013 remoteStorage contributors, CC-BY-SA</p></div></footer></body><script data-main="/js/main" src="/js/require.js"></script></html>
