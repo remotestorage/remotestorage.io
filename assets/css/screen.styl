@@ -204,6 +204,21 @@ footer
   text-shadow: 0 1px 1px #000
   p
     line-height: footer_height
+    &.copyright
+      column(8)
+      text-align: left
+    &.actions
+      column(4)
+      text-align: right
+  .divider
+    margin: 0 10px
+  iframe
+    vertical-align: middle !important
+
+footer
+  a
+    link(#ccc)
+    border-bottom: 1px dotted #aaa
 
 // Sticky footer
 html
