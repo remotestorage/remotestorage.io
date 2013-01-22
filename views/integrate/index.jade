@@ -45,7 +45,7 @@
           data.
 
   .with_subnav
-    nav
+    nav.fixed(data-scrolltop="495")
       ul
         li
           a(href="/integrate/#") remoteStorage.js
@@ -65,6 +65,8 @@
         //       a(href="/integrate/#widget") Available modules
         //     li
         //       a(href="/integrate/#modules") How to define a schema
+      // need some content so that the element doesn't collapse
+      &nbsp;
 
     section.content
       .integrate
@@ -128,6 +130,6 @@
 
           [API docs](http://remotestoragejs.com/doc/code/)
 
-    .unfinished
-      :markdown
-        This page is still incomplete. Check back soon.
+      .unfinished
+        :markdown
+          This page is still incomplete. Check back soon.

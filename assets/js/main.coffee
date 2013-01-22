@@ -17,3 +17,20 @@ require js, ->
 
     area = window.location.pathname.match(/\/(.+)\//)
     $("header nav .#{area[1]} a").addClass("active") if area
+
+    #
+    # Fix nav menu position when scrolling down
+    #
+
+    scrollfix = $("nav.fixed").data('scrolltop')
+    nav = $("nav.fixed > ul")
+    padding = 20
+
+    if $(window).scrollTop() > scrollfix
+      nav.css top: padding
+
+    $(window).on "scroll", ->
+      if $(window).scrollTop() > scrollfix
+        nav.css top: padding
+      else
+        nav.css top: scrollfix - $(window).scrollTop()
