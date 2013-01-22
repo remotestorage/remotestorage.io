@@ -9,7 +9,11 @@ js = [
 # this will fire once the required scripts have been loaded
 require js, ->
   $ ->
+    #
+    # Set currently active main nav item
     # FIXME hacky as hell
     # (latest roots with path variable now released)
+    #
+
     area = window.location.pathname.match(/\/(.+)\//)
     $("header nav .#{area[1]} a").addClass("active") if area
