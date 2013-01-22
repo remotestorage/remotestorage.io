@@ -1,24 +1,51 @@
 <!DOCTYPE html><html><head><meta charset=utf8><meta http-equiv=X-UA-Compatible content="IE=edge, chrome=1"><meta name=description content="description of your site"><meta name=author content="author of the site"><title>remoteStorage – An open protocol for per-user storage</title><link rel=stylesheet href="/css/screen.css"><link rel="shortcut icon" href="/favicon.png"><link rel=apple-touch-icon-precomposed href="/favicon-touch.png"></head><body><div id=wrapper><header><div class=container><div class=logo><h1><a href="/">remoteStorage</a></h1></div><nav><ul><li class=get><a href="/get">Get Storage</a></li><li class=integrate><a href="/integrate">Integrate Storage</a></li><li class=provide><a href="/provide">Provide Storage</a></li><li class=community><a href="/community">Community</a></li><li class=guides><a href="http://remotestoragejs.com/doc/code/files2/howto-include-txt.html#">Guides</a></li><li class=spec><a href="http://tools.ietf.org/html/draft-dejong-remotestorage-00">Spec</a></li></ul></nav></div></header><div id=wrapper-content><div class=hero><div class=container><section class=content><div class=row><div class=header><h2>Integrate storage</h2><p class=claim>Add remoteStorage to your app</p></div><div class=actions><ul><li><p><a href="http://remotestoragejs.com/build/0.7.0-head/remoteStorage.min.js" class=btn>Download remoteStorage.js 0.7.0</a></p><p class=meta>52KB minified, gzipped
-<span class=divider>&middot;</span> <a href="http://remotestoragejs.com/build/0.7.0-head/remoteStorage-debug.js">Debug build</a></p></li><li><p><a href="http://remotestoragejs.com/doc/code/files/remoteStorage-js.html" class=btn>JS API Documentation</a></p><p class=meta>Version 0.7.0</p></li></ul></div></div></section></div></div><div class=container><section class=content><div class=integrate><p>By integrating remoteStorage into your app, you give your users the choice of where to store their personal data. Additionally you don&#39;t have to worry about implementing your own backend solution. remoteStorage.js is a JavaScript library that does the heavy-lifting of connecting to any remoteStorage backend, caching, synchronizing and storing user data.
+<span class=divider>&middot;</span> <a href="http://remotestoragejs.com/build/0.7.0-head/remoteStorage-debug.js">Debug build</a></p></li><li><p><a href="http://remotestoragejs.com/doc/code/files/remoteStorage-js.html" class=btn>JS API Documentation</a></p><p class=meta>Version 0.7.0</p></li></ul></div></div></section></div></div><div class=container><section class="content bordered"><div class=benefits><section class=freedom><h3>Backend as a Service</h3><p>Develop your web app without worrying about hosting or even developing
+the backend for it: your users will connect their own backend at runtime.</p>
+</section><section class=offline><h3>Infinite Scalability</h3><p>No matter if 5 hundred or 5 million users are using your app, your
+backend scales automatically and never costs you a single cent.</p>
+</section><section class=freedom><h3>Wheels Included</h3><p><a href="https://github.com/remotestorage/remotestorage.js">remoteStorage.js</a>
+is a JavaScript library that does all the heavy-lifting of connecting
+to any remoteStorage backend, caching, synchronizing and storing user
+data.
+</p>
+</section></div></section><div class=with_subnav><nav><ul><li><a href="/integrate/#">remoteStorage.js</a><ul><li><a href="/integrate/#widget">The Widget</a></li><li><a href="/integrate/#modules">Categories, Modules &amp; Schemas</a></li><li><a href="/integrate/#examples">Example apps</a></li><li><a href="/integrate/#resources">Resources</a></li></ul></li></ul></nav><section class=content><div class=integrate><h3>Getting started with remoteStorage.js</h3>
+<p>Although you may choose to integrate remoteStorage sync in your
+server-side program, or using a custom client-side library, we
+usually recommend and assume you use
+<a href="https://github.com/remotestorage/remotestorage.js">remoteStorage.js</a>
+in a client-side web application. Here&#39;s a quick overview of how that
+works:
 
 </p>
-<p>Before diving into the code, here is a general overview of the key aspects:
+<h4 id=widget>1. The Widget</h4>
 
-</p>
-<h4>Let your users connect</h4>
 <p><img class=widget src="/img/widget.png" alt=widget>
 
 </p>
-<p>The remoteStorage widget allows your users to connect to their personal storage server. By default it is part of every app that uses remoteStorage.js. It thus serves as an indicator for users to immediately recognize that they can use their own storage with an app.
+<p>The remoteStorage widget allows your users to connect to their
+personal storage server. By default it is part of every app that uses
+remoteStorage.js. So every time a user sees the widget, they know
+that they can use their own storage with an app. You can customize
+the widget&#39;s appearance to better match your app&#39;s design, of course.
 
 </p>
 <p>Find out more about integrating the widget in the API docs:
 <a href="http://remotestoragejs.com/doc/code/files/remoteStorage-js.html#remoteStorage.displayWidget">displayWidget</a>
 
 </p>
-<h4>Define your data</h4>
-<p>The next step is to decide what data you want to store from your app. This is done by using a module. A module provides a method of reading and writing a certain defined type of data (ie. documents, contacts, images). You can choose from a variety of common and custom modules that already exist, or build your own.
-For each module that your app uses, you need to claim access. When the user logs into their remoteStorage provder, they will see which modules your app requests access to, and grant permission.
+<h4 id=modules>2. Categories, Modules &amp; Schemas</h4>
+
+<p>remoteStorage data is stored in directories – also known as
+&quot;categories&quot; – for which your app requests access (either read-only or
+full). The user grants these permissions via OAuth during the first
+connect from your app.
+
+</p>
+<p>For common data, remoteStorage.js uses per-category modules, which
+provide a method of reading and writing a certain defined type of
+data, e.g.  documents, contacts, or images. You can choose from a
+variety of common and custom modules that already exist, or build
+your own.
 
 </p>
 <p>Find out more:
@@ -27,16 +54,27 @@ For each module that your app uses, you need to claim access. When the user logs
 <a href="http://remotestoragejs.com/doc/code/files/lib/baseClient-js.html">BaseClient</a>
 
 </p>
-<h3>Digging deeper</h3>
-<p>…
+<h4 id=examples>Example Apps</h4>
+
+<p>Check out the demo app <a href="http://remotestorage.github.com/myfavoritedrinks/">&quot;My Favorite
+Drink&quot;</a> (<a href="https://github.com/RemoteStorage/myfavoritedrinks">view
+source</a>). There‘s
+also a <a href="https://github.com/RemoteStorage/remoteStorage.js/blob/master/example/minimal/index.html">minimal code
+example</a>
+so you can read the source code without the distraction of tasty
+drinks.
 
 </p>
-<h3>Resources</h3>
-<p>Check out the demo app <a href="http://remotestorage.github.com/myfavoritedrinks/">&quot;My Favorite Drink&quot;</a> (<a href="https://github.com/RemoteStorage/myfavoritedrinks">view source</a>). There‘s also a <a href="https://github.com/RemoteStorage/remoteStorage.js/blob/master/example/minimal/index.html">minimal code example</a> so you can read the source code without the distraction of tasty drinks.
+<h4 id=resources>Resources</h4>
+
+<p>We&#39;re still working on better guides and documentation (and you&#39;re
+invited to <a href="/community/">contribute</a>). However, the library&#39;s API
+documentation is pretty extensive and up-to-date, and also includes
+some guides:
 
 </p>
 <p><a href="http://remotestoragejs.com/doc/code/">API docs</a>
 </p>
-</div><div class=unfinished><p>This page is still incomplete. Check back soon.</p>
-</div></section></div><div class=space></div></div></div><footer><div class=container><p class=copyright>© 2013 <a href="https://github.com/RemoteStorage?tab=members">remoteStorage contributors</a>, <a href="http://creativecommons.org/licenses/by/3.0/">CC-BY</a><span class=divider>&middot;</span><a href="https://github.com/remotestorage/remotestorage.io">Fork this website</a></p><p class=actions><a href="https://twitter.com/remotestorage_" data-dnt=true data-show-count=false data-lang=en class=twitter-follow-button>Follow @remotestorage_</a></p></div></footer></body><script data-main="/js/main" src="/js/require.js"></script><script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");
+</div></section><div class=unfinished><p>This page is still incomplete. Check back soon.</p>
+</div></div></div><div class=space></div></div></div><footer><div class=container><p class=copyright>© 2013 <a href="https://github.com/RemoteStorage?tab=members">remoteStorage contributors</a>, <a href="http://creativecommons.org/licenses/by/3.0/">CC-BY</a><span class=divider>&middot;</span><a href="https://github.com/remotestorage/remotestorage.io">Fork this website</a></p><p class=actions><a href="https://twitter.com/remotestorage_" data-dnt=true data-show-count=false data-lang=en class=twitter-follow-button>Follow @remotestorage_</a></p></div></footer></body><script data-main="/js/main" src="/js/require.js"></script><script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");
 </script></html>
