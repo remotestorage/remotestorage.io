@@ -1,0 +1,11 @@
+#!/bin/bash
+
+roots compile
+
+cp -R public tmp
+git checkout gh-pages
+cp -R tmp/* .
+git add .
+git commit -a -m "Update release - `date -u`"
+git checkout master
+rm -rf tmp
