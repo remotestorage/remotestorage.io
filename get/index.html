@@ -1,0 +1,32 @@
+<!DOCTYPE html><html><head><meta charset="utf8"><meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1"><meta name="description" content="description of your site"><meta name="author" content="author of the site"><title>remoteStorage – An open protocol for per-user storage</title><link rel="stylesheet" href="/css/screen.css"><link rel="shortcut icon" href="/favicon.png"><link rel="apple-touch-icon-precomposed" href="/favicon-touch.png"></head><body><div id="wrapper"><header><div class="container"><div class="logo"><h1><a href="/">remoteStorage</a></h1></div><nav><ul><li class="get"><a href="/get">Get Storage</a></li><li class="integrate"><a href="/integrate">Integrate Storage</a></li><li class="provide"><a href="/provide">Provide Storage</a></li><li class="community"><a href="/community">Community</a></li><li class="guides"><a href="http://remotestoragejs.com/doc/code/files2/howto-include-txt.html#">Guides</a></li><li class="spec"><a href="http://tools.ietf.org/html/draft-dejong-remotestorage-00">Spec</a></li></ul></nav></div></header><div id="wrapper-content"><div class="hero"><div class="container"><section class="content"><h2>Own your data</h2><p class="claim">Get a storage account or set up your own
+</p></section></div></div><div class="container"><section class="content"><div class="get-storage"><div class="providers"><h3>Get an account with a hoster</h3><p>Storage providers are still preparing for the brandnew remoteStorage.
+In the meantime, you can get an account with one of these services:</p>
+<ul><li><h4><a href="https://5apps.com">5apps</a></h4>
+<p>An HTML5 app deployment platform and remoteStorage provider.
+Introducing dedicated storage plans very soon.</p>
+</li><li><h4><a href="https://heahdk.net/">heahdk</a></h4>
+<p>A simple and unassuming remoteStorage provider. Mainly for testing
+purposes.</p>
+</li><li><h4>Add yours!</h4>
+<p>Providing remoteStorage to users, but not on this list? <a href="https://github.com/remotestorage/remotestorage.io/edit/master/views/get/index.jade">Add your
+service</a>!</p>
+</li></ul></div><div class="selfhost"><h3>Host your own storage server</h3><p>You can set up remoteStorage on your own server by using one of the
+following implementations, or <a href="/provide">creating your own</a>:</p>
+<ul><li><h4><a href="https://github.com/jcoglan/restore">reStore</a></h4><p>remoteStorage server based on node.js. Supports both Redis and the
+filesystem as storage backend.</p>
+</li><li><h4><a href="https://github.com/remotestorage/remotestorage-ruby">remoteStorage-ruby</a></h4><p>Basic remoteStorage server written in Ruby, storing data in PostgreSQL.</p>
+</li><li><h4><a href="https://github.com/5apps/liquor-cabinet">Liquor Cabinet</a></h4><p>remoteStorage server API based on Sinatra (Ruby). Excludes the
+OAuth portion! Supports multiple backends, but only Riak is
+implemented at the moment.</p>
+</li><li><h4><a href="http://owncloud.org">OwnCloud</a></h4><p>Open-source personal cloud platform, running on the LAMP stack.
+Currently needs <a href="https://github.com/michielbdejong/owncloud-owa">an
+extension</a>, which
+will be included by default soon.</p>
+</li><li><h4><a href="https://github.com/fkooman/php-remoteStorage">php-remoteStorage</a></h4><p>remoteStorage server written in PHP. Missing Webfinger, so not 100%
+compatible at the moment.</p>
+</li><li><h4>Add yours!</h4>
+<p>Why not <a href="/provide">create your own storage server</a>? If you do, <a href="https://github.com/remotestorage/remotestorage.io/edit/master/views/get/index.jade">add it to this
+list</a>!</p>
+</li></ul></div></div><div class="unfinished"><p>This page is still incomplete. Check back soon.</p>
+</div></section></div><div class="space"></div></div></div><footer><div class="container"><p class="copyright">© 2013 <a href="https://github.com/remotestorage?tab=members">remoteStorage contributors</a>, <a href="http://creativecommons.org/licenses/by/3.0/">CC-BY</a><span class="divider">&middot;</span><a href="https://github.com/remotestorage/remotestorage.io">Fork this website</a></p><p class="actions"><a href="https://twitter.com/remotestorage_" data-dnt="true" data-show-count="false" data-lang="en" class="twitter-follow-button">Follow @remotestorage_</a></p></div></footer></body><script data-main="/js/main" src="/js/require.js"></script><script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");
+</script></html>
