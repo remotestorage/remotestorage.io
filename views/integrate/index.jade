@@ -1,70 +1,11 @@
-.hero
-  .container
-    section.content
-      .row
-        .header
-          h2 Integrate storage
-          p.claim.
-            Add remoteStorage to your app
-        .actions
-          ul
-            li
-              p
-                a.btn(href="http://remotestoragejs.com/release/0.7.1/remoteStorage.min.js") Download remoteStorage.js 0.7.1
-              p.meta
-                | 49KB minified, gzipped
-                | <span class="divider">&middot;</span> 
-                a(href="http://remotestoragejs.com/release/0.7.1/remoteStorage-debug.js") Debug build
-            li
-              p
-                a.btn(href="http://remotestoragejs.com/doc/code/files/remoteStorage-js.html") JS API Documentation
-              p.meta
-                | Version 0.7.1
+include _hero
 
 .container
-  section.content.bordered
-    .benefits
-      section.freedom
-        h3 Backend as a Service
-        :markdown
-          Develop your web app without worrying about hosting or even developing
-          the backend for it: your users will connect their own backend at runtime.
-      section.offline
-        h3 Infinite Scalability
-        :markdown
-          No matter if 5 hundred or 5 million users are using your app, your
-          backend scales automatically and never costs you a single cent.
-      section.freedom
-        h3 Wheels Included
-        :markdown
-          [remoteStorage.js](https://github.com/remotestorage/remotestorage.js)
-          is a JavaScript library that does all the heavy-lifting of connecting
-          to any remoteStorage backend, caching, synchronizing and storing user
-          data.
+  include _benefits
 
   .with_subnav
     nav.fixed(data-scrolltop="495")
-      ul
-        li
-          a(href="/integrate/#") remoteStorage.js
-          ul
-            li
-              a(href="/integrate/#widget") The Widget
-            li
-              a(href="/integrate/#modules") Categories, Modules &amp; Schemas
-            li
-              a(href="/integrate/#examples") Example apps
-            li
-              a(href="/integrate/#resources") Resources
-        // li
-        //   a(href="#") Modules
-        //   ul
-        //     li
-        //       a(href="/integrate/#widget") Available modules
-        //     li
-        //       a(href="/integrate/#modules") How to define a schema
-      // need some content so that the element doesn't collapse
-      &nbsp;
+      include _subnav
 
     section.content
       .integrate
@@ -115,7 +56,7 @@
           Drink"](https://myfavoritedrinks.5apps.com/) ([view
           source](https://github.com/remotestorage/myfavoritedrinks)). There‘s
           also a [minimal code
-          example](https://github.com/remotestorage/remoteStorage.js/blob/master/example/minimal/index.html)
+          example](https://github.com/remotestorage/remotestorage.js/blob/master/example/minimal-head/index.html)
           so you can read the source code without the distraction of tasty
           drinks.
 
