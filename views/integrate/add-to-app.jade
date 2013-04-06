@@ -10,9 +10,28 @@ include _hero
         :markdown
           ### Adding remoteStorage.js to your app
 
-          Bla bla bla blubb.
+          First, download the latest remoteStorage.js release linked above, and
+          add it to your page:
 
-              remoteStorage.defineModule('tasks', function(privateClient) {
+              <script type="text/javascript" src="remoteStorage.min.js"></script>
+
+          You can also use remoteStorage.js with require.js and other AMD
+          loaders.
+
+          #### Create a module
+
+          remoteStorage.js is based on modules, so if you're not using an
+          existing one, define a new reusable module in order to access and
+          manipulate data from your app.
+
+          The [defineModule](http://remotestoragejs.com/doc/code/files/remoteStorage-js.html#remoteStorage.defineModule)
+          method expects a module name and a builder function.  The builder
+          will be called immediately, with two arguments, which are both instances of
+          [BaseClient](http://remotestoragejs.com/doc/code/files/lib/baseClient-js.html):
+
+              remoteStorage.defineModule('tasks', function(privateClient, publicClient) {
+
+                // Define a common data type using JSON Schema
                 privateClient.declareType('task', {
                   "description": "a task",
                   "type": "object",
@@ -29,27 +48,49 @@ include _hero
                     }
                   }
                 });
+
                 return {
                   exports: {
-                    client: privateClient,
-                    addTodo: function(text) {
-                      var todo = new Todo(text);
-                      privateClient.storeObject('todo-list-item', 'todos/'+todo.id, todo);
-                    },
-                    setTodoCompleted: function(id, value) {
-                      privateClient.getObject('todos/'+id).then(function(obj) {
-                        obj.completed = value;
-                        privateClient.storeObject('todo-list-item', 'todos/'+id, obj);
+                    // Add functions for retrieving and manipulating data using
+                    // methods provided by BaseClient
+                    addTask: function (title) {
+                      var id = new Date().getTime();
+                      return privateClient.storeObject('task', id, {
+                        id: id,
+                        title: title,
+                        completed: false
                       });
-                    },
+                    }
+                    // define more functions...
                   }
                 };
               });
 
-          #### Bla
+          #### Using the module in your app
 
-          Bla bla bla blubb.
+          First, you need to [claim access](http://remotestoragejs.com/doc/code/files/remoteStorage-js.html#remoteStorage.claimAccess)
+          for the module:
 
-          Bla bla bla blubb.
+              remoteStorage.claimAccess({ tasks: 'rw' });
 
-          Bla bla bla blubb.
+          Then you can [include the remoteStorage widget](http://remotestoragejs.com/doc/code/files/remoteStorage-js.html#remoteStorage.displayWidget),
+          which allows the user to connect to their storage server:
+
+              remoteStorage.displayWidget();
+
+          Now create your first task! You can start storing data immediately,
+          even before the user has connected their storage account:
+
+              remoteStorage.tasks.addTask('Conquer the world').then(
+                function(){
+                  // object was stored
+                },
+                function(error) {
+                  // something went wrong
+                }
+              );
+
+          That's it. Now add some more functions to the module, or [check out the
+          existing modules](https://github.com/remotestorage/modules).
+          Whenever you create a new module, you should share it with the
+          community, so that apps stay interoperable and everybody's happy.
