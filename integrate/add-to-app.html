@@ -39,7 +39,7 @@ will be called immediately, with two arguments, which are both instances of
       // Add functions for retrieving and manipulating data using
       // methods provided by BaseClient
       addTask: function (title) {
-        var id = new Date().getTime();
+        var id = new Date().getTime().toString();
         return privateClient.storeObject(&#39;task&#39;, id, {
           id: id,
           title: title,
