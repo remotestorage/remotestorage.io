@@ -12,6 +12,40 @@ include _hero
 
           Bla bla bla blubb.
 
+              remoteStorage.defineModule('tasks', function(privateClient) {
+                privateClient.declareType('task', {
+                  "description": "a task",
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "string",
+                      "format": "id"
+                    },
+                    "title": {
+                      "type": "string"
+                    },
+                    "completed": {
+                      "type": "boolean"
+                    }
+                  }
+                });
+                return {
+                  exports: {
+                    client: privateClient,
+                    addTodo: function(text) {
+                      var todo = new Todo(text);
+                      privateClient.storeObject('todo-list-item', 'todos/'+todo.id, todo);
+                    },
+                    setTodoCompleted: function(id, value) {
+                      privateClient.getObject('todos/'+id).then(function(obj) {
+                        obj.completed = value;
+                        privateClient.storeObject('todo-list-item', 'todos/'+id, obj);
+                      });
+                    },
+                  }
+                };
+              });
+
           #### Bla
 
           Bla bla bla blubb.
