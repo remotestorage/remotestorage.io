@@ -7,5 +7,6 @@ git checkout gh-pages
 cp -R tmp/* .
 git add .
 git commit -a -m "Update release - `date -u`"
+git push origin gh-pages
 git checkout master
 rm -rf tmp
