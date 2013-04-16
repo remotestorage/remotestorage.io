@@ -1,2 +1,4 @@
 public
 tmp
+node_modules
+*~
