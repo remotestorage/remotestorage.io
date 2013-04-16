@@ -2,7 +2,18 @@
 
 set -e
 
-roots compile
+if [ "$(which roots)" != "" ] ; then
+    roots=`which roots`
+elif [ -x node_modules/.bin/roots ] ; then
+    roots=node_modules/.bin/roots
+else
+    echo "Grow some roots, man!"
+    exit -2
+fi
+
+echo "roots found in ${roots}"
+
+$roots compile
 
 cp -R public tmp
 git checkout gh-pages
