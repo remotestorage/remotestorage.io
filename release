@@ -15,6 +15,7 @@ echo "roots found in ${roots}"
 
 $roots compile
 
+rm -rf tmp
 cp -R public tmp
 git checkout gh-pages
 cp -R tmp/* .
