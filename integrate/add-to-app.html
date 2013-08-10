@@ -14,7 +14,7 @@ manipulate data from your app.</p>
 method expects a module name and a builder function.  The builder
 will be called immediately, with two arguments, which are both instances of
 <a href="http://remotestoragejs.com/doc/code/files/lib/baseClient-js.html">BaseClient</a>:</p>
-<pre><code>remoteStorage.defineModule(&#39;tasks&#39;, function(privateClient, publicClient) {
+<pre><code>RemoteStorage.defineModule(&#39;tasks&#39;, function(privateClient, publicClient) {
 
   // Define a common data type using JSON Schema
   privateClient.declareType(&#39;task&#39;, {
@@ -53,7 +53,7 @@ will be called immediately, with two arguments, which are both instances of
 <h4>Using the module in your app</h4>
 <p>First, you need to <a href="http://remotestoragejs.com/doc/code/files/remotestorage-js.html#remoteStorage.claimAccess">claim access</a>
 for the module:</p>
-<pre><code>remoteStorage.claimAccess({ tasks: &#39;rw&#39; });</code></pre>
+<pre><code>remoteStorage.access.claim(&#39;tasks&#39;, &#39;rw&#39;);</code></pre>
 <p>Then you can <a href="http://remotestoragejs.com/doc/code/files/remotestorage-js.html#remoteStorage.displayWidget">include the remoteStorage widget</a>,
 which allows the user to connect to their storage server:</p>
 <pre><code>remoteStorage.displayWidget();</code></pre>
