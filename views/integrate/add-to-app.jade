@@ -29,7 +29,7 @@ include _hero
           will be called immediately, with two arguments, which are both instances of
           [BaseClient](http://remotestoragejs.com/doc/code/files/lib/baseClient-js.html):
 
-              remoteStorage.defineModule('tasks', function(privateClient, publicClient) {
+              RemoteStorage.defineModule('tasks', function(privateClient, publicClient) {
 
                 // Define a common data type using JSON Schema
                 privateClient.declareType('task', {
@@ -71,7 +71,7 @@ include _hero
           First, you need to [claim access](http://remotestoragejs.com/doc/code/files/remotestorage-js.html#remoteStorage.claimAccess)
           for the module:
 
-              remoteStorage.claimAccess({ tasks: 'rw' });
+              remoteStorage.access.claim('tasks', 'rw');
 
           Then you can [include the remoteStorage widget](http://remotestoragejs.com/doc/code/files/remotestorage-js.html#remoteStorage.displayWidget),
           which allows the user to connect to their storage server:
