@@ -1,6 +1,6 @@
 <!DOCTYPE html><html><head><meta charset="utf8"><meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1"><meta name="description" content="description of your site"><meta name="author" content="author of the site"><title>remoteStorage – An open protocol for per-user storage</title><link rel="stylesheet" href="/css/highlight/monokai.css"><link rel="stylesheet" href="/css/screen.css"><link rel="shortcut icon" href="/favicon.png"><link rel="apple-touch-icon-precomposed" href="/favicon-touch.png"><script src="/js/vendor/highlight.pack.js"></script>
-<script>hljs.initHighlightingOnLoad();</script></head><body><div id="wrapper"><header><div class="container"><div class="logo"><h1><a href="/">remoteStorage</a></h1></div><nav><ul><li class="get"><a href="/get">Get Storage</a></li><li class="integrate"><a href="/integrate">Developers</a></li><li class="provide"><a href="/provide">Providers</a></li><li class="community"><a href="/community">Community</a></li><li class="guides"><a href="http://community.remotestorage.io">Forums</a></li><li class="spec"><a href="http://tools.ietf.org/html/draft-dejong-remotestorage-01">Spec</a></li></ul></nav></div></header><div id="wrapper-content"><div class="hero"><div class="container"><section class="content"><div class="row"><div class="header"><h2>Integrate storage</h2><p class="claim">Add remoteStorage to your app</p></div><div class="actions"><ul><li><p><a href="http://remotestoragejs.com/release/0.8.0/remotestorage.min.js" class="btn">Download remoteStorage.js 0.8.0</a></p><p class="meta">44KB minified, gzipped
-<span class="divider">&middot;</span> <a href="http://remotestoragejs.com/release/0.8.0/remotestorage.js">Debug build</a></p></li><li><p><a href="http://remotestoragejs.com/doc/code/files/remotestorage-js.html" class="btn">JS API Documentation</a></p><p class="meta">Version 0.8.0</p></li></ul></div></div></section></div></div><div class="container"><div class="with_subnav"><nav data-scrolltop="287" class="fixed"><ul><li><a href="/integrate/#">Getting started</a><ul><li><a href="/integrate/#widget">The Widget</a></li><li><a href="/integrate/#modules">Categories, Modules &amp; Schemas</a></li><li><a href="/integrate/#examples">Example apps</a></li><li><a href="/integrate/#resources">Resources</a></li></ul></li><li><a href="/integrate/add-to-app.html">Adding remoteStorage to your app</a></li></ul>&nbsp;</nav><section class="content"><div class="integrate"><h3>Adding remoteStorage to your app</h3>
+<script>hljs.initHighlightingOnLoad();</script></head><body><div id="wrapper"><header><div class="container"><div class="logo"><h1><a href="/">remoteStorage</a></h1></div><nav><ul><li class="get"><a href="/get">Get Storage</a></li><li class="integrate"><a href="/integrate">Developers</a></li><li class="provide"><a href="/provide">Providers</a></li><li class="community"><a href="/community">Community</a></li><li class="guides"><a href="http://community.remotestorage.io">Forums</a></li><li class="spec"><a href="http://tools.ietf.org/html/draft-dejong-remotestorage-01">Spec</a></li></ul></nav></div></header><div id="wrapper-content"><div class="hero"><div class="container"><section class="content"><div class="row"><div class="header"><h2>Integrate storage</h2><p class="claim">Add remoteStorage to your app</p></div><div class="actions"><ul><li><p><a href="http://remotestorage.io/release/0.8.0/remotestorage.min.js" class="btn">Download remoteStorage.js 0.8.0</a></p><p class="meta">44KB minified, gzipped
+<span class="divider">&middot;</span> <a href="http://remotestorage.io/release/0.8.0/remotestorage.js">Debug build</a></p></li><li><p><a href="http://remotestorage.io/doc/code/files/remotestorage-js.html" class="btn">JS API Documentation</a></p><p class="meta">Version 0.8.0</p></li></ul></div></div></section></div></div><div class="container"><div class="with_subnav"><nav data-scrolltop="287" class="fixed"><ul><li><a href="/integrate/#">Getting started</a><ul><li><a href="/integrate/#widget">The Widget</a></li><li><a href="/integrate/#modules">Categories, Modules &amp; Schemas</a></li><li><a href="/integrate/#examples">Example apps</a></li><li><a href="/integrate/#resources">Resources</a></li></ul></li><li><a href="/integrate/add-to-app.html">Adding remoteStorage to your app</a></li></ul>&nbsp;</nav><section class="content"><div class="integrate"><h3>Adding remoteStorage to your app</h3>
 <p>First, download the latest remoteStorage.js release linked above, and
 add it to your page:</p>
 <pre><code>&lt;script type=&quot;text/javascript&quot; src=&quot;remoteStorage.min.js&quot;&gt;&lt;/script&gt;</code></pre>
@@ -10,10 +10,10 @@ loaders.</p>
 <p>remoteStorage.js is based on modules, so if you&#39;re not using an
 existing one, define a new reusable module in order to access and
 manipulate data from your app.</p>
-<p>The <a href="http://remotestoragejs.com/doc/code/files/remotestorage-js.html#remoteStorage.defineModule">defineModule</a>
+<p>The <a href="http://remotestorage.io/doc/code/files/remotestorage-js.html#remoteStorage.defineModule">defineModule</a>
 method expects a module name and a builder function.  The builder
 will be called immediately, with two arguments, which are both instances of
-<a href="http://remotestoragejs.com/doc/code/files/lib/baseClient-js.html">BaseClient</a>:</p>
+<a href="http://remotestorage.io/doc/code/files/lib/baseClient-js.html">BaseClient</a>:</p>
 <pre><code>RemoteStorage.defineModule(&#39;tasks&#39;, function(privateClient, publicClient) {
 
   // Define a common data type using JSON Schema
@@ -51,10 +51,10 @@ will be called immediately, with two arguments, which are both instances of
   };
 });</code></pre>
 <h4>Using the module in your app</h4>
-<p>First, you need to <a href="http://remotestoragejs.com/doc/code/files/remotestorage-js.html#remoteStorage.claimAccess">claim access</a>
+<p>First, you need to <a href="http://remotestorage.io/doc/code/files/remotestorage-js.html#remoteStorage.claimAccess">claim access</a>
 for the module:</p>
 <pre><code>remoteStorage.access.claim(&#39;tasks&#39;, &#39;rw&#39;);</code></pre>
-<p>Then you can <a href="http://remotestoragejs.com/doc/code/files/remotestorage-js.html#remoteStorage.displayWidget">include the remoteStorage widget</a>,
+<p>Then you can <a href="http://remotestorage.io/doc/code/files/remotestorage-js.html#remoteStorage.displayWidget">include the remoteStorage widget</a>,
 which allows the user to connect to their storage server:</p>
 <pre><code>remoteStorage.displayWidget();</code></pre>
 <p>Now create your first task! You can start storing data immediately,
