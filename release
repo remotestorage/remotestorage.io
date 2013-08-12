@@ -17,6 +17,7 @@ $roots compile
 
 rm -rf tmp
 cp -R public tmp
+cp -R doc tmp
 git checkout gh-pages
 cp -R tmp/* .
 git add .
