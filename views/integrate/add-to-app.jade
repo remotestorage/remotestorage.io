@@ -24,10 +24,10 @@ include _hero
           existing one, define a new reusable module in order to access and
           manipulate data from your app.
 
-          The [defineModule](http://remotestoragejs.com/doc/code/files/remotestorage-js.html#remoteStorage.defineModule)
+          The [defineModule](http://remotestorage.io/doc/code/files/remotestorage-js.html#remoteStorage.defineModule)
           method expects a module name and a builder function.  The builder
           will be called immediately, with two arguments, which are both instances of
-          [BaseClient](http://remotestoragejs.com/doc/code/files/lib/baseClient-js.html):
+          [BaseClient](http://remotestorage.io/doc/code/files/lib/baseClient-js.html):
 
               RemoteStorage.defineModule('tasks', function(privateClient, publicClient) {
 
@@ -68,12 +68,12 @@ include _hero
 
           #### Using the module in your app
 
-          First, you need to [claim access](http://remotestoragejs.com/doc/code/files/remotestorage-js.html#remoteStorage.claimAccess)
+          First, you need to [claim access](http://remotestorage.io/doc/code/files/remotestorage-js.html#remoteStorage.claimAccess)
           for the module:
 
               remoteStorage.access.claim('tasks', 'rw');
 
-          Then you can [include the remoteStorage widget](http://remotestoragejs.com/doc/code/files/remotestorage-js.html#remoteStorage.displayWidget),
+          Then you can [include the remoteStorage widget](http://remotestorage.io/doc/code/files/remotestorage-js.html#remoteStorage.displayWidget),
           which allows the user to connect to their storage server:
 
               remoteStorage.displayWidget();
