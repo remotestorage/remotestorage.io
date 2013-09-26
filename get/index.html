@@ -3,11 +3,12 @@
 </p></section></div></div><div class="container"><section class="content"><div class="get-storage"><div class="providers"><h3>Get an account with a hoster</h3><p>Storage providers are still preparing for the brandnew remoteStorage.
 In the meantime, you can get an account with one of these services:</p>
 <ul><li><h4><a href="https://5apps.com">5apps</a></h4>
-<p>An HTML5 app deployment platform and remoteStorage provider.
-Introducing dedicated storage plans very soon.</p>
+<p>An HTML5 app deployment platform and remoteStorage provider.  Has
+(hidden) experimental remoteStorage support for all accounts.
+Dedicated storage product/plans coming soon.</p>
 </li><li><h4><a href="https://heahdk.net/">heahdk</a></h4>
 <p>A simple and unassuming remoteStorage provider. Mainly for testing
-purposes.</p>
+purposes. (Currently down!)</p>
 </li><li><h4>Add yours!</h4>
 <p>Providing remoteStorage to users, but not on this list? <a href="https://github.com/remotestorage/remotestorage.io/edit/master/views/get/index.jade">Add your
 service</a>!</p>
@@ -15,16 +16,14 @@ service</a>!</p>
 following implementations, or <a href="/provide">creating your own</a>:</p>
 <ul><li><h4><a href="https://github.com/jcoglan/restore">reStore</a></h4><p>remoteStorage server based on node.js. Supports both Redis and the
 filesystem as storage backend.</p>
+</li><li><h4><a href="https://github.com/remotestorage/remotestorage-ruby">rs-serve</a></h4><p>remoteStorage server written in C for POSIX systems, storing data
+in system users&#39; home directories.</p>
+</li><li><h4><a href="https://github.com/fkooman/php-remoteStorage">php-remoteStorage</a></h4><p>remoteStorage server written in PHP. Missing Webfinger, so not 100%
+compatible at the moment.</p>
 </li><li><h4><a href="https://github.com/remotestorage/remotestorage-ruby">remoteStorage-ruby</a></h4><p>Basic remoteStorage server written in Ruby, storing data in PostgreSQL.</p>
 </li><li><h4><a href="https://github.com/5apps/liquor-cabinet">Liquor Cabinet</a></h4><p>remoteStorage server API based on Sinatra (Ruby). Excludes the
 OAuth portion! Supports multiple backends, but only Riak is
 implemented at the moment.</p>
-</li><li><h4><a href="http://owncloud.org">OwnCloud</a></h4><p>Open-source personal cloud platform, running on the LAMP stack.
-Currently needs <a href="https://github.com/michielbdejong/owncloud-owa">an
-extension</a>, which
-will be included by default soon.</p>
-</li><li><h4><a href="https://github.com/fkooman/php-remoteStorage">php-remoteStorage</a></h4><p>remoteStorage server written in PHP. Missing Webfinger, so not 100%
-compatible at the moment.</p>
 </li><li><h4>Add yours!</h4>
 <p>Why not <a href="/provide">create your own storage server</a>? If you do, <a href="https://github.com/remotestorage/remotestorage.io/edit/master/views/get/index.jade">add it to this
 list</a>!</p>
