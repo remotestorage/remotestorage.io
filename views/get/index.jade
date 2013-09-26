@@ -18,13 +18,14 @@
           li
             :markdown
               #### [5apps](https://5apps.com)
-              An HTML5 app deployment platform and remoteStorage provider.
-              Introducing dedicated storage plans very soon.
+              An HTML5 app deployment platform and remoteStorage provider.  Has
+              (hidden) experimental remoteStorage support for all accounts.
+              Dedicated storage product/plans coming soon.
           li
             :markdown
               #### [heahdk](https://heahdk.net/)
               A simple and unassuming remoteStorage provider. Mainly for testing
-              purposes.
+              purposes. (Currently down!)
           li
             :markdown
               #### Add yours!
@@ -45,6 +46,18 @@
               filesystem as storage backend.
           li
             h4
+              a(href="https://github.com/remotestorage/remotestorage-ruby") rs-serve
+            :markdown
+              remoteStorage server written in C for POSIX systems, storing data
+              in system users' home directories.
+          li
+            h4
+              a(href="https://github.com/fkooman/php-remoteStorage") php-remoteStorage
+            :markdown
+              remoteStorage server written in PHP. Missing Webfinger, so not 100%
+              compatible at the moment.
+          li
+            h4
               a(href="https://github.com/remotestorage/remotestorage-ruby") remoteStorage-ruby
             :markdown
               Basic remoteStorage server written in Ruby, storing data in PostgreSQL.
@@ -55,20 +68,14 @@
               remoteStorage server API based on Sinatra (Ruby). Excludes the
               OAuth portion! Supports multiple backends, but only Riak is
               implemented at the moment.
-          li
-            h4
-              a(href="http://owncloud.org") OwnCloud
-            :markdown
-              Open-source personal cloud platform, running on the LAMP stack.
-              Currently needs [an
-              extension](https://github.com/michielbdejong/owncloud-owa), which
-              will be included by default soon.
-          li
-            h4
-              a(href="https://github.com/fkooman/php-remoteStorage") php-remoteStorage
-            :markdown
-              remoteStorage server written in PHP. Missing Webfinger, so not 100%
-              compatible at the moment.
+          // li
+          //   h4
+          //     a(href="http://owncloud.org") OwnCloud
+          //   :markdown
+          //     Open-source personal cloud platform, running on the LAMP stack.
+          //     Currently needs [an
+          //     extension](https://github.com/michielbdejong/owncloud-owa), which
+          //     will be included by default soon.
           li
             :markdown
               #### Add yours!
