@@ -30,6 +30,18 @@ html
   script
     !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");
 
+  script
+    if (window.location.href.match(/remotestorage\.io/)) {
+      var _paq = _paq || []; _paq.push(["trackPageView"]); _paq.push(["enableLinkTracking"]);
+      (function() {
+        var u="https://analytics.5apps.com/";
+        _paq.push(["setTrackerUrl", u+"piwik.php"]);
+        _paq.push(["setSiteId", "5"]);
+        var d=document, g=d.createElement("script"), s=d.getElementsByTagName("script")[0]; g.type="text/javascript";
+        g.defer=true; g.async=true; g.src=u+"piwik.js"; s.parentNode.insertBefore(g,s);
+      })();
+    }
+
   //- this must be included for live reload to work in developement
   //- it will be automatically ignored when deployed
   != livereload
