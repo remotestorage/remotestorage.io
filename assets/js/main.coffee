@@ -22,15 +22,15 @@ require js, ->
     # Fix nav menu position when scrolling down
     #
 
-    scrollfix = $("nav.fixed").data('scrolltop')
-    nav = $("nav.fixed > ul")
-    padding = 20
+    # scrollfix = $("nav.fixed").data('scrolltop')
+    # nav = $("nav.fixed > ul")
+    # padding = 20
 
-    if $(window).scrollTop() > scrollfix
-      nav.css top: padding
+    # if $(window).scrollTop() > scrollfix
+    #   nav.css top: padding
 
-    $(window).on "scroll", ->
-      if $(window).scrollTop() > scrollfix
-        nav.css top: padding
-      else
-        nav.css top: scrollfix - $(window).scrollTop()
+    # $(window).on "scroll", ->
+    #   if $(window).scrollTop() > scrollfix
+    #     nav.css top: padding
+    #   else
+    #     nav.css top: scrollfix - $(window).scrollTop()
