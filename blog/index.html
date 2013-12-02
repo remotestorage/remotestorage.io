@@ -1,0 +1,26 @@
+---
+layout: default
+title: Blog | RailsCamp Germany 2013
+---
+<div class="hero blog pure-g-r">
+  <div class="pure-u-1">
+    <p><img class="flame" src="/img/flame_500.png" /></p>
+    <h1>{{ site.name }}</h1>
+    <p><span class="subheading">July 27/28, 2013 &middot; Abenteuerhallen Kalk, Cologne</span></p>
+  </div>
+</div>
+<div id="content">
+  <div class="pure-g-r">
+    <div class="pure-u-1">
+      <h2>Blog</h2>
+      <ul class="posts">
+        {% for post in site.posts %}
+        <li><span>{{ post.date | date_to_string }}</span> &raquo; <a href="{{ post.url }}">{{ post.title }}</a></li>
+        {% endfor %}
+      </ul>
+      <p>
+        <input type="button" onclick="(function(){var z=document.createElement('script');z.src='https://www.subtome.com/load.js';document.body.appendChild(z);})()" value="Subscribe" class="pure-button">
+      </p>
+    </div>
+  </div>
+</div>

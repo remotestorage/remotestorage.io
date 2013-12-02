@@ -1,0 +1,20 @@
+---
+layout: default
+---
+<div class="hero blog pure-g-r">
+  <div class="pure-u-1">
+    <p><img class="flame" src="/img/flame_500.png" /></p>
+    <h1>{{ site.name }}</h1>
+    <p><span class="subheading">July 27/28, 2013 &middot; Abenteuerhallen Kalk, Cologne</span></p>
+  </div>
+</div>
+
+<div id="content" class="post">
+  <div class="pure-g-r">
+    <div class="pure-u-1">
+      <h2 class="title">{{ page.title }}</h2>
+      <p class="meta">{{ page.date | date_to_string }}</p>
+      {{ content }}
+    </div>
+  </div>
+</div>

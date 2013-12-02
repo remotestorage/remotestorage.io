@@ -1,0 +1,7 @@
+name: remoteStorage
+description: The Official RemoteStorage Blog
+url: http://remotestorage.io/blog
+pygments: true
+sass:
+  syntax: scss        # scss|sass
+  style:  compressed  # nested|expanded|compact|compressed
