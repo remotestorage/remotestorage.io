@@ -1,7 +1,36 @@
-body {
+$blue: #219be2;
+$yellow: yellow;
 
+html, body {
+  font-size: 14px;
 }
 
 nav.topbar {
 
+}
+
+section#welcome {
+  background: $blue;
+}
+
+.jumbotron {
+  font-weight: normal;
+  font-size: 1.5rem;
+  color: #fff;
+  // text-align: center;
+  h2 {
+    font-weight: bold;
+    font-size: 2.5rem;
+  }
+  p.actions {
+    padding-top: 1rem;
+  }
+  .btn-default {
+    margin-right: 0.5rem;
+    background: none;
+    // border-color: $text-color;
+    // color: $text-color;
+    border-color: rgba(255,255,255,0.5);
+    color: #fff;
+  }
 }
