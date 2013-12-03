@@ -34,3 +34,23 @@ section#welcome {
     color: #fff;
   }
 }
+
+section.benefits {
+  .pictogram {
+    width: 87px;
+    height: 100px;
+    margin: 0 auto;
+    &.hexagon {
+      background-image: url(/img/hexagon-yellow-01.svg);
+      background-size: contain;
+    }
+  }
+
+  .col-md-3 {
+    text-align: center;
+  }
+
+  h2 {
+    font-size: 1.5rem;
+  }
+}
