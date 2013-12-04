@@ -5,8 +5,11 @@ html, body {
   font-size: 14px;
 }
 
-nav.topbar {
-
+.navbar-brand {
+  padding: 8px 15px;
+  img {
+    height: 34px;
+  }
 }
 
 section#welcome {
