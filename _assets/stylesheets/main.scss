@@ -46,8 +46,9 @@ section.benefits {
     }
   }
 
-  .col-md-3 {
+  .row > div {
     text-align: center;
+    padding: 1em 0;
   }
 
   h2 {
