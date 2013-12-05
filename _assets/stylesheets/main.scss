@@ -5,6 +5,10 @@ html, body {
   font-size: 14px;
 }
 
+a {
+  color: $blue;
+}
+
 .navbar-brand {
   padding: 8px 15px;
   img {
@@ -20,7 +24,20 @@ section#welcome {
   font-weight: normal;
   font-size: 1.5rem;
   color: #fff;
-  // text-align: center;
+  margin-bottom: 0;
+  padding-left: 0;
+  padding-right: 0;
+  &.small {
+    padding-top: 2em;
+    padding-bottom: 1.5em;
+    h2 {
+      margin-top: 0;
+    }
+    p.actions {
+      padding-top: 1.5rem;
+      text-align: right;
+    }
+  }
   h2 {
     font-weight: bold;
     font-size: 2.5rem;
@@ -39,6 +56,7 @@ section#welcome {
 }
 
 section.benefits {
+  padding: 3rem 0;
   .pictogram {
     width: 87px;
     height: 100px;
@@ -56,5 +74,55 @@ section.benefits {
 
   h2 {
     font-size: 1.5rem;
+  }
+}
+
+main.blog {
+  padding: 3rem 0;
+  aside.recent-posts {
+    padding-right: 2rem;
+    h3 {
+      font-size: 1rem;
+      color: #888;
+      margin: 0px 0px 2rem;
+      font-weight: normal;
+      text-transform: uppercase;
+    }
+    ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      h4 {
+        font-weight: normal;
+        font-size: 1.2rem;
+        margin: 0 0 0.5rem 0;
+      }
+      p {
+        margin: 0;
+      }
+      li {
+        margin-bottom: 1.2rem;
+      }
+    }
+  }
+  article {
+    background: #fff;
+    border: 1px solid #E6E6E6;
+    @include border-radius(5px);
+    margin-bottom: 2rem;
+    header {
+      border-bottom: 1px solid #E6E6E6;
+      h3 {
+        margin: 0 0 0 0;
+        font-size: 2rem;
+        font-weight: bold;
+        a {
+          text-decoration: underline
+        }
+      }
+    }
+    header, .content {
+      padding: 2rem;
+    }
   }
 }

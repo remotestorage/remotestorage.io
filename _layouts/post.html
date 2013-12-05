@@ -1,20 +1,49 @@
 ---
 layout: default
 ---
-<div class="hero blog pure-g-r">
-  <div class="pure-u-1">
-    <p><img class="flame" src="/img/flame_500.png" /></p>
-    <h1>{{ site.name }}</h1>
-    <p><span class="subheading">July 27/28, 2013 &middot; Abenteuerhallen Kalk, Cologne</span></p>
-  </div>
-</div>
 
-<div id="content" class="post">
-  <div class="pure-g-r">
-    <div class="pure-u-1">
-      <h2 class="title">{{ page.title }}</h2>
-      <p class="meta">{{ page.date | date_to_string }}</p>
-      {{ content }}
+<section id="welcome" class="jumbotron small">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-6">
+        <h2>Blog</h2>
+        <p>All things remoteStorage.</p>
+      </div>
+      <div class="col-sm-6 hidden-xs">
+        <p class="actions">
+          <a class="btn btn-default" role="button">Subscribe via RSS</a>
+          <a class="btn btn-default" role="button">Subscribe with a service</a>
+        </p>
+      </div>
+  </div>
+</section>
+
+<main class="blog">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-3 hidden-sm">
+        <aside class="recent-posts">
+          <h3>Recent Entries</h3>
+          <ul>
+            {% for post in site.posts %}
+            <li>
+              <h4><a href="{{ post.url }}">{{ post.title }}</a></h4>
+              <p>{{ post.date | date_to_string }}</p>
+            </li>
+            {% endfor %}
+          </ul>
+        </aside>
+      </div>
+      <div class="col-md-9 hidden-xs">
+        <article>
+          <header>
+            <h3>{{ page.title }}</h3>
+          </header>
+          <div class="content">
+            {{ content }}
+          </div>
+        </article>
+      </div>
     </div>
   </div>
-</div>
+</main>
