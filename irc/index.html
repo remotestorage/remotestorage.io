@@ -25,19 +25,27 @@ title: Chat (IRC)
       <div class="col-md-3">
       </div>
       <div class="col-md-9">
-        <guppy-irc id="my-guppy"
-                   data-title="Welcome to Guppy IRC"
-                   data-server="irc.freenode.net"
-                   data-channel="#sockethub"
-                   data-nick="rs_user"
-                   data-display-name="Guppy Example User"
-                   data-password=""
-                   data-autoconnect="true"
-                   data-sockethub-host="silverbucket.net"
-                   data-sockethub-port="443"
-                   data-sockethub-tls="true"
-                   data-sockethub-path="/sockethub"
-                   data-sockethub-secret="1234567890" />
+        <div class="irc-widget">
+          <guppy-irc id="my-guppy"
+                     data-title="Welcome to Guppy IRC"
+                     data-height="300"
+                     data-server="irc.freenode.net"
+                     data-channel="#sockethub"
+                     data-nick="rs_user"
+                     data-display-name="Guppy Example User"
+                     data-password=""
+                     data-autoconnect="true"
+                     data-sockethub-host="silverbucket.net"
+                     data-sockethub-port="443"
+                     data-sockethub-tls="true"
+                     data-sockethub-path="/sockethub"
+                     data-sockethub-secret="1234567890" />
+        </div>
+        <p class="powered-by">
+          Unhosted IRC widget powered by
+          <a href="http://sockethub.org" target="_blank">Sockethub</a>
+          and <a href="https://github.com/silverbucket/guppy-irc" target="_blank">Guppy IRC</a>
+        </p>
       </div>
     </div>
   </div>

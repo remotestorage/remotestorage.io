@@ -25,12 +25,25 @@ guppy-irc {
   display: inline-block;
 }
 
-/* messages container */
+/* messages */
 .guppy-irc-messages-container {
   overflow: auto;
   border: 1px solid black;
   display: inline-block;
 }
+.guppy-irc-message-line {
+  margin: 0;
+}
+.guppy-irc-message-nick {
+  font-weight: bold;
+}
+.guppy-irc-message-nick-decorator {
+  margin: 0 5px 0 2px;
+}
+.guppy-irc-message-nick-to-me {
+  color: brown;
+}
+
 /* controls container */
 .guppy-irc-controls-container {
   margin: 1% 0 1% 0;
@@ -49,4 +62,9 @@ guppy-irc {
 /* send button */
 .guppy-irc-submit-button-container {
   float: right;
+}
+
+/* error lines */
+.guppy-irc-error-line {
+  color: red;
 }

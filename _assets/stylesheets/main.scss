@@ -135,6 +135,7 @@ main {
 .guppy-irc-container {
   border: none;
   width: 100%;
+  padding: 0;
 }
 .guppy-irc-title-container {
   display: none;
@@ -159,7 +160,7 @@ p.guppy-irc-message-line-to-me {
   background: #F7F6F2;
 }
 .guppy-irc-message-nick {
-  // font-weight: bold;
+  font-weight: normal;
   color: #888;
 }
 .guppy-irc-message-nick-decorator {
@@ -180,3 +181,10 @@ p.guppy-irc-message-line-to-me {
   }
 }
 
+main.irc {
+  p.powered-by {
+    padding-top: 1.5rem;
+    color: #888;
+    font-size: 0.8rem;
+  }
+}
