@@ -1,0 +1,52 @@
+guppy-irc {
+  display: block;
+  border: 0;
+  padding: 0;
+  margin: 0;
+}
+
+/* widget container */
+.guppy-irc-container {
+  border: 1px solid black;
+  display: inline-block;
+  padding: .5%;
+}
+
+/* title */
+.guppy-irc-title-container {
+  text-align: center;
+}
+.guppy-irc-title {
+  font-size: 1.5em;
+}
+
+/* info */
+.guppy-irc-info {
+  display: inline-block;
+}
+
+/* messages container */
+.guppy-irc-messages-container {
+  overflow: auto;
+  border: 1px solid black;
+  display: inline-block;
+}
+/* controls container */
+.guppy-irc-controls-container {
+  margin: 1% 0 1% 0;
+}
+
+/* input */
+.guppy-irc-input-container {
+  display: inline-block;
+  width: 80%;
+  padding: 0 1% 0 0;
+}
+.guppy-irc-input {
+  width: 100%;
+}
+
+/* send button */
+.guppy-irc-submit-button-container {
+  float: right;
+}

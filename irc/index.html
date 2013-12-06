@@ -1,0 +1,46 @@
+---
+layout: default
+title: Chat (IRC)
+---
+
+<section id="welcome" class="jumbotron small">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-6">
+        <h2>IRC</h2>
+        <!-- <p></p> -->
+      </div>
+      <div class="col-sm-6 hidden-xs">
+        <!-- <p class="actions"> -->
+        <!--   <a class="btn btn-default" role="button">Subscribe via RSS</a> -->
+        <!--   <a class="btn btn-default" role="button">Subscribe with a service</a> -->
+        <!-- </p> -->
+      </div>
+  </div>
+</section>
+
+<main class="irc">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-3">
+      </div>
+      <div class="col-md-9">
+        <guppy-irc id="my-guppy"
+                   data-title="Welcome to Guppy IRC"
+                   data-server="irc.freenode.net"
+                   data-channel="#sockethub"
+                   data-nick="rs_user"
+                   data-display-name="Guppy Example User"
+                   data-password=""
+                   data-autoconnect="true"
+                   data-sockethub-host="silverbucket.net"
+                   data-sockethub-port="443"
+                   data-sockethub-tls="true"
+                   data-sockethub-path="/sockethub"
+                   data-sockethub-secret="1234567890" />
+      </div>
+    </div>
+  </div>
+</main>
+
+{% javascript irc %}
