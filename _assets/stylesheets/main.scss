@@ -148,6 +148,12 @@ main {
   border: 1px solid #E6E6E6;
   @include border-radius(5px);
 }
+p.guppy-irc-status-line {
+  margin: 0;
+  padding: 2px 1rem;
+  line-height: 1.4em;
+  color: #888;
+}
 p.guppy-irc-message-line {
   margin: 0;
   padding: 2px 1rem;
