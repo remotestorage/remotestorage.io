@@ -339,11 +339,11 @@
     var uid = window.localStorage.getItem(key);
     if (!uid) {
       // generate random number
-      uid = Math.floor((Math.random()*99999)+10000);
+      uid = Math.floor((Math.random() * 99999) + 10000);
       window.localStorage.setItem(key, uid);
     }
 
-    var sid = md5(uid+cfg.sockethub.uid);
+    var sid = md5(uid + cfg.sockethub.uid);
     var idSpace =  16 - cfg.nick.length;
     var u_nick = cfg.nick + sid.substr(sid.length - idSpace);
 
@@ -418,9 +418,8 @@
         });
       }).then(function () {
         console.log(self.log_id + ' connected to ' + self.config.channel);
-        self.DOMElements.textarea.value = self.DOMElements.textarea.value + '\n' +
-              ' --- connected to ' + self.config.server + ' on channel ' +
-                                     self.config.channel + ' --- ';
+        self.displaySystemMessage('status', 'connected to ' + self.config.server +
+                                            ' on channel ' + self.config.channel);
         self.setState('connected');
       }, function (err) {
         // error setting credentials
@@ -448,6 +447,7 @@
     //
     // do all the ugly DOM stuff.
     self.buildWidget();
+    self.displaySystemMessage('status', 'connecting to ' + self.config.server + ' ...');
 
     //
     // listen for input submition text
@@ -467,7 +467,6 @@
 
     return this;
   };
-
 
   /**
    * Function: writeToMessageContainer
@@ -498,19 +497,25 @@
   };
 
   /**
-   * Function: displayError
+   * Function: displaySystemMessage
    *
-   * Displays a Guppy error message to the message area
+   * Displays a Guppy system message to the message area
    *
    * Parameters:
    *
-   *   text - error message
+   *   type - 'error', 'status'
+   *   text - text string to display
    *
    */
-  Guppy.prototype.displayError = function (text) {
+  Guppy.prototype.displaySystemMessage = function (type, text) {
     var messageLine = document.createElement('p');
-    messageLine.className = 'guppy-irc-error-line guppy-irc-' + this.config.id + '-error-line';
-    messageLine.innerHTML = '----: Guppy Error: ' + text;
+    if (type === 'error') {
+      messageLine.className = 'guppy-irc-error-line guppy-irc-' + this.config.id + '-error-line';
+      messageLine.innerHTML = '----: ERROR: ' + text;
+    } else {
+      messageLine.className = 'guppy-irc-status-line guppy-irc-' + this.config.id + '-status-line';
+      messageLine.innerHTML = '----: ' + text;
+    }
     this.writeToMessageContainer(messageLine);
   };
 
@@ -638,7 +643,7 @@
 
     this.errMsg = err;
     this.setState('error');
-    this.displayError(errMsg);
+    this.displaySystemMessage('error', errMsg);
   };
 
   /**
@@ -661,7 +666,7 @@
    * Function: buildWidget
    *
    * Handles all of the DOM drawing of elements withing the Guppy widget.
-   * Textarea, input, send button, connection info, etc.
+   * messages area, input, send button, connection info, etc.
    *
    */
   Guppy.prototype.buildWidget = function () {
