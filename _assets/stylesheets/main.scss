@@ -113,10 +113,9 @@ main {
       margin-bottom: 2rem;
       header {
         border-bottom: 1px solid #E6E6E6;
-        h3 {
+        h2 {
           margin: 0 0 0 0;
           font-size: 2rem;
-          font-weight: bold;
           a {
             text-decoration: underline;
           }
@@ -124,6 +123,9 @@ main {
       }
       header, .content {
         padding: 2rem;
+      }
+      h3 {
+        margin: 2rem 0 1.4rem 0;
       }
     }
   }
