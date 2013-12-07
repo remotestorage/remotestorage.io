@@ -8,7 +8,6 @@ title: The remoteStorage Blog
     <div class="row">
       <div class="col-sm-6">
         <h2>Blog</h2>
-        <p>All things remoteStorage.</p>
       </div>
       <div class="col-sm-6 hidden-xs">
         <p class="actions">
@@ -39,7 +38,7 @@ title: The remoteStorage Blog
         {% for post in site.posts %}
         <article>
           <header>
-            <h3><a href="{{ post.url }}">{{ post.title }}</a></h3>
+            <h2><a href="{{ post.url }}">{{ post.title }}</a></h2>
           </header>
           <div class="content">
             {{post.content}}
