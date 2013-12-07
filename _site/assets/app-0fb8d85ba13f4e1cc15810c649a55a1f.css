@@ -379,7 +379,7 @@ cite {
 h1, h2, h3, h4, h5, h6,
 .h1, .h2, .h3, .h4, .h5, .h6 {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-weight: 500;
+  font-weight: bold;
   line-height: 1.1;
   color: inherit; }
   h1 small,
@@ -433,7 +433,7 @@ h2, .h2 {
   font-size: 30px; }
 
 h3, .h3 {
-  font-size: 24px; }
+  font-size: 1.4rem; }
 
 h4, .h4 {
   font-size: 18px; }
@@ -3273,9 +3273,13 @@ guppy-irc {
 .guppy-irc-submit-button-container {
   float: right; }
 
-/* error lines */
+/* system message lines */
 .guppy-irc-error-line {
-  color: red; }
+  color: red;
+  margin: 0; }
+
+.guppy-irc-status-line {
+  margin: 0; }
 
 html, body {
   font-size: 14px; }
@@ -3304,11 +3308,13 @@ section#welcome {
     .jumbotron.small h2 {
       margin-top: 0; }
     .jumbotron.small p.actions {
-      padding-top: 1.5rem;
+      padding: 3px 0 0 0;
       text-align: right; }
   .jumbotron h2 {
     font-weight: bold;
     font-size: 2.5rem; }
+    .jumbotron h2 a {
+      color: #fff; }
   .jumbotron p.actions {
     padding-top: 1rem; }
   .jumbotron .btn-default {
@@ -3334,25 +3340,29 @@ section.benefits {
 
 main {
   padding: 3rem 0; }
-  main.blog aside.recent-posts {
+  main aside {
     padding-right: 2rem; }
-    main.blog aside.recent-posts h3 {
+    main aside section {
+      margin: 0 0 2rem; }
+    main aside h3 {
       font-size: 1rem;
       color: #888;
-      margin: 0px 0px 2rem;
+      margin: 0 0 1.5rem;
       font-weight: normal;
       text-transform: uppercase; }
-    main.blog aside.recent-posts ul {
+    main aside.recent-posts h3 {
+      margin: 0 0 2rem; }
+    main aside ul {
       list-style: none;
       margin: 0;
       padding: 0; }
-      main.blog aside.recent-posts ul h4 {
+      main aside ul h4 {
         font-weight: normal;
         font-size: 1.2rem;
         margin: 0 0 0.5rem 0; }
-      main.blog aside.recent-posts ul p {
+      main aside ul p {
         margin: 0; }
-      main.blog aside.recent-posts ul li {
+      main aside ul li {
         margin-bottom: 1.2rem; }
   main.blog article {
     background: #fff;
@@ -3365,14 +3375,15 @@ main {
     margin-bottom: 2rem; }
     main.blog article header {
       border-bottom: 1px solid #E6E6E6; }
-      main.blog article header h3 {
+      main.blog article header h2 {
         margin: 0 0 0 0;
-        font-size: 2rem;
-        font-weight: bold; }
-        main.blog article header h3 a {
+        font-size: 2rem; }
+        main.blog article header h2 a {
           text-decoration: underline; }
     main.blog article header, main.blog article .content {
       padding: 2rem; }
+    main.blog article h3 {
+      margin: 2rem 0 1.4rem 0; }
 
 .guppy-irc-container {
   border: none;
@@ -3393,22 +3404,20 @@ main {
   -ms-border-radius: 5px;
   -o-border-radius: 5px;
   border-radius: 5px; }
-
-p.guppy-irc-status-line {
-  margin: 0;
-  padding: 2px 1rem;
-  line-height: 1.4em;
-  color: #888; }
-
-p.guppy-irc-message-line {
-  margin: 0;
-  padding: 2px 1rem;
-  line-height: 1.4em; }
-  p.guppy-irc-message-line:last-child {
-    margin-bottom: 1rem; }
-
-p.guppy-irc-message-line-to-me {
-  background: #F7F6F2; }
+  .guppy-irc-messages-container p {
+    margin: 0;
+    padding: 2px 1rem;
+    line-height: 1.4em; }
+    .guppy-irc-messages-container p:last-child {
+      margin-bottom: 1rem; }
+    .guppy-irc-messages-container p.guppy-irc-message-line-to-me {
+      background: #F7F6F2; }
+    .guppy-irc-messages-container p.guppy-irc-status-line {
+      color: #888;
+      font-style: italic; }
+    .guppy-irc-messages-container p.guppy-irc-error-line {
+      color: red;
+      font-style: italic; }
 
 .guppy-irc-message-nick {
   font-weight: normal;
