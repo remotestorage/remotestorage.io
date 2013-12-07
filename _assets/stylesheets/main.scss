@@ -82,33 +82,39 @@ section.benefits {
 
 main {
   padding: 3rem 0;
-  &.blog {
-    aside.recent-posts {
-      padding-right: 2rem;
-      h3 {
-        font-size: 1rem;
-        color: #888;
-        margin: 0px 0px 2rem;
+  aside {
+    padding-right: 2rem;
+    section {
+      margin: 0 0 2rem;
+    }
+    h3 {
+      font-size: 1rem;
+      color: #888;
+      margin: 0 0 1.5rem;
+      font-weight: normal;
+      text-transform: uppercase;
+    }
+    &.recent-posts h3 {
+      margin: 0 0 2rem;
+    }
+    ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      h4 {
         font-weight: normal;
-        text-transform: uppercase;
+        font-size: 1.2rem;
+        margin: 0 0 0.5rem 0;
       }
-      ul {
-        list-style: none;
+      p {
         margin: 0;
-        padding: 0;
-        h4 {
-          font-weight: normal;
-          font-size: 1.2rem;
-          margin: 0 0 0.5rem 0;
-        }
-        p {
-          margin: 0;
-        }
-        li {
-          margin-bottom: 1.2rem;
-        }
+      }
+      li {
+        margin-bottom: 1.2rem;
       }
     }
+  }
+  &.blog {
     article {
       background: #fff;
       border: 1px solid #E6E6E6;
