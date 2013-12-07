@@ -236,6 +236,12 @@
   function getSockethubClient (sockethub, cb) {
     var log_id = app + ':' + sockethub.uid;
 
+
+    //
+    // TODO
+    // emit a message when events happen to the sockethub client so that
+    // guppy instances can behave accordingly
+    //
     if (sockethubClients[sockethub.uid]) {
       cb(null, sockethubClients[sockethub.uid]);
     } else {

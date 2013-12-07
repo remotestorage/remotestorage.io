@@ -64,7 +64,11 @@ guppy-irc {
   float: right;
 }
 
-/* error lines */
+/* system message lines */
 .guppy-irc-error-line {
   color: red;
+  margin: 0;
+}
+.guppy-irc-status-line {
+  margin: 0;
 }
