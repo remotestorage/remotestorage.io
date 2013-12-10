@@ -17,21 +17,22 @@ a {
 }
 
 section#welcome {
-  background: $blue;
 }
 
 .jumbotron {
   font-weight: normal;
-  font-size: 1.5rem;
-  color: #fff;
   margin-bottom: 0;
   padding-left: 0;
   padding-right: 0;
+  background: $blue;
+  color: #fff;
+  font-size: 1.5rem;
   &.small {
-    padding-top: 2em;
-    padding-bottom: 1.5em;
+    padding-top: 1em;
+    padding-bottom: 0.5em;
     h2 {
       margin-top: 0;
+      font-size: 2rem;
     }
     p.actions {
       padding: 3px 0 0 0;
@@ -39,7 +40,6 @@ section#welcome {
     }
   }
   h2 {
-    font-weight: bold;
     font-size: 2.5rem;
     a {
       color: #fff;
@@ -51,10 +51,30 @@ section#welcome {
   .btn-default {
     margin-right: 0.5rem;
     background: none;
-    // border-color: $text-color;
-    // color: $text-color;
     border-color: rgba(255,255,255,0.5);
     color: #fff;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .jumbotron {
+    font-size: 1.5rem;
+    &.small {
+      padding-top: 1.5em;
+      padding-bottom: 1em;
+      h2 {
+        font-size: 2.5rem;
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 992px) {
+  .jumbotron {
+    &.small {
+      padding-top: 2em;
+      padding-bottom: 1.5em;
+    }
   }
 }
 
@@ -81,7 +101,7 @@ section.benefits {
 }
 
 main {
-  padding: 3rem 0;
+  padding: 2rem 0;
   aside {
     padding-right: 2rem;
     section {
@@ -137,6 +157,12 @@ main {
         margin: 2rem 0 1.4rem 0;
       }
     }
+  }
+}
+
+@media screen and (min-width: 992px) {
+  main {
+    padding: 3rem 0;
   }
 }
 
