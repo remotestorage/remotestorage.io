@@ -235,7 +235,8 @@
   var sockethubClients = {}; // index of sockethub client connection objects
   function getSockethubClient (sockethub, cb) {
     var log_id = app + ':' + sockethub.uid;
-
+    var alreadyConnected = false; // if the registered event fires after a
+                                  // reconnected, we don't want to call the cb()
 
     //
     // TODO
@@ -246,15 +247,24 @@
       cb(null, sockethubClients[sockethub.uid]);
     } else {
       // no existing sockethub connection, so let's connect!
-      var sockethubClient = SockethubClient.connect(sockethub.connectString, { register: { secret: sockethub.secret }, reconnect: true });
+      var sockethubClient = SockethubClient.connect(sockethub.connectString, {
+                              register: {
+                                secret: sockethub.secret
+                              }, reconnect: true
+                            });
+
       sockethubClient.on('registered', function () {
         // connected and registered to sockethub
-        sockethubClients[sockethub.uid] = sockethubClient;
-        cb(null, sockethubClients[sockethub.uid]);
+        if (!alreadyConnected) {
+          sockethubClients[sockethub.uid] = sockethubClient;
+          alreadyConnected = true;
+          cb(null, sockethubClients[sockethub.uid]);
+        }
       });
 
       sockethubClient.on('failed', function (err) {
-        cb('connection to sockethub failed: ' + err);
+        if (!err) { err = ''; }
+        cb('connection to sockethub failed. ' + err);
       });
 
       sockethubClient.on('disconnected', function () {
@@ -392,6 +402,7 @@
       // got sockethub client object (sc)
       if (err) {
         self.setError(err);
+        return;
       } else {
         self.sockethubClient = sc;
       }
@@ -411,32 +422,44 @@
         actor: self.actor
       };
 
-      sc.set('irc', {
-        credentials: credentialObject
-      }).then(function () {
-        // successful set credentials
-        console.log(self.log_id + ' set credentials!');
-        return sc.sendObject({
-          verb: 'update',
-          platform: 'irc',
-          actor: self.actor,
-          target: []
+      function joinRooms() {
+        sc.set('irc', {
+          credentials: credentialObject
+        }).then(function () {
+          // successful set credentials
+          console.log(self.log_id + ' set credentials!');
+          return sc.sendObject({
+            verb: 'update',
+            platform: 'irc',
+            actor: self.actor,
+            target: []
+          });
+        }).then(function () {
+          console.log(self.log_id + ' connected to ' + self.config.channel);
+          self.displaySystemMessage('status', 'connected to ' + self.config.server +
+                                              ' on channel ' + self.config.channel);
+          self.setState('connected');
+        }, function (err) {
+          // error setting credentials
+          self.setError(err.message, 'Sockethub Error: ' + err);
         });
-      }).then(function () {
-        console.log(self.log_id + ' connected to ' + self.config.channel);
-        self.displaySystemMessage('status', 'connected to ' + self.config.server +
-                                            ' on channel ' + self.config.channel);
-        self.setState('connected');
-      }, function (err) {
-        // error setting credentials
-        self.setError(err.message, 'Sockethub Error: ' + err);
-      });
+      }
+      joinRooms();
 
       sc.on('message', function (obj) {
         if ((obj.platform === 'irc') &&
             (obj.verb === 'send')) {
           self.displayMessage(obj);
         }
+      });
+
+      sc.on('reconnecting', function () {
+        self.displaySystemMessage('error', 'disconnected from sockethub... attempting to reconnect.');
+      });
+
+      sc.on('reconnected', function () {
+        self.displaySystemMessage('status', 'reconnected to sockethub.');
+        joinRooms();
       });
     }
 
@@ -517,10 +540,10 @@
     var messageLine = document.createElement('p');
     if (type === 'error') {
       messageLine.className = 'guppy-irc-error-line guppy-irc-' + this.config.id + '-error-line';
-      messageLine.innerHTML = '----: ERROR: ' + text;
+      messageLine.innerHTML = 'ERROR: ' + text;
     } else {
       messageLine.className = 'guppy-irc-status-line guppy-irc-' + this.config.id + '-status-line';
-      messageLine.innerHTML = '----: ' + text;
+      messageLine.innerHTML = text;
     }
     this.writeToMessageContainer(messageLine);
   };
@@ -642,14 +665,14 @@
    */
   Guppy.prototype.setError = function (err, obj) {
     if (typeof obj === 'object') {
-      console.log(this.log_id + ' ERROR: ' + this.errMsg, obj);
+      console.log(this.log_id + ' ERROR: ' + err, obj);
     } else {
-      console.log(this.log_id + ' ERROR: ' + this.errMsg);
+      console.log(this.log_id + ' ERROR: ' + err);
     }
 
     this.errMsg = err;
     this.setState('error');
-    this.displaySystemMessage('error', errMsg);
+    this.displaySystemMessage('error', err);
   };
 
   /**
