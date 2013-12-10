@@ -3292,26 +3292,24 @@ a {
   .navbar-brand img {
     height: 34px; }
 
-section#welcome {
-  background: #219be2; }
-
 .jumbotron {
   font-weight: normal;
-  font-size: 1.5rem;
-  color: #fff;
   margin-bottom: 0;
   padding-left: 0;
-  padding-right: 0; }
+  padding-right: 0;
+  background: #219be2;
+  color: #fff;
+  font-size: 1.5rem; }
   .jumbotron.small {
-    padding-top: 2em;
-    padding-bottom: 1.5em; }
+    padding-top: 1em;
+    padding-bottom: 0.5em; }
     .jumbotron.small h2 {
-      margin-top: 0; }
+      margin-top: 0;
+      font-size: 2rem; }
     .jumbotron.small p.actions {
       padding: 3px 0 0 0;
       text-align: right; }
   .jumbotron h2 {
-    font-weight: bold;
     font-size: 2.5rem; }
     .jumbotron h2 a {
       color: #fff; }
@@ -3323,6 +3321,18 @@ section#welcome {
     border-color: rgba(255, 255, 255, 0.5);
     color: #fff; }
 
+@media screen and (min-width: 768px) {
+  .jumbotron {
+    font-size: 1.5rem; }
+    .jumbotron.small {
+      padding-top: 1.5em;
+      padding-bottom: 1em; }
+      .jumbotron.small h2 {
+        font-size: 2.5rem; } }
+@media screen and (min-width: 992px) {
+  .jumbotron.small {
+    padding-top: 2em;
+    padding-bottom: 1.5em; } }
 section.benefits {
   padding: 3rem 0; }
   section.benefits .pictogram {
@@ -3339,7 +3349,7 @@ section.benefits {
     font-size: 1.5rem; }
 
 main {
-  padding: 3rem 0; }
+  padding: 2rem 0; }
   main aside {
     padding-right: 2rem; }
     main aside section {
@@ -3385,6 +3395,9 @@ main {
     main.blog article h3 {
       margin: 2rem 0 1.4rem 0; }
 
+@media screen and (min-width: 992px) {
+  main {
+    padding: 3rem 0; } }
 .guppy-irc-container {
   border: none;
   width: 100%;
