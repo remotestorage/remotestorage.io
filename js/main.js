@@ -1,1 +1,1 @@
-(function(){var n;n=["/js/vendor/jquery.min.js","/js/vendor/waypoint.min.js"],require(n,function(){return $(function(){var n;return n=window.location.pathname.match(/\/(.+)\//),n?$("header nav ."+n[1]+" a").addClass("active"):void 0})})}).call(this);
+(function(){var a;a=["/js/vendor/jquery.min.js","/js/vendor/waypoint.min.js"],require(a,function(){return $(function(){var a;a=window.location.pathname.match(/\/(.+)\//);if(a)return $("header nav ."+a[1]+" a").addClass("active")})})}).call(this)
