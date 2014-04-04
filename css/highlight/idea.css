@@ -1,1 +1,121 @@
-pre code{display:block;padding:.5em;color:#000;background:#fff}pre .subst,pre .title{font-weight:400;color:#000}pre .comment,pre .diff .header,pre .javadoc,pre .template_comment{color:gray;font-style:italic}pre .annotation,pre .apache .cbracket,pre .chunk,pre .decorator,pre .doctype,pre .http .title,pre .pi,pre .preprocessor,pre .prompt,pre .shebang{color:olive}pre .pi,pre .tag{background:#efefef}pre .attr_selector,pre .clojure .title,pre .css .class,pre .css .function,pre .hexcolor,pre .id,pre .ini .title,pre .keyword,pre .list .title,pre .literal,pre .nginx .title,pre .pseudo,pre .request,pre .status,pre .tag .title,pre .tex .command{font-weight:700;color:navy}pre .attribute,pre .date,pre .number,pre .regexp,pre .rules .keyword,pre .tex .special{font-weight:700;color:#00f}pre .number,pre .regexp{font-weight:400}pre .apache .tag,pre .css .function .params,pre .filter .argument,pre .string,pre .value{color:green;font-weight:700}pre .char,pre .ruby .symbol .string,pre .symbol,pre .tex .formula{color:#000;background:#d0eded;font-style:italic}pre .javadoctag,pre .phpdoc,pre .yardoctag{text-decoration:underline}pre .apache .sqbracket,pre .envvar,pre .nginx .built_in,pre .variable{color:#660e7a}pre .addition{background:#baeeba}pre .deletion{background:#ffc8bd}pre .diff .change{background:#bccff9}
+/*
+
+Intellij Idea-like styling (c) Vasily Polovnyov <vast@whiteants.net>
+
+*/
+
+pre code {
+  display: block; padding: 0.5em;
+  color: #000;
+  background: #fff;
+}
+
+pre .subst,
+pre .title {
+  font-weight: normal;
+  color: #000;
+}
+
+pre .comment,
+pre .template_comment,
+pre .javadoc,
+pre .diff .header {
+  color: #808080;
+  font-style: italic;
+}
+
+pre .annotation,
+pre .decorator,
+pre .preprocessor,
+pre .doctype,
+pre .pi,
+pre .chunk,
+pre .shebang,
+pre .apache .cbracket,
+pre .prompt,
+pre .http .title {
+  color: #808000;
+}
+
+pre .tag,
+pre .pi {
+  background: #efefef;
+}
+
+pre .tag .title,
+pre .id,
+pre .attr_selector,
+pre .pseudo,
+pre .literal,
+pre .keyword,
+pre .hexcolor,
+pre .css .function,
+pre .ini .title,
+pre .css .class,
+pre .list .title,
+pre .clojure .title,
+pre .nginx .title,
+pre .tex .command,
+pre .request,
+pre .status {
+  font-weight: bold;
+  color: #000080;
+}
+
+pre .attribute,
+pre .rules .keyword,
+pre .number,
+pre .date,
+pre .regexp,
+pre .tex .special {
+  font-weight: bold;
+  color: #0000ff;
+}
+
+pre .number,
+pre .regexp {
+  font-weight: normal;
+}
+
+pre .string,
+pre .value,
+pre .filter .argument,
+pre .css .function .params,
+pre .apache .tag {
+  color: #008000;
+  font-weight: bold;
+}
+
+pre .symbol,
+pre .ruby .symbol .string,
+pre .char,
+pre .tex .formula {
+  color: #000;
+  background: #d0eded;
+  font-style: italic;
+}
+
+pre .phpdoc,
+pre .yardoctag,
+pre .javadoctag {
+  text-decoration: underline;
+}
+
+pre .variable,
+pre .envvar,
+pre .apache .sqbracket,
+pre .nginx .built_in {
+  color: #660e7a;
+}
+
+pre .addition {
+  background: #baeeba;
+}
+
+pre .deletion {
+  background: #ffc8bd;
+}
+
+pre .diff .change {
+  background: #bccff9;
+}

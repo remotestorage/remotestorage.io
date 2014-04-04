@@ -1,1 +1,104 @@
-pre code{display:block;padding:.5em;background:#b7a68e url(./brown_papersq.png)}pre .change,pre .clojure .built_in,pre .flow,pre .keyword,pre .lisp .title,pre .literal,pre .nginx .title,pre .request,pre .status,pre .tex .special,pre .winutils{color:#059;font-weight:700}pre .subst,pre .tag .keyword,pre code{color:#363C69}pre .addition,pre .apache .cbracket,pre .apache .tag,pre .attr_selector,pre .built_in,pre .css .rules .value,pre .django .filter .argument,pre .django .template_tag,pre .django .variable,pre .envvar,pre .haskell .type,pre .javadoc,pre .preprocessor,pre .pseudo,pre .ruby .class .parent,pre .ruby .string,pre .ruby .symbol,pre .ruby .symbol .string,pre .smalltalk .array,pre .smalltalk .class,pre .smalltalk .localvars,pre .sql .aggregate,pre .stream,pre .string,pre .tag .value,pre .tex .number,pre .title{color:#2C009F}pre .apache .sqbracket,pre .comment,pre .deletion,pre .doctype,pre .java .annotation,pre .nginx .built_in,pre .pi,pre .python .decorator,pre .shebang,pre .template_comment,pre .tex .formula{color:#802022}pre .apache .tag,pre .bash .variable,pre .chunk,pre .css .id,pre .diff .header,pre .haskell .type,pre .keyword,pre .literal,pre .phpdoc,pre .rsl .built_in,pre .smalltalk .class,pre .sql .aggregate,pre .tex .command,pre .title,pre .vbscript .built_in,pre .winutils{font-weight:700}pre .coffeescript .javascript,pre .javascript .xml,pre .tex .formula,pre .xml .cdata,pre .xml .css,pre .xml .javascript,pre .xml .vbscript{opacity:.8}
+/*
+
+Brown Paper style from goldblog.com.ua (c) Zaripov Yura <yur4ik7@ukr.net>
+
+*/
+
+pre code {
+  display: block; padding: 0.5em;
+  background:#b7a68e url(./brown_papersq.png);
+}
+
+pre .keyword,
+pre .literal,
+pre .change,
+pre .winutils,
+pre .flow,
+pre .lisp .title,
+pre .clojure .built_in,
+pre .nginx .title,
+pre .tex .special,
+pre .request,
+pre .status {
+  color:#005599;
+  font-weight:bold;
+}
+
+pre code,
+pre .subst,
+pre .tag .keyword {
+  color: #363C69;
+}
+
+pre .string,
+pre .title,
+pre .haskell .type,
+pre .tag .value,
+pre .css .rules .value,
+pre .preprocessor,
+pre .ruby .symbol,
+pre .ruby .symbol .string,
+pre .ruby .class .parent,
+pre .built_in,
+pre .sql .aggregate,
+pre .django .template_tag,
+pre .django .variable,
+pre .smalltalk .class,
+pre .javadoc,
+pre .ruby .string,
+pre .django .filter .argument,
+pre .smalltalk .localvars,
+pre .smalltalk .array,
+pre .attr_selector,
+pre .pseudo,
+pre .addition,
+pre .stream,
+pre .envvar,
+pre .apache .tag,
+pre .apache .cbracket,
+pre .tex .number {
+  color: #2C009F;
+}
+
+pre .comment,
+pre .java .annotation,
+pre .python .decorator,
+pre .template_comment,
+pre .pi,
+pre .doctype,
+pre .deletion,
+pre .shebang,
+pre .apache .sqbracket,
+pre .nginx .built_in,
+pre .tex .formula {
+  color: #802022;
+}
+
+pre .keyword,
+pre .literal,
+pre .css .id,
+pre .phpdoc,
+pre .title,
+pre .haskell .type,
+pre .vbscript .built_in,
+pre .sql .aggregate,
+pre .rsl .built_in,
+pre .smalltalk .class,
+pre .diff .header,
+pre .chunk,
+pre .winutils,
+pre .bash .variable,
+pre .apache .tag,
+pre .tex .command {
+  font-weight: bold;
+}
+
+pre .coffeescript .javascript,
+pre .javascript .xml,
+pre .tex .formula,
+pre .xml .javascript,
+pre .xml .vbscript,
+pre .xml .css,
+pre .xml .cdata {
+  opacity: 0.8;
+}

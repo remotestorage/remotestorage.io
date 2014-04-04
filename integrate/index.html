@@ -1,14 +1,114 @@
-<!DOCTYPE html><html><head><meta charset="utf8"><meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1"><meta name="description" content="description of your site"><meta name="author" content="author of the site"><title>remoteStorage – An open protocol for per-user storage</title><link rel="stylesheet" href="/css/highlight/monokai.css"><link rel="stylesheet" href="/css/screen.css"><link rel="shortcut icon" href="/favicon.png"><link rel="apple-touch-icon-precomposed" href="/favicon-touch.png"><script src="/js/vendor/highlight.pack.js"></script>
-<script>hljs.initHighlightingOnLoad();</script></head><body><div id="wrapper"><header><div class="container"><div class="logo"><h1><a href="/">remoteStorage</a></h1></div><nav><ul><li class="get"><a href="/get">Get Storage</a></li><li class="integrate"><a href="/integrate">Developers</a></li><li class="provide"><a href="/provide">Providers</a></li><li class="community"><a href="/community">Community</a></li><li class="guides"><a href="http://community.remotestorage.io">Forums</a></li><li class="spec"><a href="http://tools.ietf.org/html/draft-dejong-remotestorage-02">Spec</a></li></ul></nav></div></header><div id="wrapper-content"><div class="hero"><div class="container"><section class="content"><div class="row"><div class="header"><h2>Integrate storage</h2><p class="claim">Add remoteStorage to your app</p></div><div class="actions"><ul><li><p><a href="http://remotestorage.io/doc/code/files/remotestorage-js.html" class="btn">Documentation</a></p><p class="meta">Version 0.9.0</p></li><li><p><a href="http://github.com/remotestorage/starter-kit" class="btn">Starter Kit</a></p><p class="meta">requires Node.js</p></li><li><p><a href="http://remotestorage.io/release/0.9.0/remotestorage.min.js" class="btn">Download remoteStorage.js 0.9.0</a></p><p class="meta">40KB minified, gzipped
-<span class="divider">&middot;</span><a href="http://remotestorage.io/release/0.9.0/remotestorage.js">Debug build</a></p></li></ul></div></div></section></div></div><div class="container"><section class="content bordered"><div class="benefits"><section class="freedom"><h3>Backend as a Service</h3><p>Develop your web app without worrying about hosting or even developing
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+    <meta name="description" content="description of your site">
+    <meta name="author" content="author of the site">
+    <title>remoteStorage – An open protocol for per-user storage</title>
+    <link rel="stylesheet" href="/css/highlight/monokai.css">
+    <link rel="stylesheet" href="/css/screen.css">
+    <link rel="shortcut icon" href="/favicon.png">
+    <link rel="apple-touch-icon-precomposed" href="/favicon-touch.png"><script src="/js/vendor/highlight.pack.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+  </head>
+  <body>
+    <div id="wrapper">
+      <header>
+        <div class="container">
+          <div class="logo">
+            <h1><a href="/">remoteStorage</a></h1>
+          </div>
+          <nav>
+            <ul>
+              <li class="get"><a href="/get">Get Storage</a></li>
+              <li class="integrate"><a href="/integrate">Developers</a></li>
+              <li class="provide"><a href="/provide">Providers</a></li>
+              <li class="community"><a href="/community">Community</a></li>
+              <li class="guides"><a href="http://community.remotestorage.io">Forums</a></li>
+              <li class="spec"><a href="http://tools.ietf.org/html/draft-dejong-remotestorage-02">Spec</a></li>
+            </ul>
+          </nav>
+        </div>
+      </header>
+      <div id="wrapper-content">
+<div class="hero">
+  <div class="container">
+    <section class="content">
+      <div class="row">
+        <div class="header">
+          <h2>Integrate storage</h2>
+          <p class="claim">Add remoteStorage to your app</p>
+        </div>
+        <div class="actions">
+          <ul>
+            <li>
+              <p><a href="http://remotestorage.io/doc/code/" class="btn">Documentation</a></p>
+              <p class="meta">Version 0.10.0-beta</p>
+            </li>
+            <li>
+              <p><a href="http://github.com/remotestorage/starter-kit" class="btn">Starter Kit</a></p>
+              <p class="meta">Requires node.js</p>
+            </li>
+            <li>
+              <p><a href="http://remotestorage.io/release/0.10.0-beta/remotestorage.min.js" class="btn">Download remoteStorage.js 0.10.0-beta</a></p>
+              <p class="meta">
+                40KB minified, gzipped
+                <span class="divider">&middot;</span><a href="http://remotestorage.io/release/0.10.0-beta/remotestorage.js">Debug build</a>
+              </p>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+  </div>
+</div>
+<div class="container">
+  <section class="content bordered">
+    <div class="benefits">
+      <section class="freedom">
+        <h3>Backend as a Service</h3><p>Develop your web app without worrying about hosting or even developing
 the backend for it: your users will connect their own backend at runtime.</p>
-</section><section class="offline"><h3>Infinite Scalability</h3><p>No matter if 5 hundred or 5 million users are using your app, your
+
+      </section>
+      <section class="offline">
+        <h3>Infinite Scalability</h3><p>No matter if 5 hundred or 5 million users are using your app, your
 backend scales automatically and never costs you a single cent.</p>
-</section><section class="freedom"><h3>Wheels Included</h3><p><a href="https://github.com/remotestorage/remotestorage.js">remoteStorage.js</a>
+
+      </section>
+      <section class="freedom">
+        <h3>Wheels Included</h3><p><a href="https://github.com/remotestorage/remotestorage.js">remoteStorage.js</a>
 is a JavaScript library that does all the heavy-lifting of connecting
 to any remoteStorage backend, caching, synchronizing and storing user
 data.</p>
-</section></div></section><div class="with_subnav"><nav data-scrolltop="495" class="fixed"><ul><li><a href="/integrate/#">Getting started</a><ul><li><a href="/integrate/#widget">The Widget</a></li><li><a href="/integrate/#modules">Categories, Modules &amp; Schemas</a></li><li><a href="/integrate/#examples">Example apps</a></li><li><a href="/integrate/#resources">Resources</a></li></ul></li><!-- li--><!--   a(href="#") Modules--><!--   ul--><!--     li--><!--       a(href="/integrate/#widget") Available modules--><!--     li--><!--       a(href="/integrate/#modules") How to define a schema--><li><a href="/integrate/add-to-app.html">Adding remoteStorage to your app</a></li></ul><!-- need some content so that the element doesn't collapse-->&nbsp;</nav><section class="content"><div class="integrate"><h3 id="getting-started-with-remotestorage-js">Getting started with remoteStorage.js</h3>
+
+      </section>
+    </div>
+  </section>
+  <div class="with_subnav">
+    <nav data-scrolltop="495" class="fixed">
+      <ul>
+        <li><a href="/integrate/#">Getting started</a>
+          <ul>
+            <li><a href="/integrate/#widget">The Widget</a></li>
+            <li><a href="/integrate/#modules">Categories, Modules &amp; Schemas</a></li>
+            <li><a href="/integrate/#examples">Example apps</a></li>
+            <li><a href="/integrate/#resources">Resources</a></li>
+          </ul>
+        </li>
+        <!-- li-->
+        <!--   a(href="#") Modules-->
+        <!--   ul-->
+        <!--     li-->
+        <!--       a(href="/integrate/#widget") Available modules-->
+        <!--     li-->
+        <!--       a(href="/integrate/#modules") How to define a schema-->
+        <li><a href="/integrate/add-to-app.html">Adding remoteStorage to your app</a></li>
+      </ul>
+      <!-- need some content so that the element doesn't collapse-->&nbsp;
+    </nav>
+    <section class="content">
+      <div class="integrate"><h3 id="getting-started-with-remotestorage-js">Getting started with remoteStorage.js</h3>
 <p>Although you may choose to integrate remoteStorage sync in your
 server-side program, or using a custom client-side library, we
 usually recommend and assume you use
@@ -56,16 +156,41 @@ documentation is pretty extensive and up-to-date, and also includes
 some guides:</p>
 <p><a href="http://remotestorage.io/doc/code/">API docs</a></p>
 <p>Next topic: <a href="http://remotestorage.io/integrate/add-to-app.html">Adding remoteStorage to your app</a></p>
-</div></section></div></div><!-- ugly hack:--><div class="space">&nbsp;</div></div></div><footer><div class="container"><p class="copyright">© 2014 <a href="https://github.com/remotestorage?tab=members">remoteStorage contributors</a>, <a href="http://creativecommons.org/licenses/by/3.0/">CC-BY</a><span class="divider">&middot;</span><a href="https://github.com/remotestorage/remotestorage.io">Fork this website</a></p><p class="actions"><a href="https://twitter.com/remotestorage_" data-dnt="true" data-show-count="false" data-lang="en" class="twitter-follow-button">Follow @remotestorage_</a></p></div></footer></body><script data-main="/js/main" src="/js/require.js">//- add other scripts through require.js, not here
-</script><script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");
-</script><script>if (window.location.href.match(/remotestorage\.io/)) {
-  var _paq = _paq || []; _paq.push(["trackPageView"]); _paq.push(["enableLinkTracking"]);
-  (function() {
-    var u="https://analytics.5apps.com/";
-    _paq.push(["setTrackerUrl", u+"piwik.php"]);
-    _paq.push(["setSiteId", "5"]);
-    var d=document, g=d.createElement("script"), s=d.getElementsByTagName("script")[0]; g.type="text/javascript";
-    g.defer=true; g.async=true; g.src=u+"piwik.js"; s.parentNode.insertBefore(g,s);
-  })();
-}
-</script></html>
+
+      </div>
+    </section>
+  </div>
+</div>
+        <!-- ugly hack:-->
+        <div class="space">&nbsp;</div>
+      </div>
+    </div>
+    <footer>
+      <div class="container">
+        <p class="copyright">© 2014 <a href="https://github.com/remotestorage?tab=members">remoteStorage contributors</a>, <a href="http://creativecommons.org/licenses/by/3.0/">CC-BY</a><span class="divider">&middot;</span><a href="https://github.com/remotestorage/remotestorage.io">Fork this website</a></p>
+        <p class="actions"><a href="https://twitter.com/remotestorage_" data-dnt="true" data-show-count="false" data-lang="en" class="twitter-follow-button">Follow @remotestorage_</a></p>
+      </div>
+    </footer>
+  </body>
+  <script data-main="/js/main" src="/js/require.js">
+    //- add other scripts through require.js, not here
+    
+  </script>
+  <script>
+    !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");
+    
+  </script>
+  <script>
+    if (window.location.href.match(/remotestorage\.io/)) {
+      var _paq = _paq || []; _paq.push(["trackPageView"]); _paq.push(["enableLinkTracking"]);
+      (function() {
+        var u="https://analytics.5apps.com/";
+        _paq.push(["setTrackerUrl", u+"piwik.php"]);
+        _paq.push(["setSiteId", "5"]);
+        var d=document, g=d.createElement("script"), s=d.getElementsByTagName("script")[0]; g.type="text/javascript";
+        g.defer=true; g.async=true; g.src=u+"piwik.js"; s.parentNode.insertBefore(g,s);
+      })();
+    }
+    
+  </script>
+</html>

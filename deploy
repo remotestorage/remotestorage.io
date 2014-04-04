@@ -13,7 +13,7 @@ fi
 
 echo "roots found in ${roots}"
 
-$roots compile
+$roots compile --no-compress
 
 rm -rf tmp
 cp -R public tmp

@@ -1,1 +1,114 @@
-pre code{display:block;padding:.5em;background:#272822}pre .change,pre .clojure .built_in,pre .flow,pre .keyword,pre .lisp .title,pre .literal,pre .nginx .title,pre .tag,pre .tag .title,pre .tex .special,pre .winutils{color:#F92672}pre code{color:#DDD}pre code .constant{color:#66D9EF}pre .class .title{color:#fff}pre .attribute,pre .regexp,pre .symbol,pre .symbol .string,pre .value{color:#BF79DB}pre .addition,pre .apache .cbracket,pre .apache .tag,pre .attr_selector,pre .built_in,pre .django .filter .argument,pre .django .template_tag,pre .django .variable,pre .envvar,pre .haskell .type,pre .javadoc,pre .preprocessor,pre .prompt,pre .pseudo,pre .ruby .class .parent,pre .smalltalk .array,pre .smalltalk .class,pre .smalltalk .localvars,pre .sql .aggregate,pre .stream,pre .string,pre .subst,pre .tag .value,pre .tex .command,pre .title{color:#A6E22E}pre .apache .sqbracket,pre .comment,pre .deletion,pre .doctype,pre .java .annotation,pre .pi,pre .python .decorator,pre .shebang,pre .template_comment,pre .tex .formula{color:#75715E}pre .apache .tag,pre .bash .variable,pre .chunk,pre .css .id,pre .diff .header,pre .haskell .type,pre .keyword,pre .literal,pre .phpdoc,pre .request,pre .rsl .built_in,pre .smalltalk .class,pre .sql .aggregate,pre .status,pre .tex .special,pre .title,pre .vbscript .built_in,pre .winutils{font-weight:700}pre .coffeescript .javascript,pre .javascript .xml,pre .tex .formula,pre .xml .cdata,pre .xml .css,pre .xml .javascript,pre .xml .vbscript{opacity:.5}
+/*
+Monokai style - ported by Luigi Maselli - http://grigio.org
+*/
+
+pre code {
+  display: block; padding: 0.5em;
+  background: #272822;
+}
+
+pre .tag,
+pre .tag .title,
+pre .keyword,
+pre .literal,
+pre .change,
+pre .winutils,
+pre .flow,
+pre .lisp .title,
+pre .clojure .built_in,
+pre .nginx .title,
+pre .tex .special {
+  color: #F92672;
+}
+
+pre code {
+  color: #DDD;
+}
+
+pre code .constant {
+	color: #66D9EF;
+}
+
+pre .class .title {
+	color: white;
+}
+
+pre .attribute,
+pre .symbol,
+pre .symbol .string,
+pre .value,
+pre .regexp {
+	color: #BF79DB;
+}
+
+pre .tag .value,
+pre .string,
+pre .subst,
+pre .title,
+pre .haskell .type,
+pre .preprocessor,
+pre .ruby .class .parent,
+pre .built_in,
+pre .sql .aggregate,
+pre .django .template_tag,
+pre .django .variable,
+pre .smalltalk .class,
+pre .javadoc,
+pre .django .filter .argument,
+pre .smalltalk .localvars,
+pre .smalltalk .array,
+pre .attr_selector,
+pre .pseudo,
+pre .addition,
+pre .stream,
+pre .envvar,
+pre .apache .tag,
+pre .apache .cbracket,
+pre .tex .command,
+pre .prompt {
+  color: #A6E22E;
+}
+
+pre .comment,
+pre .java .annotation,
+pre .python .decorator,
+pre .template_comment,
+pre .pi,
+pre .doctype,
+pre .deletion,
+pre .shebang,
+pre .apache .sqbracket,
+pre .tex .formula {
+  color: #75715E;
+}
+
+pre .keyword,
+pre .literal,
+pre .css .id,
+pre .phpdoc,
+pre .title,
+pre .haskell .type,
+pre .vbscript .built_in,
+pre .sql .aggregate,
+pre .rsl .built_in,
+pre .smalltalk .class,
+pre .diff .header,
+pre .chunk,
+pre .winutils,
+pre .bash .variable,
+pre .apache .tag,
+pre .tex .special,
+pre .request,
+pre .status {
+  font-weight: bold;
+}
+
+pre .coffeescript .javascript,
+pre .javascript .xml,
+pre .tex .formula,
+pre .xml .javascript,
+pre .xml .vbscript,
+pre .xml .css,
+pre .xml .cdata {
+  opacity: 0.5;
+}

@@ -1,1 +1,16 @@
-(function(){var a;a=["/js/vendor/jquery.min.js","/js/vendor/waypoint.min.js"],require(a,function(){return $(function(){var a;a=window.location.pathname.match(/\/(.+)\//);if(a)return $("header nav ."+a[1]+" a").addClass("active")})})}).call(this)
+(function() {
+  var js;
+
+  js = ["/js/vendor/jquery.min.js", "/js/vendor/waypoint.min.js"];
+
+  require(js, function() {
+    return $(function() {
+      var area;
+      area = window.location.pathname.match(/\/(.+)\//);
+      if (area) {
+        return $("header nav ." + area[1] + " a").addClass("active");
+      }
+    });
+  });
+
+}).call(this);

@@ -1,1 +1,158 @@
-pre code{display:block;padding:.5em;background:#222}pre .ini .title,pre .nginx .title,pre .profile .header *{color:#fff}pre .comment,pre .css .rules,pre .diff,pre .doctype,pre .javadoc,pre .pi,pre .preprocessor,pre .preprocessor .title,pre .profile .summary,pre .shebang,pre .tag,pre .template_comment,pre .tex .special{color:#444}pre .clojure .attribute,pre .diff .change,pre .ini .value,pre .regexp,pre .smalltalk .char,pre .string,pre .symbol,pre .xml .attribute,pre .xml .value{color:#fc3}pre .addition,pre .number{color:#0c6}pre .built_in,pre .css .funtion,pre .django .variable,pre .flow,pre .go .constant,pre .go .typename,pre .hexcolor,pre .important,pre .inheritance,pre .ini .keyword,pre .literal,pre .lua .title,pre .mel .variable,pre .parser3 .variable,pre .perl .variable,pre .php .variable,pre .smalltalk .method,pre .vhdl .typename{color:#32AAEE}pre .clojure .built_in,pre .css .attr_selector,pre .css .class,pre .css .id,pre .css .pseudo,pre .css .tag,pre .keyword,pre .lisp .title,pre .request,pre .status,pre .tag .title,pre .tex .command,pre .winutils{color:#64a}pre .apache .tag,pre .avrasm .label,pre .bash .variable,pre .css .keyword,pre .deletion,pre .envvar,pre .go .built_in,pre .lisp .keyword,pre .lua .built_in,pre .nginx .variable,pre .objectivec .class .id,pre .parent,pre .rsl .built_in,pre .ruby .constant,pre .smalltalk .class,pre .tail,pre .template_tag,pre .tex .formula,pre .tex .formula *,pre .title,pre .vala .constant,pre .vbscript .built_in{color:#b16}pre .apache .tag,pre .ini .title,pre .parser3 .title,pre .phpdoc,pre .profile .header,pre .yardoctag{font-weight:700}pre .coffeescript .javascript,pre .javascript .xml,pre .tex .formula,pre .xml .cdata,pre .xml .css,pre .xml .javascript,pre .xml .vbscript{opacity:.6}pre .container,pre .css,pre .css .attribute,pre .css .value,pre .diff .chunk,pre .erlang *,pre .erlang_repl *,pre .haskell *,pre .javascript,pre .lisp .number,pre .lisp .string,pre .subst,pre .tail .params,pre .xml,pre code{color:#aaa}
+/*
+Date: 17.V.2011
+Author: pumbur <pumbur@pumbur.net>
+*/
+
+pre code
+{
+  display: block; padding: 0.5em;
+  background: #222;
+}
+
+pre .profile .header *,
+pre .ini .title,
+pre .nginx .title
+{
+  color: #fff;
+}
+
+pre .comment,
+pre .javadoc,
+pre .preprocessor,
+pre .preprocessor .title,
+pre .shebang,
+pre .profile .summary,
+pre .diff,
+pre .pi,
+pre .doctype,
+pre .tag,
+pre .template_comment,
+pre .css .rules,
+pre .tex .special
+{
+  color: #444;
+}
+
+pre .string,
+pre .symbol,
+pre .diff .change,
+pre .regexp,
+pre .xml .attribute,
+pre .smalltalk .char,
+pre .xml .value,
+pre .ini .value,
+pre .clojure .attribute
+{
+  color: #ffcc33;
+}
+
+pre .number,
+pre .addition
+{
+  color: #00cc66;
+}
+
+pre .built_in,
+pre .literal,
+pre .vhdl .typename,
+pre .go .constant,
+pre .go .typename,
+pre .ini .keyword,
+pre .lua .title,
+pre .perl .variable,
+pre .php .variable,
+pre .mel .variable,
+pre .django .variable,
+pre .css .funtion,
+pre .smalltalk .method,
+pre .hexcolor,
+pre .important,
+pre .flow,
+pre .inheritance,
+pre .parser3 .variable
+{
+  color: #32AAEE;
+}
+
+pre .keyword,
+pre .tag .title,
+pre .css .tag,
+pre .css .class,
+pre .css .id,
+pre .css .pseudo,
+pre .css .attr_selector,
+pre .lisp .title,
+pre .clojure .built_in,
+pre .winutils,
+pre .tex .command,
+pre .request,
+pre .status
+{
+  color: #6644aa;
+}
+
+pre .title,
+pre .ruby .constant,
+pre .vala .constant,
+pre .parent,
+pre .deletion,
+pre .template_tag,
+pre .css .keyword,
+pre .objectivec .class .id,
+pre .smalltalk .class,
+pre .lisp .keyword,
+pre .apache .tag,
+pre .nginx .variable,
+pre .envvar,
+pre .bash .variable,
+pre .go .built_in,
+pre .vbscript .built_in,
+pre .lua .built_in,
+pre .rsl .built_in,
+pre .tail,
+pre .avrasm .label,
+pre .tex .formula,
+pre .tex .formula *
+{
+  color: #bb1166;
+}
+
+pre .yardoctag,
+pre .phpdoc,
+pre .profile .header,
+pre .ini .title,
+pre .apache .tag,
+pre .parser3 .title
+{
+  font-weight: bold;
+}
+
+pre .coffeescript .javascript,
+pre .javascript .xml,
+pre .tex .formula,
+pre .xml .javascript,
+pre .xml .vbscript,
+pre .xml .css,
+pre .xml .cdata
+{
+  opacity: 0.6;
+}
+
+pre code,
+pre .javascript,
+pre .css,
+pre .xml,
+pre .subst,
+pre .diff .chunk,
+pre .css .value,
+pre .css .attribute,
+pre .lisp .string,
+pre .lisp .number,
+pre .tail .params,
+pre .container,
+pre .haskell *,
+pre .erlang *,
+pre .erlang_repl *
+{
+  color: #aaa;
+}
