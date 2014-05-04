@@ -3281,6 +3281,37 @@ guppy-irc {
 .guppy-irc-status-line {
   margin: 0; }
 
+@font-face {
+  font-family: 'remotestorage';
+  src: url("/fonts/remotestorage.eot?q6dyvb");
+  src: url("/fonts/remotestorage.eot?#iefixq6dyvb") format("embedded-opentype"), url("/fonts/remotestorage.woff?q6dyvb") format("woff"), url("/fonts/remotestorage.ttf?q6dyvb") format("truetype"), url("/fonts/remotestorage.svg?q6dyvb#remotestorage") format("svg");
+  font-weight: normal;
+  font-style: normal; }
+
+[class^="icon-"], [class*=" icon-"] {
+  font-family: 'remotestorage';
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale; }
+
+.icon-publish:before {
+  content: "\e600"; }
+
+.icon-signal:before {
+  content: "\e601"; }
+
+.icon-cycle:before {
+  content: "\e602"; }
+
+.icon-archive:before {
+  content: "\e603"; }
+
 html, body {
   font-size: 14px; }
 
@@ -3340,8 +3371,13 @@ section.benefits {
     height: 100px;
     margin: 0 auto; }
     section.benefits .pictogram.hexagon {
+      position: relative;
       background-image: url(/img/hexagon-yellow-01.svg);
-      background-size: contain; }
+      background-size: contain;
+      padding-top: 26px; }
+      section.benefits .pictogram.hexagon i {
+        font-size: 50px;
+        color: #fff; }
   section.benefits .row > div {
     text-align: center;
     padding: 1em 0; }
@@ -3377,12 +3413,12 @@ main {
   main.blog article {
     background: #fff;
     border: 1px solid #E6E6E6;
+    margin-bottom: 2rem;
     -webkit-border-radius: 5px;
     -moz-border-radius: 5px;
     -ms-border-radius: 5px;
     -o-border-radius: 5px;
-    border-radius: 5px;
-    margin-bottom: 2rem; }
+    border-radius: 5px; }
     main.blog article header {
       border-bottom: 1px solid #E6E6E6; }
       main.blog article header h2 {
