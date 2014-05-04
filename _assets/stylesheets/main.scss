@@ -85,8 +85,14 @@ section.benefits {
     height: 100px;
     margin: 0 auto;
     &.hexagon {
+      position: relative;
       background-image: url(/img/hexagon-yellow-01.svg);
       background-size: contain;
+      padding-top: 26px;
+      i {
+        font-size: 50px;
+        color: #fff;
+      }
     }
   }
 
@@ -138,8 +144,8 @@ main {
     article {
       background: #fff;
       border: 1px solid #E6E6E6;
-      @include border-radius(5px);
       margin-bottom: 2rem;
+      @include border-radius(5px);
       header {
         border-bottom: 1px solid #E6E6E6;
         h2 {
