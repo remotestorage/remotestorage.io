@@ -1,6 +1,6 @@
 #!/bin/sh
 
-git pull --rebase origin master
+git pull --rebase origin responsive_revamp
 rm -rf _site/*
 jekyll build
 git add --all
