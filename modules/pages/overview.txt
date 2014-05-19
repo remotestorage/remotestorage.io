@@ -1,0 +1,5 @@
+File: Overview
+
+Welcome to the remotestorage.js module documentation.
+
+TODO: add some introduction text
