@@ -59,9 +59,19 @@ File: Overview  (/root/modules/doc/pages/overview.txt)
 
 Group: Modules  {
 
+   File: Documents  (/root/modules/src/documents.js)
    File: Messages  (/root/modules/src/messages.js)
    File: PGP  (/root/modules/src/pgp.js)
    File: Pictures  (/root/modules/src/pictures.js)
+
+   Group: Utils  {
+
+      File: CredentialsStore  (/root/modules/src/utils/credentialsstore.js)
+      File: PrefixTree  (/root/modules/src/utils/prefixtree.js)
+      File: SyncedMap  (/root/modules/src/utils/syncedmap.js)
+      File: SyncedVar  (/root/modules/src/utils/syncedvar.js)
+      }  # Group: Utils
+
    }  # Group: Modules
 
 Schema Index: List of schemas

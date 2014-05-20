@@ -1,8 +1,17 @@
 1.51
 JavaScript
-/root/modules/src/messages.js	1400439447	1	Messages
-/root/modules/src/contacts.js	1400439201	0	/root/modules/src/contacts.js
-/root/modules/src/sockethub.js	1400439201	0	/root/modules/src/sockethub.js
-/root/modules/src/pgp.js	1399630222	1	PGP
-/root/modules/src/pictures.js	1399630222	1	Pictures
-/root/modules/doc/pages/overview.txt	1399630222	1	Overview
+/root/modules/src/email-credentials.js	1400576669	0	/root/modules/src/email-credentials.js
+/root/modules/src/messages.js	1400576669	1	Messages
+/root/modules/src/sockethub-credentials.js	1400576669	0	/root/modules/src/sockethub-credentials.js
+/root/modules/doc/pages/overview.txt	1400508040	1	Overview
+/root/modules/src/utils/prefixtree.js	1400576669	1	PrefixTree
+/root/modules/src/utils/syncedmap.js	1400576669	1	SyncedMap
+/root/modules/src/facebook-credentials.js	1400576669	0	/root/modules/src/facebook-credentials.js
+/root/modules/src/twitter-credentials.js	1400576663	0	/root/modules/src/twitter-credentials.js
+/root/modules/src/contacts.js	1400530200	0	/root/modules/src/contacts.js
+/root/modules/src/irc-credentials.js	1400576669	0	/root/modules/src/irc-credentials.js
+/root/modules/src/documents.js	1400576669	1	Documents
+/root/modules/src/pgp.js	1400508040	1	PGP
+/root/modules/src/pictures.js	1400576669	1	Pictures
+/root/modules/src/utils/credentialsstore.js	1400576669	1	CredentialsStore
+/root/modules/src/utils/syncedvar.js	1400576669	1	SyncedVar
