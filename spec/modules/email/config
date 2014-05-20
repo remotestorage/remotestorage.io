@@ -1,0 +1,9 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>email/config JSON-LD definition</title>
+  </head>
+  <body>
+    See the <a href="http://remotestorage.io/modules/code/files/email-credentials-js.html#email/config">module documentation</a> for the JSON-schema.
+  </body>
+</html>
