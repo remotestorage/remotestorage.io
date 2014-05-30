@@ -1,0 +1,2044 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for src/baseclient.js</title>
+    <meta charset="utf-8">
+
+    <link rel="stylesheet" href="../prettify.css">
+
+    <style>
+        body, html {
+            margin:0; padding: 0;
+        }
+        body {
+            font-family: Helvetica Neue, Helvetica,Arial;
+            font-size: 10pt;
+        }
+        div.header, div.footer {
+            background: #eee;
+            padding: 1em;
+        }
+        div.header {
+            z-index: 100;
+            position: fixed;
+            top: 0;
+            border-bottom: 1px solid #666;
+            width: 100%;
+        }
+        div.footer {
+            border-top: 1px solid #666;
+        }
+        div.body {
+            margin-top: 10em;
+        }
+        div.meta {
+            font-size: 90%;
+            text-align: center;
+        }
+        h1, h2, h3 {
+            font-weight: normal;
+        }
+        h1 {
+            font-size: 12pt;
+        }
+        h2 {
+            font-size: 10pt;
+        }
+        pre {
+            font-family: Consolas, Menlo, Monaco, monospace;
+            margin: 0;
+            padding: 0;
+            line-height: 14px;
+            font-size: 14px;
+            -moz-tab-size: 2;
+            -o-tab-size:  2;
+            tab-size: 2;
+        }
+
+        div.path { font-size: 110%; }
+        div.path a:link, div.path a:visited { color: #000; }
+        table.coverage { border-collapse: collapse; margin:0; padding: 0 }
+
+        table.coverage td {
+            margin: 0;
+            padding: 0;
+            color: #111;
+            vertical-align: top;
+        }
+        table.coverage td.line-count {
+            width: 50px;
+            text-align: right;
+            padding-right: 5px;
+        }
+        table.coverage td.line-coverage {
+            color: #777 !important;
+            text-align: right;
+            border-left: 1px solid #666;
+            border-right: 1px solid #666;
+        }
+
+        table.coverage td.text {
+        }
+
+        table.coverage td span.cline-any {
+            display: inline-block;
+            padding: 0 5px;
+            width: 40px;
+        }
+        table.coverage td span.cline-neutral {
+            background: #eee;
+        }
+        table.coverage td span.cline-yes {
+            background: #b5d592;
+            color: #999;
+        }
+        table.coverage td span.cline-no {
+            background: #fc8c84;
+        }
+
+        .cstat-yes { color: #111; }
+        .cstat-no { background: #fc8c84; color: #111; }
+        .fstat-no { background: #ffc520; color: #111 !important; }
+        .cbranch-no { background:  yellow !important; color: #111; }
+
+        .cstat-skip { background: #ddd; color: #111; }
+        .fstat-skip { background: #ddd; color: #111 !important; }
+        .cbranch-skip { background: #ddd !important; color: #111; }
+
+        .missing-if-branch {
+            display: inline-block;
+            margin-right: 10px;
+            position: relative;
+            padding: 0 4px;
+            background: black;
+            color: yellow;
+        }
+
+        .skip-if-branch {
+            display: none;
+            margin-right: 10px;
+            position: relative;
+            padding: 0 4px;
+            background: #ccc;
+            color: white;
+        }
+
+        .missing-if-branch .typ, .skip-if-branch .typ {
+            color: inherit !important;
+        }
+
+        .entity, .metric { font-weight: bold; }
+        .metric { display: inline-block; border: 1px solid #333; padding: 0.3em; background: white; }
+        .metric small { font-size: 80%; font-weight: normal; color: #666; }
+
+        div.coverage-summary table { border-collapse: collapse; margin: 3em; font-size: 110%; }
+        div.coverage-summary td, div.coverage-summary table  th { margin: 0; padding: 0.25em 1em; border-top: 1px solid #666; border-bottom: 1px solid #666; }
+        div.coverage-summary th { text-align: left; border: 1px solid #666; background: #eee; font-weight: normal; }
+        div.coverage-summary th.file { border-right: none !important; }
+        div.coverage-summary th.pic { border-left: none !important; text-align: right; }
+        div.coverage-summary th.pct { border-right: none !important; }
+        div.coverage-summary th.abs { border-left: none !important; text-align: right; }
+        div.coverage-summary td.pct { text-align: right; border-left: 1px solid #666; }
+        div.coverage-summary td.abs { text-align: right; font-size: 90%; color: #444; border-right: 1px solid #666; }
+        div.coverage-summary td.file { text-align: right; border-left: 1px solid #666; white-space: nowrap;  }
+        div.coverage-summary td.pic { min-width: 120px !important;  }
+        div.coverage-summary a:link { text-decoration: none; color: #000; }
+        div.coverage-summary a:visited { text-decoration: none; color: #333; }
+        div.coverage-summary a:hover { text-decoration: underline; }
+        div.coverage-summary tfoot td { border-top: 1px solid #666; }
+
+        div.coverage-summary .yui3-datatable-sort-indicator, div.coverage-summary .dummy-sort-indicator {
+            height: 10px;
+            width: 7px;
+            display: inline-block;
+            margin-left: 0.5em;
+        }
+        div.coverage-summary .yui3-datatable-sort-indicator {
+            background: url("http://yui.yahooapis.com/3.6.0/build/datatable-sort/assets/skins/sam/sort-arrow-sprite.png") no-repeat scroll 0 0 transparent;
+        }
+        div.coverage-summary .yui3-datatable-sorted .yui3-datatable-sort-indicator {
+            background-position: 0 -20px;
+        }
+        div.coverage-summary .yui3-datatable-sorted-desc .yui3-datatable-sort-indicator {
+            background-position: 0 -10px;
+        }
+
+        .high { background: #b5d592 !important; }
+        .medium { background: #ffe87c !important; }
+        .low { background: #fc8c84 !important; }
+
+        span.cover-fill, span.cover-empty {
+            display:inline-block;
+            border:1px solid #444;
+            background: white;
+            height: 12px;
+        }
+        span.cover-fill {
+            background: #ccc;
+            border-right: 1px solid #444;
+        }
+        span.cover-empty {
+            background: white;
+            border-left: none;
+        }
+        span.cover-full {
+            border-right: none !important;
+        }
+        pre.prettyprint {
+            border: none !important;
+            padding: 0 !important;
+            margin: 0 !important;
+        }
+        .com { color: #999 !important; }
+        .ignore-none { color: #999; font-weight: normal; }
+
+    </style>
+</head>
+<body>
+<div class="header medium">
+    <h1>Code coverage report for <span class="entity">src/baseclient.js</span></h1>
+    <h2>
+        
+        Statements: <span class="metric">68.03% <small>(83 / 122)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        
+        Branches: <span class="metric">56.04% <small>(51 / 91)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        
+        Functions: <span class="metric">66.67% <small>(20 / 30)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        
+        Lines: <span class="metric">66.95% <small>(79 / 118)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        Ignored: <span class="metric"><span class="ignore-none">none</span></span> &nbsp;&nbsp;&nbsp;&nbsp;
+    </h2>
+    <div class="path"><a href="../index.html">All files</a> &#187; <a href="index.html">src/</a> &#187; baseclient.js</div>
+</div>
+<div class="body">
+<pre><table class="coverage">
+<tr><td class="line-count">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148
+149
+150
+151
+152
+153
+154
+155
+156
+157
+158
+159
+160
+161
+162
+163
+164
+165
+166
+167
+168
+169
+170
+171
+172
+173
+174
+175
+176
+177
+178
+179
+180
+181
+182
+183
+184
+185
+186
+187
+188
+189
+190
+191
+192
+193
+194
+195
+196
+197
+198
+199
+200
+201
+202
+203
+204
+205
+206
+207
+208
+209
+210
+211
+212
+213
+214
+215
+216
+217
+218
+219
+220
+221
+222
+223
+224
+225
+226
+227
+228
+229
+230
+231
+232
+233
+234
+235
+236
+237
+238
+239
+240
+241
+242
+243
+244
+245
+246
+247
+248
+249
+250
+251
+252
+253
+254
+255
+256
+257
+258
+259
+260
+261
+262
+263
+264
+265
+266
+267
+268
+269
+270
+271
+272
+273
+274
+275
+276
+277
+278
+279
+280
+281
+282
+283
+284
+285
+286
+287
+288
+289
+290
+291
+292
+293
+294
+295
+296
+297
+298
+299
+300
+301
+302
+303
+304
+305
+306
+307
+308
+309
+310
+311
+312
+313
+314
+315
+316
+317
+318
+319
+320
+321
+322
+323
+324
+325
+326
+327
+328
+329
+330
+331
+332
+333
+334
+335
+336
+337
+338
+339
+340
+341
+342
+343
+344
+345
+346
+347
+348
+349
+350
+351
+352
+353
+354
+355
+356
+357
+358
+359
+360
+361
+362
+363
+364
+365
+366
+367
+368
+369
+370
+371
+372
+373
+374
+375
+376
+377
+378
+379
+380
+381
+382
+383
+384
+385
+386
+387
+388
+389
+390
+391
+392
+393
+394
+395
+396
+397
+398
+399
+400
+401
+402
+403
+404
+405
+406
+407
+408
+409
+410
+411
+412
+413
+414
+415
+416
+417
+418
+419
+420
+421
+422
+423
+424
+425
+426
+427
+428
+429
+430
+431
+432
+433
+434
+435
+436
+437
+438
+439
+440
+441
+442
+443
+444
+445
+446
+447
+448
+449
+450
+451
+452
+453
+454
+455
+456
+457
+458
+459
+460
+461
+462
+463
+464
+465
+466
+467
+468
+469
+470
+471
+472
+473
+474
+475
+476
+477
+478
+479
+480
+481
+482
+483
+484
+485
+486
+487
+488
+489
+490
+491
+492
+493
+494
+495
+496
+497
+498
+499
+500
+501
+502
+503
+504
+505
+506
+507
+508
+509
+510
+511
+512
+513
+514
+515
+516
+517
+518
+519
+520
+521
+522
+523
+524
+525
+526
+527
+528
+529
+530
+531
+532
+533
+534
+535
+536
+537
+538
+539
+540
+541
+542
+543
+544
+545
+546
+547
+548
+549
+550
+551
+552
+553
+554
+555
+556
+557
+558
+559
+560
+561
+562
+563
+564
+565
+566
+567
+568
+569
+570
+571
+572
+573
+574
+575</td><td class="line-coverage"><span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-yes">33</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">32</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">32</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">32</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">32</span>
+<span class="cline-any cline-yes">32</span>
+<span class="cline-any cline-yes">31</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">32</span>
+<span class="cline-any cline-yes">32</span>
+<span class="cline-any cline-yes">32</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-yes">8</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">7</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">6</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">6</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">5</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">5</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">4</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">5</span>
+<span class="cline-any cline-yes">5</span>
+<span class="cline-any cline-yes">3</span>
+<span class="cline-any cline-yes">3</span>
+<span class="cline-any cline-yes">3</span>
+<span class="cline-any cline-yes">3</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-yes">4</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4</span>
+<span class="cline-any cline-yes">4</span>
+<span class="cline-any cline-yes">4</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3</span>
+<span class="cline-any cline-yes">3</span>
+<span class="cline-any cline-yes">3</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">5</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">5</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">4</span>
+<span class="cline-any cline-yes">4</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">5</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">5</span>
+<span class="cline-any cline-yes">5</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">26</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">10000</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">(function(global) {
+&nbsp;
+  function deprecate(thing, replacement) {
+    console.log('WARNING: ' + thing + ' is deprecated. Use ' +
+                replacement + ' instead.');
+  }
+&nbsp;
+  var RS = RemoteStorage;
+&nbsp;
+  /**
+   * Class: RemoteStorage.BaseClient
+   *
+   * Provides a high-level interface to access data below a given root path.
+   *
+   * A BaseClient deals with three types of data: folders, objects and files.
+   *
+   * &lt;getListing&gt; returns a list of all items within a folder, or undefined
+   * if a 404 is encountered. Items that end with a forward slash ("/") are
+   * child folders.
+   *
+   * &lt;getObject&gt; / &lt;storeObject&gt; operate on JSON objects. Each object has a type.
+   *
+   * &lt;getFile&gt; / &lt;storeFile&gt; operates on files. Each file has a MIME type.
+   *
+   * &lt;remove&gt; operates on either objects or files (but not folders, folders are
+   * created and removed implictly).
+   */
+  RS.BaseClient = function(storage, base) {
+    if (base[base.length - 1] !== '/') {
+      throw "Not a folder: " + base;
+    }
+&nbsp;
+    if (base === '/') {
+      // allow absolute and relative paths for the root scope.
+      this.makePath = <span class="fstat-no" title="function not covered" >function(path) {</span>
+<span class="cstat-no" title="statement not covered" >        return (path[0] === '/' ? '' : '/') + path;</span>
+      };
+    }
+&nbsp;
+    /**
+     * Property: storage
+     *
+     * The &lt;RemoteStorage&gt; instance this &lt;BaseClient&gt; operates on.
+     */
+    this.storage = storage;
+&nbsp;
+    /**
+     * Property: base
+     *
+     * Base path this &lt;BaseClient&gt; operates on.
+     *
+     * For the module's privateClient this would be /&lt;moduleName&gt;/, for the
+     * corresponding publicClient /public/&lt;moduleName&gt;/.
+     */
+    this.base = base;
+&nbsp;
+    var parts = this.base.split('/');
+    if (parts.length &gt; 2) {
+      this.moduleName = parts[1];
+    } else {
+      this.moduleName = 'root';
+    }
+&nbsp;
+    // Defined in baseclient/types.js
+    /**
+     * Property: schemas
+     *
+     * Contains schema objects of all types known to the BaseClient instance
+     **/
+&nbsp;
+    /**
+     * Event: change
+     *
+     * Emitted when a node changes
+     *
+     * Arguments:
+     *   event - Event object containing information about the changed node
+     *
+     * (start code)
+     * {
+     *    path: path, // Path of the changed node
+     *    origin: 'window', 'local', or 'remote' // emitted by user action within the app, local data store, or remote sync
+     *    oldValue: oldBody, // Old body of the changed node (undefined if creation)
+     *    newValue: newBody  // New body of the changed node (undefined if deletion)
+     *  }
+     * (end code)
+     **/
+&nbsp;
+    RS.eventHandling(this, 'change');
+    this.on = this.on.bind(this);
+    storage.onChange(this.base, this._fireChange.bind(this));
+  };
+&nbsp;
+  RS.BaseClient.prototype = {
+&nbsp;
+    extend: function(object) {
+      for (var key in object) {
+        this[key] = object[key];
+      }
+      return this;
+    },
+&nbsp;
+    /**
+     * Method: scope
+     *
+     * Returns a new &lt;BaseClient&gt; operating on a subpath of the current &lt;base&gt; path.
+     */
+    scope: function(path) {
+      return new RS.BaseClient(this.storage, this.makePath(path));
+    },
+&nbsp;
+    // folder operations
+&nbsp;
+    /**
+     * Method: getListing
+     *
+     * Get a list of child nodes below a given path.
+     *
+     * The callback semantics of getListing are identical to those of getObject.
+     *
+     * Parameters:
+     *   path   - The path to query. It MUST end with a forward slash.
+     *   maxAge - Either false or the maximum age of cached listing in
+     *            milliseconds. Defaults to false in anonymous mode and to
+     *            2*syncInterval in connected mode.
+     *
+     * Returns:
+     *
+     *   A promise for an object, representing child nodes. If the maxAge
+     *   requirement cannot be met because of network problems, this promise
+     *   will be rejected. If the maxAge requirement is set to false, the
+     *   promise will always be fulfilled with data from the local store.
+     *
+     *   Keys ending in a forward slash represent *folder nodes*, while all
+     *   other keys represent *data nodes*.
+     *
+     *   For spec versions &lt;= 01, the data node information will contain only
+     *   the item's ETag. For later spec versions, it will also contain the
+     *   content type and -length of the item.
+     *
+     * Example:
+     *   (start code)
+     *   client.getListing('', false).then(function(listing) {
+     *     listing.forEach(function(item) {
+     *       console.log(item);
+     *     });
+     *   });
+     *   (end code)
+     */
+    getListing: function(path, maxAge) {
+      if (typeof(path) !== 'string') {
+        path = '';
+      } else if (path.length &gt; 0 &amp;&amp; path[path.length - 1] !== '/') {
+        throw "Not a folder: " + path;
+      }
+      return this.storage.get(this.makePath(path), maxAge).then(
+        function(status, body) {
+          return (status === 404) ? {} : body;
+        }
+      );
+    },
+&nbsp;
+    /**
+     * Method: getAll
+     *
+     * Get all objects directly below a given path.
+     *
+     * Parameters:
+     *   path   - Path to the folder.
+     *   maxAge - Either false or the maximum age of cached objects in
+     *            milliseconds. Defaults to false in anonymous mode and to
+     *            2*syncInterval in connected mode.
+     *
+     * Returns:
+     *   A promise for an object in the form { path : object, ... }. If the
+     *   maxAge requirement cannot be met because of network problems, this
+     *   promise will be rejected. If the maxAge requirement is set to false,
+     *   the promise will always be fulfilled with data from the local store.
+     *
+     * Example:
+     *   (start code)
+     *   client.getAll('', false).then(function(objects) {
+     *     for (var key in objects) {
+     *       console.log('- ' + key + ': ', objects[key]);
+     *     }
+     *   });
+     *   (end code)
+     */
+    getAll: function(path, maxAge) {
+      if (typeof(path) !== 'string') {
+        path = '';
+      } else <span class="missing-if-branch" title="if path not taken" >I</span>if (path.length &gt; 0 &amp;&amp; <span class="branch-1 cbranch-no" title="branch not covered" >path[path.length - 1] !== '/')</span> {
+<span class="cstat-no" title="statement not covered" >        throw "Not a folder: " + path;</span>
+      }
+&nbsp;
+      return this.storage.get(this.makePath(path), maxAge).then(function(status, body) {
+        if (status === 404) { return {}; }
+        <span class="missing-if-branch" title="else path not taken" >E</span>if (typeof(body) === 'object') {
+          var promise = promising();
+          var count = Object.keys(body).length, i = 0;
+          if (count === 0) {
+            // treat this like 404. it probably means a folder listing that
+            // has changes that haven't been pushed out yet.
+            return {};
+          }
+          for (var key in body) {
+            this.storage.get(this.makePath(path + key), maxAge).
+              then(function(status, b) {
+                body[this.key] = b;
+                i++;
+                if (i === count) { promise.fulfill(body); }
+              }.bind({ key: key }));
+          }
+          return promise;
+        }
+      }.bind(this));
+    },
+&nbsp;
+    // file operations
+&nbsp;
+    /**
+     * Method: getFile
+     *
+     * Get the file at the given path. A file is raw data, as opposed to
+     * a JSON object (use &lt;getObject&gt; for that).
+     *
+     * Except for the return value structure, getFile works exactly like
+     * getObject.
+     *
+     * Parameters:
+     *   path   - See getObject.
+     *   maxAge - Either false or the maximum age of cached file in
+     *            milliseconds. Defaults to false in anonymous mode and to
+     *            2*syncInterval in connected mode.
+     *
+     * Returns:
+     *   A promise for an object:
+     *
+     *   mimeType - String representing the MIME Type of the document.
+     *   data     - Raw data of the document (either a string or an ArrayBuffer)
+     *
+     *   If the maxAge requirement cannot be met because of network problems, this
+     *   promise will be rejected. If the maxAge requirement is set to false, the
+     *   promise will always be fulfilled with data from the local store.
+     *
+     * Example:
+     *   (start code)
+     *   // Display an image:
+     *   client.getFile('path/to/some/image', false).then(function(file) {
+     *     var blob = new Blob([file.data], { type: file.mimeType });
+     *     var targetElement = document.findElementById('my-image-element');
+     *     targetElement.src = window.URL.createObjectURL(blob);
+     *   });
+     *   (end code)
+     */
+    getFile: <span class="fstat-no" title="function not covered" >function(path, maxAge) {</span>
+<span class="cstat-no" title="statement not covered" >      if (typeof(path) !== 'string') {</span>
+<span class="cstat-no" title="statement not covered" >        return promising().reject('Argument \'path\' of baseClient.getFile must be a string');</span>
+      }
+<span class="cstat-no" title="statement not covered" >      return this.storage.get(this.makePath(path), maxAge).then(<span class="fstat-no" title="function not covered" >function(status, body, mimeType, revision) {</span></span>
+<span class="cstat-no" title="statement not covered" >        return {</span>
+          data: body,
+          mimeType: mimeType,
+          revision: revision // (this is new)
+        };
+      });
+    },
+&nbsp;
+    /**
+     * Method: storeFile
+     *
+     * Store raw data at a given path.
+     *
+     * Parameters:
+     *   mimeType - MIME media type of the data being stored
+     *   path     - path relative to the module root. MAY NOT end in a forward slash.
+     *   data     - string, ArrayBuffer or ArrayBufferView of raw data to store
+     *
+     * The given mimeType will later be returned, when retrieving the data
+     * using &lt;getFile&gt;.
+     *
+     * Example (UTF-8 data):
+     *   (start code)
+     *   client.storeFile('text/html', 'index.html', '&lt;h1&gt;Hello World!&lt;/h1&gt;');
+     *   (end code)
+     *
+     * Example (Binary data):
+     *   (start code)
+     *   // MARKUP:
+     *   &lt;input type="file" id="file-input"&gt;
+     *   // CODE:
+     *   var input = document.getElementById('file-input');
+     *   var file = input.files[0];
+     *   var fileReader = new FileReader();
+     *
+     *   fileReader.onload = function() {
+     *     client.storeFile(file.type, file.name, fileReader.result);
+     *   };
+     *
+     *   fileReader.readAsArrayBuffer(file);
+     *   (end code)
+     *
+     */
+    storeFile: function(mimeType, path, body) {
+      <span class="missing-if-branch" title="if path not taken" >I</span>if (typeof(mimeType) !== 'string') {
+<span class="cstat-no" title="statement not covered" >        return promising().reject('Argument \'mimeType\' of baseClient.storeFile must be a string');</span>
+      }
+      <span class="missing-if-branch" title="if path not taken" >I</span>if (typeof(path) !== 'string') {
+<span class="cstat-no" title="statement not covered" >        return promising().reject('Argument \'path\' of baseClient.storeFile must be a string');</span>
+      }
+      <span class="missing-if-branch" title="if path not taken" >I</span>if (typeof(body) !== 'string' &amp;&amp; <span class="branch-1 cbranch-no" title="branch not covered" >typeof(body) !== 'object')</span> {
+<span class="cstat-no" title="statement not covered" >        return promising().reject('Argument \'body\' of baseClient.storeFile must be a string, ArrayBuffer, or ArrayBufferView');</span>
+      }
+&nbsp;
+      var self = this;
+      return this.storage.put(this.makePath(path), body, mimeType).then(function(status, _body, _mimeType, revision) {
+        <span class="missing-if-branch" title="else path not taken" >E</span>if (status === 200 || <span class="branch-1 cbranch-no" title="branch not covered" >status === 201)</span> {
+          return revision;
+        } else {
+<span class="cstat-no" title="statement not covered" >          throw "Request (PUT " + self.makePath(path) + ") failed with status: " + status;</span>
+        }
+      });
+    },
+&nbsp;
+    // object operations
+&nbsp;
+    /**
+     * Method: getObject
+     *
+     * Get a JSON object from given path.
+     *
+     * Parameters:
+     *   path   - Relative path from the module root (without leading slash).
+     *   maxAge - Either false or the maximum age of cached object in
+     *            milliseconds. Defaults to false in anonymous mode and to
+     *            2*syncInterval in connected mode.
+     *
+     * Returns:
+     *   A promise for the object. If the maxAge requirement cannot be met
+     *   because of network problems, this promise will be rejected. If the
+     *   maxAge requirement is set to false, the promise will always be
+     *   fulfilled with data from the local store.
+     *
+     * Example:
+     *   (start code)
+     *   client.getObject('/path/to/object', false).
+     *     then(function(object) {
+     *       // object is either an object or null
+     *     });
+     *   (end code)
+     */
+    getObject: <span class="fstat-no" title="function not covered" >function(path, maxAge) {</span>
+<span class="cstat-no" title="statement not covered" >      if (typeof(path) !== 'string') {</span>
+<span class="cstat-no" title="statement not covered" >        return promising().reject('Argument \'path\' of baseClient.getObject must be a string');</span>
+      }
+<span class="cstat-no" title="statement not covered" >      return this.storage.get(this.makePath(path), maxAge).then(<span class="fstat-no" title="function not covered" >function(status, body, mimeType, revision) {</span></span>
+<span class="cstat-no" title="statement not covered" >        if (typeof(body) === 'object') {</span>
+<span class="cstat-no" title="statement not covered" >          return body;</span>
+        } else <span class="cstat-no" title="statement not covered" >if (typeof(body) !== 'undefined' &amp;&amp; status === 200) {</span>
+<span class="cstat-no" title="statement not covered" >          throw "Not an object: " + this.makePath(path);</span>
+        }
+      });
+    },
+&nbsp;
+    /**
+     * Method: storeObject
+     *
+     * Store object at given path. Triggers synchronization.
+     *
+     * Parameters:
+     *
+     *   type     - unique type of this object within this module. See description below.
+     *   path     - path relative to the module root.
+     *   object   - an object to be saved to the given node. It must be serializable as JSON.
+     *
+     * Returns:
+     *   A promise to store the object. The promise fails with a ValidationError, when validations fail.
+     *
+     *
+     * What about the type?:
+     *
+     *   A great thing about having data on the web, is to be able to link to
+     *   it and rearrange it to fit the current circumstances. To facilitate
+     *   that, eventually you need to know how the data at hand is structured.
+     *   For documents on the web, this is usually done via a MIME type. The
+     *   MIME type of JSON objects however, is always application/json.
+     *   To add that extra layer of "knowing what this object is", remoteStorage
+     *   aims to use &lt;JSON-LD at http://json-ld.org/&gt;.
+     *   A first step in that direction, is to add a *@context attribute* to all
+     *   JSON data put into remoteStorage.
+     *   Now that is what the *type* is for.
+     *
+     *   Within remoteStorage.js, @context values are built using three components:
+     *     http://remotestorage.io/spec/modules/ - A prefix to guarantee uniqueness
+     *     the module name     - module names should be unique as well
+     *     the type given here - naming this particular kind of object within this module
+     *
+     *   In retrospect that means, that whenever you introduce a new "type" in calls to
+     *   storeObject, you should make sure that once your code is in the wild, future
+     *   versions of the code are compatible with the same JSON structure.
+     *
+     * How to define types?:
+     *
+     *   See &lt;declareType&gt; for examples.
+     */
+    storeObject: function(typeAlias, path, object) {
+      <span class="missing-if-branch" title="if path not taken" >I</span>if (typeof(typeAlias) !== 'string') {
+<span class="cstat-no" title="statement not covered" >        return promising().reject('Argument \'typeAlias\' of baseClient.storeObject must be a string');</span>
+      }
+      <span class="missing-if-branch" title="if path not taken" >I</span>if (typeof(path) !== 'string') {
+<span class="cstat-no" title="statement not covered" >        return promising().reject('Argument \'path\' of baseClient.storeObject must be a string');</span>
+      }
+      <span class="missing-if-branch" title="if path not taken" >I</span>if (typeof(object) !== 'object') {
+<span class="cstat-no" title="statement not covered" >        return promising().reject('Argument \'object\' of baseClient.storeObject must be an object');</span>
+      }
+&nbsp;
+      this._attachType(object, typeAlias);
+&nbsp;
+      try {
+        var validationResult = this.validate(object);
+        if (! validationResult.valid) {
+          return promising(function(p) { p.reject(validationResult); });
+        }
+      } catch(exc) {
+<span class="cstat-no" title="statement not covered" >        return promising().reject(exc);</span>
+      }
+&nbsp;
+      return this.storage.put(this.makePath(path), object, 'application/json; charset=UTF-8').then(function(status, _body, _mimeType, revision) {
+        <span class="missing-if-branch" title="else path not taken" >E</span>if (status === 200 || <span class="branch-1 cbranch-no" title="branch not covered" >status === 201)</span> {
+          return revision;
+        } else {
+<span class="cstat-no" title="statement not covered" >          throw "Request (PUT " + this.makePath(path) + ") failed with status: " + status;</span>
+        }
+      }.bind(this));
+    },
+&nbsp;
+    // generic operations
+&nbsp;
+    /**
+     * Method: remove
+     *
+     * Remove node at given path from storage. Triggers synchronization.
+     *
+     * Parameters:
+     *   path     - Path relative to the module root.
+     */
+    remove: <span class="fstat-no" title="function not covered" >function(path) {</span>
+<span class="cstat-no" title="statement not covered" >      if (typeof(path) !== 'string') {</span>
+<span class="cstat-no" title="statement not covered" >        return promising().reject('Argument \'path\' of baseClient.remove must be a string');</span>
+      }
+<span class="cstat-no" title="statement not covered" >      return this.storage.delete(this.makePath(path));</span>
+    },
+&nbsp;
+&nbsp;
+    cache: function(path, strategy) {
+      <span class="missing-if-branch" title="if path not taken" >I</span>if (typeof(path) !== 'string') {
+<span class="cstat-no" title="statement not covered" >        throw 'Argument \'path\' of baseClient.cache must be a string';</span>
+      }
+      if (strategy === false) {
+        deprecate('caching strategy &lt;false&gt;', '&lt;"FLUSH"&gt;');
+        strategy = 'FLUSH';
+      } else <span class="missing-if-branch" title="else path not taken" >E</span>if (strategy === undefined) {
+        strategy = 'ALL';
+      } else <span class="cstat-no" title="statement not covered" >if (typeof(strategy) !== 'string') {</span>
+<span class="cstat-no" title="statement not covered" >        deprecate('that caching strategy', '&lt;"ALL"&gt;');</span>
+<span class="cstat-no" title="statement not covered" >        strategy = 'ALL';</span>
+      }
+      <span class="missing-if-branch" title="if path not taken" >I</span>if (strategy !== 'FLUSH' &amp;&amp;
+          strategy !== 'SEEN' &amp;&amp;
+          strategy !== 'ALL') {
+<span class="cstat-no" title="statement not covered" >        throw 'Argument \'strategy\' of baseclient.cache must be one of '</span>
+            + '["FLUSH", "SEEN", "ALL"]';
+      }
+      this.storage.caching.set(this.makePath(path), strategy);
+      return this;
+    },
+&nbsp;
+    flush: <span class="fstat-no" title="function not covered" >function(path) {</span>
+<span class="cstat-no" title="statement not covered" >      return this.storage.local.flush(path);</span>
+    },
+&nbsp;
+    makePath: function(path) {
+      return this.base + (path || '');
+    },
+&nbsp;
+    _fireChange: <span class="fstat-no" title="function not covered" >function(event) {</span>
+<span class="cstat-no" title="statement not covered" >      if (RemoteStorage.config.changeEvents[event.origin]) {</span>
+<span class="cstat-no" title="statement not covered" >        this._emit('change', event);</span>
+      }
+    },
+&nbsp;
+    _cleanPath: RS.WireClient.cleanPath,
+&nbsp;
+    /**
+     * Method: getItemURL
+     *
+     * Retrieve full URL of item
+     *
+     * Parameters:
+     *   path     - Path relative to the module root.
+     */
+    getItemURL: function(path) {
+      <span class="missing-if-branch" title="if path not taken" >I</span>if (typeof(path) !== 'string') {
+<span class="cstat-no" title="statement not covered" >        throw 'Argument \'path\' of baseClient.getItemURL must be a string';</span>
+      }
+      <span class="missing-if-branch" title="else path not taken" >E</span>if (this.storage.connected) {
+        path = this._cleanPath( this.makePath(path) );
+        return this.storage.remote.href + path;
+      } else {
+<span class="cstat-no" title="statement not covered" >        return undefined;</span>
+      }
+    },
+&nbsp;
+    uuid: function() {
+      return Math.uuid();
+    }
+&nbsp;
+  };
+&nbsp;
+  /**
+   * Method: RS#scope
+   *
+   * Returns a new &lt;RS.BaseClient&gt; scoped to the given path.
+   *
+   * Parameters:
+   *   path - Root path of new BaseClient.
+   *
+   *
+   * Example:
+   *   (start code)
+   *
+   *   var foo = remoteStorage.scope('/foo/');
+   *
+   *   // PUTs data "baz" to path /foo/bar
+   *   foo.storeFile('text/plain', 'bar', 'baz');
+   *
+   *   var something = foo.scope('something/');
+   *
+   *   // GETs listing from path /foo/something/bla/
+   *   something.getListing('bla/');
+   *
+   *   (end code)
+   *
+   */
+  RS.BaseClient._rs_init = <span class="fstat-no" title="function not covered" >function() {</span>
+<span class="cstat-no" title="statement not covered" >    RS.prototype.scope = <span class="fstat-no" title="function not covered" >function(path) {</span></span>
+<span class="cstat-no" title="statement not covered" >      if (typeof(path) !== 'string') {</span>
+<span class="cstat-no" title="statement not covered" >        throw 'Argument \'path\' of baseClient.scope must be a string';</span>
+      }
+&nbsp;
+<span class="cstat-no" title="statement not covered" >      return new RS.BaseClient(this, path);</span>
+    };
+  };
+&nbsp;
+  /* e.g.:
+  remoteStorage.defineModule('locations', function(priv, pub) {
+    return {
+      exports: {
+        features: priv.scope('features/').defaultType('feature'),
+        collections: priv.scope('collections/').defaultType('feature-collection');
+      }
+    };
+  });
+  */
+&nbsp;
+  // Defined in baseclient/types.js
+  /**
+   * Method: declareType
+   *
+   * Declare a remoteStorage object type using a JSON schema. See
+   * &lt;RemoteStorage.BaseClient.Types&gt;
+   **/
+&nbsp;
+})(typeof(window) !== 'undefined' ? <span class="branch-0 cbranch-no" title="branch not covered" >window </span>: global);
+&nbsp;</pre></td></tr>
+</table></pre>
+
+</div>
+<div class="footer">
+    <div class="meta">Generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Fri May 30 2014 13:13:15 GMT+0000 (UTC)</div>
+</div>
+
+<script src="../prettify.js"></script>
+
+<script src="http://yui.yahooapis.com/3.6.0/build/yui/yui-min.js"></script>
+<script>
+
+    YUI().use('datatable', function (Y) {
+
+        var formatters = {
+          pct: function (o) {
+              o.className += o.record.get('classes')[o.column.key];
+              try {
+                  return o.value.toFixed(2) + '%';
+              } catch (ex) { return o.value + '%'; }
+          },
+          html: function (o) {
+              o.className += o.record.get('classes')[o.column.key];
+              return o.record.get(o.column.key + '_html');
+          }
+        },
+          defaultFormatter = function (o) {
+              o.className += o.record.get('classes')[o.column.key];
+              return o.value;
+          };
+
+        function getColumns(theadNode) {
+            var colNodes = theadNode.all('tr th'),
+                cols = [],
+                col;
+            colNodes.each(function (colNode) {
+                col = {
+                    key: colNode.getAttribute('data-col'),
+                    label: colNode.get('innerHTML') || ' ',
+                    sortable: !colNode.getAttribute('data-nosort'),
+                    className: colNode.getAttribute('class'),
+                    type: colNode.getAttribute('data-type'),
+                    allowHTML: colNode.getAttribute('data-html') === 'true' || colNode.getAttribute('data-fmt') === 'html'
+                };
+                col.formatter = formatters[colNode.getAttribute('data-fmt')] || defaultFormatter;
+                cols.push(col);
+            });
+            return cols;
+        }
+
+        function getRowData(trNode, cols) {
+            var tdNodes = trNode.all('td'),
+                    i,
+                    row = { classes: {} },
+                    node,
+                    name;
+            for (i = 0; i < cols.length; i += 1) {
+                name = cols[i].key;
+                node = tdNodes.item(i);
+                row[name] = node.getAttribute('data-value') || node.get('innerHTML');
+                row[name + '_html'] = node.get('innerHTML');
+                row.classes[name] = node.getAttribute('class');
+                //Y.log('Name: ' + name + '; Value: ' + row[name]);
+                if (cols[i].type === 'number') { row[name] = row[name] * 1; }
+            }
+            //Y.log(row);
+            return row;
+        }
+
+        function getData(tbodyNode, cols) {
+            var data = [];
+            tbodyNode.all('tr').each(function (trNode) {
+                data.push(getRowData(trNode, cols));
+            });
+            return data;
+        }
+
+        function replaceTable(node) {
+            if (!node) { return; }
+            var cols = getColumns(node.one('thead')),
+                data = getData(node.one('tbody'), cols),
+                table,
+                parent = node.get('parentNode');
+
+            table = new Y.DataTable({
+                columns: cols,
+                data: data,
+                sortBy: 'file'
+            });
+            parent.set('innerHTML', '');
+            table.render(parent);
+        }
+
+        Y.on('domready', function () {
+            replaceTable(Y.one('div.coverage-summary table'));
+            if (typeof prettyPrint === 'function') {
+                prettyPrint();
+            }
+        });
+    });
+</script>
+</body>
+</html>

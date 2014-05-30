@@ -1,0 +1,1825 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for src/wireclient.js</title>
+    <meta charset="utf-8">
+
+    <link rel="stylesheet" href="../prettify.css">
+
+    <style>
+        body, html {
+            margin:0; padding: 0;
+        }
+        body {
+            font-family: Helvetica Neue, Helvetica,Arial;
+            font-size: 10pt;
+        }
+        div.header, div.footer {
+            background: #eee;
+            padding: 1em;
+        }
+        div.header {
+            z-index: 100;
+            position: fixed;
+            top: 0;
+            border-bottom: 1px solid #666;
+            width: 100%;
+        }
+        div.footer {
+            border-top: 1px solid #666;
+        }
+        div.body {
+            margin-top: 10em;
+        }
+        div.meta {
+            font-size: 90%;
+            text-align: center;
+        }
+        h1, h2, h3 {
+            font-weight: normal;
+        }
+        h1 {
+            font-size: 12pt;
+        }
+        h2 {
+            font-size: 10pt;
+        }
+        pre {
+            font-family: Consolas, Menlo, Monaco, monospace;
+            margin: 0;
+            padding: 0;
+            line-height: 14px;
+            font-size: 14px;
+            -moz-tab-size: 2;
+            -o-tab-size:  2;
+            tab-size: 2;
+        }
+
+        div.path { font-size: 110%; }
+        div.path a:link, div.path a:visited { color: #000; }
+        table.coverage { border-collapse: collapse; margin:0; padding: 0 }
+
+        table.coverage td {
+            margin: 0;
+            padding: 0;
+            color: #111;
+            vertical-align: top;
+        }
+        table.coverage td.line-count {
+            width: 50px;
+            text-align: right;
+            padding-right: 5px;
+        }
+        table.coverage td.line-coverage {
+            color: #777 !important;
+            text-align: right;
+            border-left: 1px solid #666;
+            border-right: 1px solid #666;
+        }
+
+        table.coverage td.text {
+        }
+
+        table.coverage td span.cline-any {
+            display: inline-block;
+            padding: 0 5px;
+            width: 40px;
+        }
+        table.coverage td span.cline-neutral {
+            background: #eee;
+        }
+        table.coverage td span.cline-yes {
+            background: #b5d592;
+            color: #999;
+        }
+        table.coverage td span.cline-no {
+            background: #fc8c84;
+        }
+
+        .cstat-yes { color: #111; }
+        .cstat-no { background: #fc8c84; color: #111; }
+        .fstat-no { background: #ffc520; color: #111 !important; }
+        .cbranch-no { background:  yellow !important; color: #111; }
+
+        .cstat-skip { background: #ddd; color: #111; }
+        .fstat-skip { background: #ddd; color: #111 !important; }
+        .cbranch-skip { background: #ddd !important; color: #111; }
+
+        .missing-if-branch {
+            display: inline-block;
+            margin-right: 10px;
+            position: relative;
+            padding: 0 4px;
+            background: black;
+            color: yellow;
+        }
+
+        .skip-if-branch {
+            display: none;
+            margin-right: 10px;
+            position: relative;
+            padding: 0 4px;
+            background: #ccc;
+            color: white;
+        }
+
+        .missing-if-branch .typ, .skip-if-branch .typ {
+            color: inherit !important;
+        }
+
+        .entity, .metric { font-weight: bold; }
+        .metric { display: inline-block; border: 1px solid #333; padding: 0.3em; background: white; }
+        .metric small { font-size: 80%; font-weight: normal; color: #666; }
+
+        div.coverage-summary table { border-collapse: collapse; margin: 3em; font-size: 110%; }
+        div.coverage-summary td, div.coverage-summary table  th { margin: 0; padding: 0.25em 1em; border-top: 1px solid #666; border-bottom: 1px solid #666; }
+        div.coverage-summary th { text-align: left; border: 1px solid #666; background: #eee; font-weight: normal; }
+        div.coverage-summary th.file { border-right: none !important; }
+        div.coverage-summary th.pic { border-left: none !important; text-align: right; }
+        div.coverage-summary th.pct { border-right: none !important; }
+        div.coverage-summary th.abs { border-left: none !important; text-align: right; }
+        div.coverage-summary td.pct { text-align: right; border-left: 1px solid #666; }
+        div.coverage-summary td.abs { text-align: right; font-size: 90%; color: #444; border-right: 1px solid #666; }
+        div.coverage-summary td.file { text-align: right; border-left: 1px solid #666; white-space: nowrap;  }
+        div.coverage-summary td.pic { min-width: 120px !important;  }
+        div.coverage-summary a:link { text-decoration: none; color: #000; }
+        div.coverage-summary a:visited { text-decoration: none; color: #333; }
+        div.coverage-summary a:hover { text-decoration: underline; }
+        div.coverage-summary tfoot td { border-top: 1px solid #666; }
+
+        div.coverage-summary .yui3-datatable-sort-indicator, div.coverage-summary .dummy-sort-indicator {
+            height: 10px;
+            width: 7px;
+            display: inline-block;
+            margin-left: 0.5em;
+        }
+        div.coverage-summary .yui3-datatable-sort-indicator {
+            background: url("http://yui.yahooapis.com/3.6.0/build/datatable-sort/assets/skins/sam/sort-arrow-sprite.png") no-repeat scroll 0 0 transparent;
+        }
+        div.coverage-summary .yui3-datatable-sorted .yui3-datatable-sort-indicator {
+            background-position: 0 -20px;
+        }
+        div.coverage-summary .yui3-datatable-sorted-desc .yui3-datatable-sort-indicator {
+            background-position: 0 -10px;
+        }
+
+        .high { background: #b5d592 !important; }
+        .medium { background: #ffe87c !important; }
+        .low { background: #fc8c84 !important; }
+
+        span.cover-fill, span.cover-empty {
+            display:inline-block;
+            border:1px solid #444;
+            background: white;
+            height: 12px;
+        }
+        span.cover-fill {
+            background: #ccc;
+            border-right: 1px solid #444;
+        }
+        span.cover-empty {
+            background: white;
+            border-left: none;
+        }
+        span.cover-full {
+            border-right: none !important;
+        }
+        pre.prettyprint {
+            border: none !important;
+            padding: 0 !important;
+            margin: 0 !important;
+        }
+        .com { color: #999 !important; }
+        .ignore-none { color: #999; font-weight: normal; }
+
+    </style>
+</head>
+<body>
+<div class="header high">
+    <h1>Code coverage report for <span class="entity">src/wireclient.js</span></h1>
+    <h2>
+        
+        Statements: <span class="metric">87.95% <small>(197 / 224)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        
+        Branches: <span class="metric">76.09% <small>(105 / 138)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        
+        Functions: <span class="metric">88.57% <small>(31 / 35)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        
+        Lines: <span class="metric">89.35% <small>(193 / 216)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        Ignored: <span class="metric"><span class="ignore-none">none</span></span> &nbsp;&nbsp;&nbsp;&nbsp;
+    </h2>
+    <div class="path"><a href="../index.html">All files</a> &#187; <a href="index.html">src/</a> &#187; wireclient.js</div>
+</div>
+<div class="body">
+<pre><table class="coverage">
+<tr><td class="line-count">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148
+149
+150
+151
+152
+153
+154
+155
+156
+157
+158
+159
+160
+161
+162
+163
+164
+165
+166
+167
+168
+169
+170
+171
+172
+173
+174
+175
+176
+177
+178
+179
+180
+181
+182
+183
+184
+185
+186
+187
+188
+189
+190
+191
+192
+193
+194
+195
+196
+197
+198
+199
+200
+201
+202
+203
+204
+205
+206
+207
+208
+209
+210
+211
+212
+213
+214
+215
+216
+217
+218
+219
+220
+221
+222
+223
+224
+225
+226
+227
+228
+229
+230
+231
+232
+233
+234
+235
+236
+237
+238
+239
+240
+241
+242
+243
+244
+245
+246
+247
+248
+249
+250
+251
+252
+253
+254
+255
+256
+257
+258
+259
+260
+261
+262
+263
+264
+265
+266
+267
+268
+269
+270
+271
+272
+273
+274
+275
+276
+277
+278
+279
+280
+281
+282
+283
+284
+285
+286
+287
+288
+289
+290
+291
+292
+293
+294
+295
+296
+297
+298
+299
+300
+301
+302
+303
+304
+305
+306
+307
+308
+309
+310
+311
+312
+313
+314
+315
+316
+317
+318
+319
+320
+321
+322
+323
+324
+325
+326
+327
+328
+329
+330
+331
+332
+333
+334
+335
+336
+337
+338
+339
+340
+341
+342
+343
+344
+345
+346
+347
+348
+349
+350
+351
+352
+353
+354
+355
+356
+357
+358
+359
+360
+361
+362
+363
+364
+365
+366
+367
+368
+369
+370
+371
+372
+373
+374
+375
+376
+377
+378
+379
+380
+381
+382
+383
+384
+385
+386
+387
+388
+389
+390
+391
+392
+393
+394
+395
+396
+397
+398
+399
+400
+401
+402
+403
+404
+405
+406
+407
+408
+409
+410
+411
+412
+413
+414
+415
+416
+417
+418
+419
+420
+421
+422
+423
+424
+425
+426
+427
+428
+429
+430
+431
+432
+433
+434
+435
+436
+437
+438
+439
+440
+441
+442
+443
+444
+445
+446
+447
+448
+449
+450
+451
+452
+453
+454
+455
+456
+457
+458
+459
+460
+461
+462
+463
+464
+465
+466
+467
+468
+469
+470
+471
+472
+473
+474
+475
+476
+477
+478
+479
+480
+481
+482
+483
+484
+485
+486
+487
+488
+489
+490
+491
+492
+493
+494
+495
+496
+497
+498
+499
+500
+501
+502</td><td class="line-coverage"><span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-yes">15</span>
+<span class="cline-any cline-yes">120</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">15</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">7</span>
+<span class="cline-any cline-yes">3</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">4</span>
+<span class="cline-any cline-yes">4</span>
+<span class="cline-any cline-yes">4</span>
+<span class="cline-any cline-yes">4</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">71</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">107</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">3</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">16</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">19</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-yes">105</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">105</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">105</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">105</span>
+<span class="cline-any cline-yes">105</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">105</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">105</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">42</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">42</span>
+<span class="cline-any cline-yes">42</span>
+<span class="cline-any cline-yes">42</span>
+<span class="cline-any cline-yes">42</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">42</span>
+<span class="cline-any cline-yes">42</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">42</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">42</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">38</span>
+<span class="cline-any cline-yes">19</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">19</span>
+<span class="cline-any cline-yes">19</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">19</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">19</span>
+<span class="cline-any cline-yes">19</span>
+<span class="cline-any cline-yes">3</span>
+<span class="cline-any cline-yes">3</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3</span>
+<span class="cline-any cline-yes">16</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">7</span>
+<span class="cline-any cline-yes">7</span>
+<span class="cline-any cline-yes">7</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">9</span>
+<span class="cline-any cline-yes">9</span>
+<span class="cline-any cline-yes">9</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">9</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">9</span>
+<span class="cline-any cline-yes">3</span>
+<span class="cline-any cline-yes">3</span>
+<span class="cline-any cline-yes">3</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">6</span>
+<span class="cline-any cline-yes">3</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">6</span>
+<span class="cline-any cline-yes">6</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">42</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">72</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">72</span>
+<span class="cline-any cline-yes">54</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">72</span>
+<span class="cline-any cline-yes">15</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">72</span>
+<span class="cline-any cline-yes">55</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">72</span>
+<span class="cline-any cline-yes">15</span>
+<span class="cline-any cline-yes">15</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">72</span>
+<span class="cline-any cline-yes">64</span>
+<span class="cline-any cline-yes">64</span>
+<span class="cline-any cline-yes">64</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">8</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">72</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">72</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">28</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">27</span>
+<span class="cline-any cline-yes">27</span>
+<span class="cline-any cline-yes">27</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">25</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">27</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">27</span>
+<span class="cline-any cline-yes">7</span>
+<span class="cline-any cline-yes">4</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">20</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">10</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">9</span>
+<span class="cline-any cline-yes">9</span>
+<span class="cline-any cline-yes">9</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">9</span>
+<span class="cline-any cline-yes">9</span>
+<span class="cline-any cline-yes">6</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">6</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">9</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">7</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">6</span>
+<span class="cline-any cline-yes">6</span>
+<span class="cline-any cline-yes">6</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">6</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-yes">70</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">70</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">70</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">70</span>
+<span class="cline-any cline-yes">19</span>
+<span class="cline-any cline-yes">19</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">70</span>
+<span class="cline-any cline-yes">70</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">70</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">70</span>
+<span class="cline-any cline-yes">70</span>
+<span class="cline-any cline-yes">79</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">70</span>
+<span class="cline-any cline-yes">37</span>
+<span class="cline-any cline-yes">37</span>
+<span class="cline-any cline-yes">37</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">70</span>
+<span class="cline-any cline-yes">6</span>
+<span class="cline-any cline-yes">6</span>
+<span class="cline-any cline-yes">6</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">70</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">70</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">70</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">5</span>
+<span class="cline-any cline-yes">4</span>
+<span class="cline-any cline-yes">4</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">(function(global) {
+  var RS = RemoteStorage;
+&nbsp;
+  /**
+   * Class: RemoteStorage.WireClient
+   *
+   * WireClient Interface
+   * --------------------
+   *
+   * This file exposes a get/put/delete interface on top of XMLHttpRequest.
+   * It requires to be configured with parameters about the remotestorage server to
+   * connect to.
+   * Each instance of WireClient is always associated with a single remotestorage
+   * server and access token.
+   *
+   * Usually the WireClient instance can be accessed via `remoteStorage.remote`.
+   *
+   * This is the get/put/delete interface:
+   *
+   *   - #get() takes a path and optionally a ifNoneMatch option carrying a version
+   *     string to check. It returns a promise that will be fulfilled with the HTTP
+   *     response status, the response body, the MIME type as returned in the
+   *     'Content-Type' header and the current revision, as returned in the 'ETag'
+   *     header.
+   *   - #put() takes a path, the request body and a content type string. It also
+   *     accepts the ifMatch and ifNoneMatch options, that map to the If-Match and
+   *     If-None-Match headers respectively. See the remotestorage-01 specification
+   *     for details on handling these headers. It returns a promise, fulfilled with
+   *     the same values as the one for #get().
+   *   - #delete() takes a path and the ifMatch option as well. It returns a promise
+   *     fulfilled with the same values as the one for #get().
+   *
+   * In addition to this, the WireClient has some compatibility features to work with
+   * remotestorage 2012.04 compatible storages. For example it will cache revisions
+   * from folder listings in-memory and return them accordingly as the "revision"
+   * parameter in response to #get() requests. Similarly it will return 404 when it
+   * receives an empty folder listing, to mimic remotestorage-01 behavior. Note
+   * that it is not always possible to know the revision beforehand, hence it may
+   * be undefined at times (especially for caching-roots).
+   */
+&nbsp;
+  var hasLocalStorage;
+  var SETTINGS_KEY = "remotestorage:wireclient";
+&nbsp;
+  var API_2012 = 1, API_00 = 2, API_01 = 3, API_02 = 4, API_HEAD = 5;
+&nbsp;
+  var STORAGE_APIS = {
+    'draft-dejong-remotestorage-00': API_00,
+    'draft-dejong-remotestorage-01': API_01,
+    'draft-dejong-remotestorage-02': API_02,
+    'https://www.w3.org/community/rww/wiki/read-write-web-00#simple': API_2012
+  };
+&nbsp;
+  var isArrayBufferView;
+&nbsp;
+  <span class="missing-if-branch" title="if path not taken" >I</span>if (typeof(ArrayBufferView) === 'function') {
+<span class="cstat-no" title="statement not covered" >    isArrayBufferView = <span class="fstat-no" title="function not covered" >function(object) {</span> <span class="cstat-no" title="statement not covered" >return object &amp;&amp; (object instanceof ArrayBufferView); </span>};</span>
+  } else {
+    var arrayBufferViews = [
+      Int8Array, Uint8Array, Int16Array, Uint16Array,
+      Int32Array, Uint32Array, Float32Array, Float64Array
+    ];
+    isArrayBufferView = function(object) {
+      for (var i=0;i&lt;8;i++) {
+        <span class="missing-if-branch" title="if path not taken" >I</span>if (object instanceof arrayBufferViews[i]) {
+<span class="cstat-no" title="statement not covered" >          return true;</span>
+        }
+      }
+      return false;
+    };
+  }
+&nbsp;
+  function addQuotes(str) {
+    <span class="missing-if-branch" title="if path not taken" >I</span>if (typeof(str) !== 'string') {
+<span class="cstat-no" title="statement not covered" >      return str;</span>
+    }
+    <span class="missing-if-branch" title="if path not taken" >I</span>if (str === '*') {
+<span class="cstat-no" title="statement not covered" >      return '*';</span>
+    }
+&nbsp;
+    return '"' + str + '"';
+  }
+&nbsp;
+  function stripQuotes(str) {
+    if (typeof(str) !== 'string') {
+      return str;
+    }
+&nbsp;
+    return str.replace(/^["']|["']$/g, '');
+  }
+&nbsp;
+  function readBinaryData(content, mimeType, callback) {
+    var blob = new Blob([content], { type: mimeType });
+    var reader = new FileReader();
+    reader.addEventListener("loadend", function() {
+      callback(reader.result); // reader.result contains the contents of blob as a typed array
+    });
+    reader.readAsArrayBuffer(blob);
+  }
+&nbsp;
+  function cleanPath(path) {
+    return path.replace(/\/+/g, '/').split('/').map(encodeURIComponent).join('/');
+  }
+&nbsp;
+  function isFolder(path) {
+    return (path.substr(-1) === '/');
+  }
+&nbsp;
+  function isFolderDescription(body) {
+    return ((body['@context'] === 'http://remotestorage.io/spec/folder-description')
+             &amp;&amp; (typeof(body['items']) === 'object'));
+  }
+&nbsp;
+  function isSuccessStatus(status) {
+    return [201, 204, 304].indexOf(status) &gt;= 0;
+  }
+&nbsp;
+  function isErrorStatus(status) {
+    return [401, 403, 404, 412].indexOf(status) &gt;= 0;
+  }
+&nbsp;
+  var onErrorCb;
+&nbsp;
+  /**
+   * Class : RemoteStorage.WireClient
+   **/
+  RS.WireClient = function(rs) {
+    this.connected = false;
+&nbsp;
+    /**
+     * Event: change
+     *   never fired for some reason
+     *
+     * Event: connected
+     *   fired when the wireclient connect method realizes that it is
+     *   in posession of a token and a href
+     **/
+    RS.eventHandling(this, 'change', 'connected', 'wire-busy', 'wire-done', 'not-connected');
+&nbsp;
+    onErrorCb = function(error){
+      <span class="missing-if-branch" title="else path not taken" >E</span>if (error instanceof RemoteStorage.Unauthorized) {
+        this.configure(undefined, undefined, undefined, null);
+      }
+    }.bind(this);
+    rs.on('error', onErrorCb);
+    <span class="missing-if-branch" title="if path not taken" >I</span>if (hasLocalStorage) {
+<span class="cstat-no" title="statement not covered" >      var settings;</span>
+<span class="cstat-no" title="statement not covered" >      try { <span class="cstat-no" title="statement not covered" >settings = JSON.parse(localStorage[SETTINGS_KEY]); </span>} catch(e) {}</span>
+<span class="cstat-no" title="statement not covered" >      if (settings) {</span>
+<span class="cstat-no" title="statement not covered" >        setTimeout(<span class="fstat-no" title="function not covered" >function() {</span></span>
+<span class="cstat-no" title="statement not covered" >          this.configure(settings.userAddress, settings.href, settings.storageApi, settings.token);</span>
+        }.bind(this), 0);
+      }
+    }
+&nbsp;
+    this._revisionCache = {};
+&nbsp;
+    <span class="missing-if-branch" title="if path not taken" >I</span>if (this.connected) {
+<span class="cstat-no" title="statement not covered" >      setTimeout(this._emit.bind(this), 0, 'connected');</span>
+    }
+  };
+&nbsp;
+  RS.WireClient.REQUEST_TIMEOUT = 30000;
+&nbsp;
+  RS.WireClient.prototype = {
+    /**
+     * Property: token
+     *
+     * Holds the bearer token of this WireClient, as obtained in the OAuth dance
+     *
+     * Example:
+     *   (start code)
+     *
+     *   remoteStorage.remote.token
+     *   // -&gt; 'DEADBEEF01=='
+     */
+&nbsp;
+    /**
+     * Property: href
+     *
+     * Holds the server's base URL, as obtained in the Webfinger discovery
+     *
+     * Example:
+     *   (start code)
+     *
+     *   remoteStorage.remote.href
+     *   // -&gt; 'https://storage.example.com/users/jblogg/'
+     */
+&nbsp;
+    /**
+     * Property: storageApi
+     *
+     * Holds the spec version the server claims to be compatible with
+     *
+     * Example:
+     *   (start code)
+     *
+     *   remoteStorage.remote.storageApi
+     *   // -&gt; 'draft-dejong-remotestorage-01'
+     */
+&nbsp;
+    _request: function(method, uri, token, headers, body, getEtag, fakeRevision) {
+      <span class="missing-if-branch" title="if path not taken" >I</span>if ((method === 'PUT' || method === 'DELETE') &amp;&amp; uri[uri.length - 1] === '/') {
+<span class="cstat-no" title="statement not covered" >        throw "Don't " + method + " on directories!";</span>
+      }
+&nbsp;
+      var promise = promising();
+      var revision;
+      var reqType;
+      var self = this;
+&nbsp;
+      <span class="missing-if-branch" title="else path not taken" >E</span>if (token !== RemoteStorage.Authorize.IMPLIED_FAKE_TOKEN) {
+        headers['Authorization'] = 'Bearer ' + token;
+      }
+&nbsp;
+      this._emit('wire-busy', {
+        method: method,
+        isFolder: isFolder(uri)
+      });
+&nbsp;
+      RS.WireClient.request(method, uri, {
+        body: body,
+        headers: headers
+      }, function(error, response) {
+        if (error) {
+          self._emit('wire-done', {
+            method: method,
+            isFolder: isFolder(uri),
+            success: false
+          });
+          self.online = false;
+          promise.reject(error);
+        } else {
+          self._emit('wire-done', {
+            method: method,
+            isFolder: isFolder(uri),
+            success: true
+          });
+          self.online = true;
+          if (isErrorStatus(response.status)) {
+            RemoteStorage.log('[WireClient] Error response status', response.status);
+            <span class="missing-if-branch" title="if path not taken" >I</span>if (getEtag) {
+<span class="cstat-no" title="statement not covered" >              revision = stripQuotes(response.getResponseHeader('ETag'));</span>
+            } else {
+              revision = undefined;
+            }
+            promise.fulfill(response.status, undefined, undefined, revision);
+          } else if (isSuccessStatus(response.status) ||
+                     (response.status === 200 &amp;&amp; method !== 'GET')) {
+            revision = stripQuotes(response.getResponseHeader('ETag'));
+            RemoteStorage.log('[WireClient] Successful request', revision);
+            promise.fulfill(response.status, undefined, undefined, revision);
+          } else {
+            var mimeType = response.getResponseHeader('Content-Type');
+            var body;
+            <span class="missing-if-branch" title="if path not taken" >I</span>if (getEtag) {
+<span class="cstat-no" title="statement not covered" >              revision = stripQuotes(response.getResponseHeader('ETag'));</span>
+            } else {
+              revision = response.status === 200 ? fakeRevision : <span class="branch-1 cbranch-no" title="branch not covered" >undefined;</span>
+            }
+&nbsp;
+            if ((!mimeType) || mimeType.match(/charset=binary/)) {
+              RS.WireClient.readBinaryData(response.response, mimeType, function(result) {
+                RemoteStorage.log('[WireClient] Successful request with unknown or binary mime-type', revision);
+                promise.fulfill(response.status, result, mimeType, revision);
+              });
+            } else {
+              if (mimeType &amp;&amp; mimeType.match(/^application\/json/)) {
+                body = JSON.parse(response.responseText);
+              } else {
+                body = response.responseText;
+              }
+              RemoteStorage.log('[WireClient] Successful request', revision);
+              promise.fulfill(response.status, body, mimeType, revision);
+            }
+          }
+        }
+      });
+      return promise;
+    },
+&nbsp;
+    configure: function(userAddress, href, storageApi, token) {
+      if (typeof(userAddress) !== 'undefined') {
+        this.userAddress = userAddress;
+      }
+      if (typeof(href) !== 'undefined') {
+        this.href = href;
+      }
+      if (typeof(storageApi) !== 'undefined') {
+        this.storageApi = storageApi;
+      }
+      if (typeof(token) !== 'undefined') {
+        this.token = token;
+      }
+      if (typeof(this.storageApi) !== 'undefined') {
+        this._storageApi = STORAGE_APIS[this.storageApi] || <span class="branch-1 cbranch-no" title="branch not covered" >API_HEAD;</span>
+        this.supportsRevs = this._storageApi &gt;= API_00;
+      }
+      if (this.href &amp;&amp; this.token) {
+        this.connected = true;
+        this.online = true;
+        this._emit('connected');
+      } else {
+        this.connected = false;
+      }
+      <span class="missing-if-branch" title="if path not taken" >I</span>if (hasLocalStorage) {
+<span class="cstat-no" title="statement not covered" >        localStorage[SETTINGS_KEY] = JSON.stringify({</span>
+          userAddress: this.userAddress,
+          href: this.href,
+          token: this.token,
+          storageApi: this.storageApi
+        });
+      }
+      RS.WireClient.configureHooks.forEach(<span class="fstat-no" title="function not covered" >function(hook) {</span>
+<span class="cstat-no" title="statement not covered" >        hook.call(this);</span>
+      }.bind(this));
+    },
+&nbsp;
+    stopWaitingForToken: function() {
+      <span class="missing-if-branch" title="else path not taken" >E</span>if (!this.connected) {
+        this._emit('not-connected');
+      }
+    },
+&nbsp;
+    get: function(path, options) {
+      if (!this.connected) {
+        throw new Error("not connected (path: " + path + ")");
+      }
+      if (!options) { options = {}; }
+      var headers = {};
+      if (this.supportsRevs) {
+        if (options.ifNoneMatch) {
+          headers['If-None-Match'] = addQuotes(options.ifNoneMatch);
+        }
+      } else if (options.ifNoneMatch) {
+        var oldRev = this._revisionCache[path];
+      }
+      var promise = this._request('GET', this.href + cleanPath(path), this.token, headers,
+                            undefined, this.supportsRevs, this._revisionCache[path]);
+      if (isFolder(path)) {
+        return promise.then(function(status, body, contentType, revision) {
+          var itemsMap = {};
+&nbsp;
+          // New folder listing received
+          if (status === 200 &amp;&amp; typeof(body) === 'object') {
+            // Empty folder listing of any spec
+            <span class="missing-if-branch" title="if path not taken" >I</span>if (Object.keys(body).length === 0) {
+<span class="cstat-no" title="statement not covered" >              status = 404;</span>
+            }
+            // &gt;= 02 spec
+            else if (isFolderDescription(body)) {
+              for (var item in body.items) {
+                this._revisionCache[path + item] = body.items[item].ETag;
+              }
+              itemsMap = body.items;
+            }
+            // &lt; 02 spec
+            else {
+              Object.keys(body).forEach(function(key){
+                this._revisionCache[path + key] = body[key];
+                itemsMap[key] = {"ETag": body[key]};
+              }.bind(this));
+            }
+            return promising().fulfill(status, itemsMap, contentType, revision);
+          } else {
+            return promising().fulfill(status, body, contentType, revision);
+          }
+        }.bind(this));
+      } else {
+        return promise;
+      }
+    },
+&nbsp;
+    put: function(path, body, contentType, options) {
+      if (!this.connected) {
+        throw new Error("not connected (path: " + path + ")");
+      }
+      if (!options) { options = {}; }
+      <span class="missing-if-branch" title="else path not taken" >E</span>if (!contentType.match(/charset=/)) {
+        contentType += '; charset=' + ((body instanceof ArrayBuffer || isArrayBufferView(body)) ? <span class="branch-0 cbranch-no" title="branch not covered" >'binary' </span>: 'utf-8');
+      }
+      var headers = { 'Content-Type': contentType };
+      if (this.supportsRevs) {
+        <span class="missing-if-branch" title="if path not taken" >I</span>if (options.ifMatch) {
+<span class="cstat-no" title="statement not covered" >          headers['If-Match'] = addQuotes(options.ifMatch);</span>
+        }
+        <span class="missing-if-branch" title="if path not taken" >I</span>if (options.ifNoneMatch) {
+<span class="cstat-no" title="statement not covered" >          headers['If-None-Match'] = addQuotes(options.ifNoneMatch);</span>
+        }
+      }
+      return this._request('PUT', this.href + cleanPath(path), this.token,
+                     headers, body, this.supportsRevs);
+    },
+&nbsp;
+    'delete': function(path, options) {
+      if (!this.connected) {
+        throw new Error("not connected (path: " + path + ")");
+      }
+      if (!options) { options = {}; }
+      var headers = {};
+      if (this.supportsRevs) {
+        <span class="missing-if-branch" title="if path not taken" >I</span>if (options.ifMatch) {
+<span class="cstat-no" title="statement not covered" >          headers['If-Match'] = addQuotes(options.ifMatch);</span>
+        }
+      }
+      return this._request('DELETE', this.href + cleanPath(path), this.token,
+                     headers,
+                     undefined, this.supportsRevs);
+    }
+  };
+&nbsp;
+  // Shared cleanPath used by Dropbox
+  RS.WireClient.cleanPath = cleanPath;
+&nbsp;
+  // Shared isArrayBufferView used by WireClient and Dropbox
+  RS.WireClient.isArrayBufferView = isArrayBufferView;
+&nbsp;
+  RS.WireClient.readBinaryData = readBinaryData;
+&nbsp;
+  // Shared request function used by WireClient, GoogleDrive and Dropbox.
+  RS.WireClient.request = function(method, url, options, callback) {
+    RemoteStorage.log('[WireClient]', method, url);
+&nbsp;
+    callback = callback.bind(this);
+&nbsp;
+    var timedOut = false;
+&nbsp;
+    var timer = setTimeout(function() {
+      timedOut = true;
+      callback('timeout');
+    }, RS.WireClient.REQUEST_TIMEOUT);
+&nbsp;
+    var xhr = new XMLHttpRequest();
+    xhr.open(method, url, true);
+&nbsp;
+    <span class="missing-if-branch" title="if path not taken" >I</span>if (options.responseType) {
+<span class="cstat-no" title="statement not covered" >      xhr.responseType = options.responseType;</span>
+    }
+    <span class="missing-if-branch" title="else path not taken" >E</span>if (options.headers) {
+      for (var key in options.headers) {
+        xhr.setRequestHeader(key, options.headers[key]);
+      }
+    }
+&nbsp;
+    xhr.onload = function() {
+      <span class="missing-if-branch" title="if path not taken" >I</span>if (timedOut) { <span class="cstat-no" title="statement not covered" >return; </span>}
+      clearTimeout(timer);
+      callback(null, xhr);
+    };
+&nbsp;
+    xhr.onerror = function(error) {
+      <span class="missing-if-branch" title="if path not taken" >I</span>if (timedOut) { <span class="cstat-no" title="statement not covered" >return; </span>}
+      clearTimeout(timer);
+      callback(error);
+    };
+&nbsp;
+    var body = options.body;
+&nbsp;
+    if (typeof(body) === 'object') {
+      <span class="missing-if-branch" title="if path not taken" >I</span>if (isArrayBufferView(body)) {
+        /* alright. */
+        //FIXME empty block
+      }
+      else <span class="missing-if-branch" title="if path not taken" >I</span>if (body instanceof ArrayBuffer) {
+<span class="cstat-no" title="statement not covered" >        body = new Uint8Array(body);</span>
+      } else {
+        body = JSON.stringify(body);
+      }
+    }
+    xhr.send(body);
+  };
+&nbsp;
+  Object.defineProperty(RemoteStorage.WireClient.prototype, 'storageType', {
+    get: function() {
+      if (this.storageApi) {
+        var spec = this.storageApi.match(/draft-dejong-(remotestorage-\d\d)/);
+        return spec ? spec[1] : '2012.04';
+      }
+    }
+  });
+&nbsp;
+  RS.WireClient.configureHooks = [];
+&nbsp;
+  RS.WireClient._rs_init = function(remoteStorage) {
+    hasLocalStorage = remoteStorage.localStorageAvailable();
+    remoteStorage.remote = new RS.WireClient(remoteStorage);
+    this.online = true;
+  };
+&nbsp;
+  RS.WireClient._rs_supported = <span class="fstat-no" title="function not covered" >function() {</span>
+<span class="cstat-no" title="statement not covered" >    return !! global.XMLHttpRequest;</span>
+  };
+&nbsp;
+  RS.WireClient._rs_cleanup = function(remoteStorage){
+    <span class="missing-if-branch" title="if path not taken" >I</span>if (hasLocalStorage){
+<span class="cstat-no" title="statement not covered" >      delete localStorage[SETTINGS_KEY];</span>
+    }
+    remoteStorage.removeEventListener('error', onErrorCb);
+  };
+&nbsp;
+})(typeof(window) !== 'undefined' ? <span class="branch-0 cbranch-no" title="branch not covered" >window </span>: global);
+&nbsp;</pre></td></tr>
+</table></pre>
+
+</div>
+<div class="footer">
+    <div class="meta">Generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Fri May 30 2014 13:13:15 GMT+0000 (UTC)</div>
+</div>
+
+<script src="../prettify.js"></script>
+
+<script src="http://yui.yahooapis.com/3.6.0/build/yui/yui-min.js"></script>
+<script>
+
+    YUI().use('datatable', function (Y) {
+
+        var formatters = {
+          pct: function (o) {
+              o.className += o.record.get('classes')[o.column.key];
+              try {
+                  return o.value.toFixed(2) + '%';
+              } catch (ex) { return o.value + '%'; }
+          },
+          html: function (o) {
+              o.className += o.record.get('classes')[o.column.key];
+              return o.record.get(o.column.key + '_html');
+          }
+        },
+          defaultFormatter = function (o) {
+              o.className += o.record.get('classes')[o.column.key];
+              return o.value;
+          };
+
+        function getColumns(theadNode) {
+            var colNodes = theadNode.all('tr th'),
+                cols = [],
+                col;
+            colNodes.each(function (colNode) {
+                col = {
+                    key: colNode.getAttribute('data-col'),
+                    label: colNode.get('innerHTML') || ' ',
+                    sortable: !colNode.getAttribute('data-nosort'),
+                    className: colNode.getAttribute('class'),
+                    type: colNode.getAttribute('data-type'),
+                    allowHTML: colNode.getAttribute('data-html') === 'true' || colNode.getAttribute('data-fmt') === 'html'
+                };
+                col.formatter = formatters[colNode.getAttribute('data-fmt')] || defaultFormatter;
+                cols.push(col);
+            });
+            return cols;
+        }
+
+        function getRowData(trNode, cols) {
+            var tdNodes = trNode.all('td'),
+                    i,
+                    row = { classes: {} },
+                    node,
+                    name;
+            for (i = 0; i < cols.length; i += 1) {
+                name = cols[i].key;
+                node = tdNodes.item(i);
+                row[name] = node.getAttribute('data-value') || node.get('innerHTML');
+                row[name + '_html'] = node.get('innerHTML');
+                row.classes[name] = node.getAttribute('class');
+                //Y.log('Name: ' + name + '; Value: ' + row[name]);
+                if (cols[i].type === 'number') { row[name] = row[name] * 1; }
+            }
+            //Y.log(row);
+            return row;
+        }
+
+        function getData(tbodyNode, cols) {
+            var data = [];
+            tbodyNode.all('tr').each(function (trNode) {
+                data.push(getRowData(trNode, cols));
+            });
+            return data;
+        }
+
+        function replaceTable(node) {
+            if (!node) { return; }
+            var cols = getColumns(node.one('thead')),
+                data = getData(node.one('tbody'), cols),
+                table,
+                parent = node.get('parentNode');
+
+            table = new Y.DataTable({
+                columns: cols,
+                data: data,
+                sortBy: 'file'
+            });
+            parent.set('innerHTML', '');
+            table.render(parent);
+        }
+
+        Y.on('domready', function () {
+            replaceTable(Y.one('div.coverage-summary table'));
+            if (typeof prettyPrint === 'function') {
+                prettyPrint();
+            }
+        });
+    });
+</script>
+</body>
+</html>

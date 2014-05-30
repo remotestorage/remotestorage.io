@@ -1,0 +1,2644 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for src/dropbox.js</title>
+    <meta charset="utf-8">
+
+    <link rel="stylesheet" href="../prettify.css">
+
+    <style>
+        body, html {
+            margin:0; padding: 0;
+        }
+        body {
+            font-family: Helvetica Neue, Helvetica,Arial;
+            font-size: 10pt;
+        }
+        div.header, div.footer {
+            background: #eee;
+            padding: 1em;
+        }
+        div.header {
+            z-index: 100;
+            position: fixed;
+            top: 0;
+            border-bottom: 1px solid #666;
+            width: 100%;
+        }
+        div.footer {
+            border-top: 1px solid #666;
+        }
+        div.body {
+            margin-top: 10em;
+        }
+        div.meta {
+            font-size: 90%;
+            text-align: center;
+        }
+        h1, h2, h3 {
+            font-weight: normal;
+        }
+        h1 {
+            font-size: 12pt;
+        }
+        h2 {
+            font-size: 10pt;
+        }
+        pre {
+            font-family: Consolas, Menlo, Monaco, monospace;
+            margin: 0;
+            padding: 0;
+            line-height: 14px;
+            font-size: 14px;
+            -moz-tab-size: 2;
+            -o-tab-size:  2;
+            tab-size: 2;
+        }
+
+        div.path { font-size: 110%; }
+        div.path a:link, div.path a:visited { color: #000; }
+        table.coverage { border-collapse: collapse; margin:0; padding: 0 }
+
+        table.coverage td {
+            margin: 0;
+            padding: 0;
+            color: #111;
+            vertical-align: top;
+        }
+        table.coverage td.line-count {
+            width: 50px;
+            text-align: right;
+            padding-right: 5px;
+        }
+        table.coverage td.line-coverage {
+            color: #777 !important;
+            text-align: right;
+            border-left: 1px solid #666;
+            border-right: 1px solid #666;
+        }
+
+        table.coverage td.text {
+        }
+
+        table.coverage td span.cline-any {
+            display: inline-block;
+            padding: 0 5px;
+            width: 40px;
+        }
+        table.coverage td span.cline-neutral {
+            background: #eee;
+        }
+        table.coverage td span.cline-yes {
+            background: #b5d592;
+            color: #999;
+        }
+        table.coverage td span.cline-no {
+            background: #fc8c84;
+        }
+
+        .cstat-yes { color: #111; }
+        .cstat-no { background: #fc8c84; color: #111; }
+        .fstat-no { background: #ffc520; color: #111 !important; }
+        .cbranch-no { background:  yellow !important; color: #111; }
+
+        .cstat-skip { background: #ddd; color: #111; }
+        .fstat-skip { background: #ddd; color: #111 !important; }
+        .cbranch-skip { background: #ddd !important; color: #111; }
+
+        .missing-if-branch {
+            display: inline-block;
+            margin-right: 10px;
+            position: relative;
+            padding: 0 4px;
+            background: black;
+            color: yellow;
+        }
+
+        .skip-if-branch {
+            display: none;
+            margin-right: 10px;
+            position: relative;
+            padding: 0 4px;
+            background: #ccc;
+            color: white;
+        }
+
+        .missing-if-branch .typ, .skip-if-branch .typ {
+            color: inherit !important;
+        }
+
+        .entity, .metric { font-weight: bold; }
+        .metric { display: inline-block; border: 1px solid #333; padding: 0.3em; background: white; }
+        .metric small { font-size: 80%; font-weight: normal; color: #666; }
+
+        div.coverage-summary table { border-collapse: collapse; margin: 3em; font-size: 110%; }
+        div.coverage-summary td, div.coverage-summary table  th { margin: 0; padding: 0.25em 1em; border-top: 1px solid #666; border-bottom: 1px solid #666; }
+        div.coverage-summary th { text-align: left; border: 1px solid #666; background: #eee; font-weight: normal; }
+        div.coverage-summary th.file { border-right: none !important; }
+        div.coverage-summary th.pic { border-left: none !important; text-align: right; }
+        div.coverage-summary th.pct { border-right: none !important; }
+        div.coverage-summary th.abs { border-left: none !important; text-align: right; }
+        div.coverage-summary td.pct { text-align: right; border-left: 1px solid #666; }
+        div.coverage-summary td.abs { text-align: right; font-size: 90%; color: #444; border-right: 1px solid #666; }
+        div.coverage-summary td.file { text-align: right; border-left: 1px solid #666; white-space: nowrap;  }
+        div.coverage-summary td.pic { min-width: 120px !important;  }
+        div.coverage-summary a:link { text-decoration: none; color: #000; }
+        div.coverage-summary a:visited { text-decoration: none; color: #333; }
+        div.coverage-summary a:hover { text-decoration: underline; }
+        div.coverage-summary tfoot td { border-top: 1px solid #666; }
+
+        div.coverage-summary .yui3-datatable-sort-indicator, div.coverage-summary .dummy-sort-indicator {
+            height: 10px;
+            width: 7px;
+            display: inline-block;
+            margin-left: 0.5em;
+        }
+        div.coverage-summary .yui3-datatable-sort-indicator {
+            background: url("http://yui.yahooapis.com/3.6.0/build/datatable-sort/assets/skins/sam/sort-arrow-sprite.png") no-repeat scroll 0 0 transparent;
+        }
+        div.coverage-summary .yui3-datatable-sorted .yui3-datatable-sort-indicator {
+            background-position: 0 -20px;
+        }
+        div.coverage-summary .yui3-datatable-sorted-desc .yui3-datatable-sort-indicator {
+            background-position: 0 -10px;
+        }
+
+        .high { background: #b5d592 !important; }
+        .medium { background: #ffe87c !important; }
+        .low { background: #fc8c84 !important; }
+
+        span.cover-fill, span.cover-empty {
+            display:inline-block;
+            border:1px solid #444;
+            background: white;
+            height: 12px;
+        }
+        span.cover-fill {
+            background: #ccc;
+            border-right: 1px solid #444;
+        }
+        span.cover-empty {
+            background: white;
+            border-left: none;
+        }
+        span.cover-full {
+            border-right: none !important;
+        }
+        pre.prettyprint {
+            border: none !important;
+            padding: 0 !important;
+            margin: 0 !important;
+        }
+        .com { color: #999 !important; }
+        .ignore-none { color: #999; font-weight: normal; }
+
+    </style>
+</head>
+<body>
+<div class="header medium">
+    <h1>Code coverage report for <span class="entity">src/dropbox.js</span></h1>
+    <h2>
+        
+        Statements: <span class="metric">60.31% <small>(237 / 393)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        
+        Branches: <span class="metric">61.69% <small>(124 / 201)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        
+        Functions: <span class="metric">61.9% <small>(39 / 63)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        
+        Lines: <span class="metric">59.74% <small>(227 / 380)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        Ignored: <span class="metric"><span class="ignore-none">none</span></span> &nbsp;&nbsp;&nbsp;&nbsp;
+    </h2>
+    <div class="path"><a href="../index.html">All files</a> &#187; <a href="index.html">src/</a> &#187; dropbox.js</div>
+</div>
+<div class="body">
+<pre><table class="coverage">
+<tr><td class="line-count">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148
+149
+150
+151
+152
+153
+154
+155
+156
+157
+158
+159
+160
+161
+162
+163
+164
+165
+166
+167
+168
+169
+170
+171
+172
+173
+174
+175
+176
+177
+178
+179
+180
+181
+182
+183
+184
+185
+186
+187
+188
+189
+190
+191
+192
+193
+194
+195
+196
+197
+198
+199
+200
+201
+202
+203
+204
+205
+206
+207
+208
+209
+210
+211
+212
+213
+214
+215
+216
+217
+218
+219
+220
+221
+222
+223
+224
+225
+226
+227
+228
+229
+230
+231
+232
+233
+234
+235
+236
+237
+238
+239
+240
+241
+242
+243
+244
+245
+246
+247
+248
+249
+250
+251
+252
+253
+254
+255
+256
+257
+258
+259
+260
+261
+262
+263
+264
+265
+266
+267
+268
+269
+270
+271
+272
+273
+274
+275
+276
+277
+278
+279
+280
+281
+282
+283
+284
+285
+286
+287
+288
+289
+290
+291
+292
+293
+294
+295
+296
+297
+298
+299
+300
+301
+302
+303
+304
+305
+306
+307
+308
+309
+310
+311
+312
+313
+314
+315
+316
+317
+318
+319
+320
+321
+322
+323
+324
+325
+326
+327
+328
+329
+330
+331
+332
+333
+334
+335
+336
+337
+338
+339
+340
+341
+342
+343
+344
+345
+346
+347
+348
+349
+350
+351
+352
+353
+354
+355
+356
+357
+358
+359
+360
+361
+362
+363
+364
+365
+366
+367
+368
+369
+370
+371
+372
+373
+374
+375
+376
+377
+378
+379
+380
+381
+382
+383
+384
+385
+386
+387
+388
+389
+390
+391
+392
+393
+394
+395
+396
+397
+398
+399
+400
+401
+402
+403
+404
+405
+406
+407
+408
+409
+410
+411
+412
+413
+414
+415
+416
+417
+418
+419
+420
+421
+422
+423
+424
+425
+426
+427
+428
+429
+430
+431
+432
+433
+434
+435
+436
+437
+438
+439
+440
+441
+442
+443
+444
+445
+446
+447
+448
+449
+450
+451
+452
+453
+454
+455
+456
+457
+458
+459
+460
+461
+462
+463
+464
+465
+466
+467
+468
+469
+470
+471
+472
+473
+474
+475
+476
+477
+478
+479
+480
+481
+482
+483
+484
+485
+486
+487
+488
+489
+490
+491
+492
+493
+494
+495
+496
+497
+498
+499
+500
+501
+502
+503
+504
+505
+506
+507
+508
+509
+510
+511
+512
+513
+514
+515
+516
+517
+518
+519
+520
+521
+522
+523
+524
+525
+526
+527
+528
+529
+530
+531
+532
+533
+534
+535
+536
+537
+538
+539
+540
+541
+542
+543
+544
+545
+546
+547
+548
+549
+550
+551
+552
+553
+554
+555
+556
+557
+558
+559
+560
+561
+562
+563
+564
+565
+566
+567
+568
+569
+570
+571
+572
+573
+574
+575
+576
+577
+578
+579
+580
+581
+582
+583
+584
+585
+586
+587
+588
+589
+590
+591
+592
+593
+594
+595
+596
+597
+598
+599
+600
+601
+602
+603
+604
+605
+606
+607
+608
+609
+610
+611
+612
+613
+614
+615
+616
+617
+618
+619
+620
+621
+622
+623
+624
+625
+626
+627
+628
+629
+630
+631
+632
+633
+634
+635
+636
+637
+638
+639
+640
+641
+642
+643
+644
+645
+646
+647
+648
+649
+650
+651
+652
+653
+654
+655
+656
+657
+658
+659
+660
+661
+662
+663
+664
+665
+666
+667
+668
+669
+670
+671
+672
+673
+674
+675
+676
+677
+678
+679
+680
+681
+682
+683
+684
+685
+686
+687
+688
+689
+690
+691
+692
+693
+694
+695
+696
+697
+698
+699
+700
+701
+702
+703
+704
+705
+706
+707
+708
+709
+710
+711
+712
+713
+714
+715
+716
+717
+718
+719
+720
+721
+722
+723
+724
+725
+726
+727
+728
+729
+730
+731
+732
+733
+734
+735
+736
+737
+738
+739
+740
+741
+742
+743
+744
+745
+746
+747
+748
+749
+750
+751
+752
+753
+754
+755
+756
+757
+758
+759
+760
+761
+762
+763
+764
+765
+766
+767
+768
+769
+770
+771
+772
+773
+774
+775</td><td class="line-coverage"><span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">59</span>
+<span class="cline-any cline-yes">59</span>
+<span class="cline-any cline-yes">59</span>
+<span class="cline-any cline-yes">59</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">27</span>
+<span class="cline-any cline-yes">27</span>
+<span class="cline-any cline-yes">27</span>
+<span class="cline-any cline-yes">17</span>
+<span class="cline-any cline-yes">17</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">27</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">13</span>
+<span class="cline-any cline-yes">13</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-yes">4</span>
+<span class="cline-any cline-yes">4</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">59</span>
+<span class="cline-any cline-yes">59</span>
+<span class="cline-any cline-yes">59</span>
+<span class="cline-any cline-yes">59</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">59</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">59</span>
+<span class="cline-any cline-yes">59</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">59</span>
+<span class="cline-any cline-yes">59</span>
+<span class="cline-any cline-yes">59</span>
+<span class="cline-any cline-yes">59</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">59</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">59</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">36</span>
+<span class="cline-any cline-yes">36</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">36</span>
+<span class="cline-any cline-yes">31</span>
+<span class="cline-any cline-yes">31</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">31</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">5</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">36</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">15</span>
+<span class="cline-any cline-yes">14</span>
+<span class="cline-any cline-yes">14</span>
+<span class="cline-any cline-yes">14</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">14</span>
+<span class="cline-any cline-yes">14</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">14</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">13</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">11</span>
+<span class="cline-any cline-yes">6</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">5</span>
+<span class="cline-any cline-yes">5</span>
+<span class="cline-any cline-yes">5</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">4</span>
+<span class="cline-any cline-yes">4</span>
+<span class="cline-any cline-yes">4</span>
+<span class="cline-any cline-yes">4</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4</span>
+<span class="cline-any cline-yes">4</span>
+<span class="cline-any cline-yes">4</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">11</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">8</span>
+<span class="cline-any cline-yes">7</span>
+<span class="cline-any cline-yes">7</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">7</span>
+<span class="cline-any cline-yes">7</span>
+<span class="cline-any cline-yes">7</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">7</span>
+<span class="cline-any cline-yes">7</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">6</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">5</span>
+<span class="cline-any cline-yes">5</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">5</span>
+<span class="cline-any cline-yes">5</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">5</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">5</span>
+<span class="cline-any cline-yes">5</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">5</span>
+<span class="cline-any cline-yes">5</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3</span>
+<span class="cline-any cline-yes">3</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3</span>
+<span class="cline-any cline-yes">3</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">5</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4</span>
+<span class="cline-any cline-yes">3</span>
+<span class="cline-any cline-yes">3</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3</span>
+<span class="cline-any cline-yes">3</span>
+<span class="cline-any cline-yes">3</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3</span>
+<span class="cline-any cline-yes">3</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">21</span>
+<span class="cline-any cline-yes">21</span>
+<span class="cline-any cline-yes">21</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">21</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">23</span>
+<span class="cline-any cline-yes">23</span>
+<span class="cline-any cline-yes">23</span>
+<span class="cline-any cline-yes">23</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">15</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">15</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4</span>
+<span class="cline-any cline-yes">4</span>
+<span class="cline-any cline-yes">4</span>
+<span class="cline-any cline-yes">4</span>
+<span class="cline-any cline-yes">4</span>
+<span class="cline-any cline-yes">4</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4</span>
+<span class="cline-any cline-yes">4</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">4</span>
+<span class="cline-any cline-yes">4</span>
+<span class="cline-any cline-yes">4</span>
+<span class="cline-any cline-yes">4</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">(function(global) {
+  var RS = RemoteStorage;
+  // next steps :
+  //  features:
+  // handle fetchDelta has_more
+  // handle files larger than 150MB
+  //
+  //  testing:
+  // add to remotestorage browser
+  // add to sharedy
+  // maybe write tests for remote
+  //
+&nbsp;
+&nbsp;
+  /**
+   * Class: RemoteStorage.Dropbox
+   *
+   * WORK IN PROGRESS, NOT RECOMMENDED FOR PRODUCTION USE
+   *
+   * Dropbox backend for RemoteStorage.js
+   * this file exposes a get/put/delete interface which is compatible with the wireclient
+   * it requires to get configured with a dropbox token similar to the wireclient.configure
+   *
+   * when the remotestorage.backend was set to 'dropbox' it will initialize and resets
+   * remoteStorage.remote with remoteStorage.dropbox
+   *
+   * for compability with the public folder the getItemURL function of the BaseClient gets
+   * highjackt and returns the dropbox share-url
+   *
+   * to connect with dropbox a connect function is provided
+   *
+   * known issues :
+   *   files larger than 150mb are not suported for upload
+   *   folders with more than 10.000 files will cause problems to list
+   *   content-type is guessed by dropbox.com therefore they aren't fully supported
+   *   dropbox preserves cases but not case sensitive
+   *   share_urls and therfeor getItemURL is asynchronius , which means
+   *     getItemURL returns usefull values after the syncCycle
+   **/
+  var hasLocalStorage;
+  var AUTH_URL = 'https://www.dropbox.com/1/oauth2/authorize';
+  var SETTINGS_KEY = 'remotestorage:dropbox';
+  var cleanPath = RS.WireClient.cleanPath;
+&nbsp;
+  /*************************
+   * LowerCaseCache
+   * this Cache will lowercase its keys
+   * and can propagate the values to "upper folders"
+   *
+   * intialized with default Value(undefined will be accepted)
+   *
+   * set and delete will be set to justSet and justDelete on initialization
+   *
+   * get : get a value or default Value
+   * set : set a value
+   * justSet : just set a value and don't propagate at all
+   * propagateSet : Set a value and propagate
+   * delete : delete
+   * justDelete : just delete a value and don't propagate at al
+   * propagateDelete : deleta a value and propagate
+   * _activatePropagation : replace set and delete with their propagate versions
+   *************************/
+  function LowerCaseCache(defaultValue){
+    this.defaultValue = defaultValue; //defaults to undefimned if initialized without arguments
+    this._storage = { };
+    this.set = this.justSet;
+    this.delete = this.justDelete;
+  }
+&nbsp;
+  LowerCaseCache.prototype = {
+    get : function(key) {
+      key = key.toLowerCase();
+      var stored = this._storage[key];
+      if (typeof stored === 'undefined'){
+        stored = this.defaultValue;
+        this._storage[key] = stored;
+      }
+      return stored;
+    },
+    propagateSet : function(key, value) {
+      key = key.toLowerCase();
+      <span class="missing-if-branch" title="if path not taken" >I</span>if (this._storage[key] === value) {
+<span class="cstat-no" title="statement not covered" >        return value;</span>
+      }
+      this._propagate(key, value);
+      return this._storage[key] = value;
+    },
+    propagateDelete : <span class="fstat-no" title="function not covered" >function(key) {</span>
+<span class="cstat-no" title="statement not covered" >      key = key.toLowerCase();</span>
+<span class="cstat-no" title="statement not covered" >      this._propagate(key, this._storage[key]);</span>
+<span class="cstat-no" title="statement not covered" >      return delete this._storage[key];</span>
+    },
+    _activatePropagation: <span class="fstat-no" title="function not covered" >function(){</span>
+<span class="cstat-no" title="statement not covered" >      this.set = this.propagateSet;</span>
+<span class="cstat-no" title="statement not covered" >      this.delete = this.propagateDelete;</span>
+<span class="cstat-no" title="statement not covered" >      return true;</span>
+    },
+    justSet : function(key, value) {
+      key = key.toLowerCase();
+      return this._storage[key] = value;
+    },
+    justDelete : function(key, value) {
+      key = key.toLowerCase();
+      return delete this._storage[key];
+    },
+    _propagate: function(key, rev){
+      var folders = key.split('/').slice(0,-1);
+      var len = folders.length;
+      var path = '';
+&nbsp;
+      for (var i = 0; i &lt; len; i++){
+        path += folders[i]+'/';
+        if (!rev) {
+          rev = this._storage[path]+1;
+        }
+        this._storage[path] =  rev;
+      }
+    }
+  };
+&nbsp;
+  /****************************
+   * Dropbox - Backend for remtoeStorage.js
+   * methods :
+   * connect
+   * configure
+   * get
+   * put
+   * delete
+   * share
+   * info
+   * Properties :
+   * connected
+   * rs
+   * token
+   * userAddress
+   *****************************/
+  var onErrorCb;
+  RS.Dropbox = function(rs) {
+&nbsp;
+    this.rs = rs;
+    this.connected = false;
+    this.rs = rs;
+    var self = this;
+&nbsp;
+    onErrorCb = function(error){
+      <span class="missing-if-branch" title="else path not taken" >E</span>if (error instanceof RemoteStorage.Unauthorized) {
+        self.configure(null,null,null,null);
+      }
+    };
+&nbsp;
+    RS.eventHandling(this, 'change', 'connected', 'wire-busy', 'wire-done', 'not-connected');
+    rs.on('error', onErrorCb);
+&nbsp;
+    this.clientId = rs.apiKeys.dropbox.api_key;
+    this._revCache = new LowerCaseCache('rev');
+    this._itemRefs = {};
+    this._metadataCache = {};
+&nbsp;
+    <span class="missing-if-branch" title="if path not taken" >I</span>if (hasLocalStorage){
+<span class="cstat-no" title="statement not covered" >      var settings;</span>
+<span class="cstat-no" title="statement not covered" >      try {</span>
+<span class="cstat-no" title="statement not covered" >        settings = JSON.parse(localStorage[SETTINGS_KEY]);</span>
+      } catch(e){}
+<span class="cstat-no" title="statement not covered" >      if (settings) {</span>
+<span class="cstat-no" title="statement not covered" >        this.configure(settings.userAddress, undefined, undefined, settings.token);</span>
+      }
+<span class="cstat-no" title="statement not covered" >      try {</span>
+<span class="cstat-no" title="statement not covered" >        this._itemRefs = JSON.parse(localStorage[ SETTINGS_KEY+':shares' ]);</span>
+      } catch(e) {  }
+    }
+    <span class="missing-if-branch" title="if path not taken" >I</span>if (this.connected) {
+<span class="cstat-no" title="statement not covered" >      setTimeout(this._emit.bind(this), 0, 'connected');</span>
+    }
+  };
+&nbsp;
+  RS.Dropbox.prototype = {
+    online: true,
+&nbsp;
+    /**
+     * Method : connect()
+     *   redirects to AUTH_URL(https://www.dropbox.com/1/oauth2/authorize)
+     *   and set's backend to dropbox
+     *   therefor it starts the auth flow and end's up with a token and the dropbox backend in place
+     **/
+    connect: <span class="fstat-no" title="function not covered" >function() {</span>
+      //ToDo handling when token is already present
+<span class="cstat-no" title="statement not covered" >      this.rs.setBackend('dropbox');</span>
+<span class="cstat-no" title="statement not covered" >      if (this.token){</span>
+<span class="cstat-no" title="statement not covered" >        hookIt(this.rs);</span>
+      } else {
+<span class="cstat-no" title="statement not covered" >        RS.Authorize(AUTH_URL, '', String(RS.Authorize.getLocation()), this.clientId);</span>
+      }
+    },
+    /**
+     * Method : configure(userAdress, x, x, token)
+     *   accepts its parameters according to the wireClient
+     *   set's the connected flag
+     **/
+    configure: function(userAddress, href, storageApi, token) {
+      if (typeof token !== 'undefined') { this.token = token; }
+      if (typeof userAddress !== 'undefined') { this.userAddress = userAddress; }
+&nbsp;
+      if (this.token){
+        this.connected = true;
+        if ( !this.userAddress ){
+          this.info().then(<span class="fstat-no" title="function not covered" >function(info){</span>
+<span class="cstat-no" title="statement not covered" >            this.userAddress = info.display_name;</span>
+            //FIXME propagate this to the view
+          }.bind(this));
+        }
+        this._emit('connected');
+      } else {
+        this.connected = false;
+      }
+      <span class="missing-if-branch" title="if path not taken" >I</span>if (hasLocalStorage){
+<span class="cstat-no" title="statement not covered" >        localStorage[SETTINGS_KEY] = JSON.stringify( { token: this.token,</span>
+                                                       userAddress: this.userAddress } );
+      }
+    },
+    
+    stopWaitingForToken: function() {
+      <span class="missing-if-branch" title="else path not taken" >E</span>if (!this.connected) {
+        this._emit('not-connected');
+      }
+    },
+    
+    /**
+     * Method : _getFolder(path, options)
+     **/
+    _getFolder: function(path, options){
+      var url = 'https://api.dropbox.com/1/metadata/auto'+path;
+      var promise = promising();
+      var revCache = this._revCache;
+      this._request('GET', url, {}, function(err, resp){
+        <span class="missing-if-branch" title="else path not taken" >E</span>if (err){
+          promise.reject(err);
+        }else{
+<span class="cstat-no" title="statement not covered" >          var status = resp.status;</span>
+<span class="cstat-no" title="statement not covered" >          if (status === 304) {</span>
+<span class="cstat-no" title="statement not covered" >            promise.fulfill(status);</span>
+<span class="cstat-no" title="statement not covered" >            return;</span>
+          }
+<span class="cstat-no" title="statement not covered" >          var listing, body, mime, rev;</span>
+<span class="cstat-no" title="statement not covered" >          try{</span>
+<span class="cstat-no" title="statement not covered" >            body = JSON.parse(resp.responseText);</span>
+          } catch(e) {
+<span class="cstat-no" title="statement not covered" >            promise.reject(e);</span>
+<span class="cstat-no" title="statement not covered" >            return;</span>
+          }
+<span class="cstat-no" title="statement not covered" >          rev = this._revCache.get(path);</span>
+<span class="cstat-no" title="statement not covered" >          mime = 'application/json; charset=UTF-8';</span>
+<span class="cstat-no" title="statement not covered" >          if (body.contents) {</span>
+<span class="cstat-no" title="statement not covered" >            listing = body.contents.reduce(<span class="fstat-no" title="function not covered" >function(m, item) {</span></span>
+<span class="cstat-no" title="statement not covered" >              var itemName = item.path.split('/').slice(-1)[0] + ( item.is_dir ? '/' : '' );</span>
+<span class="cstat-no" title="statement not covered" >              if (item.is_dir){</span>
+<span class="cstat-no" title="statement not covered" >                m[itemName] = { ETag: revCache.get(path+itemName) };</span>
+              } else {
+<span class="cstat-no" title="statement not covered" >                m[itemName] = { ETag: item.rev };</span>
+              }
+<span class="cstat-no" title="statement not covered" >              return m;</span>
+            }, {});
+          }
+<span class="cstat-no" title="statement not covered" >          promise.fulfill(status, listing, mime, rev);</span>
+        }
+      });
+      return promise;
+    },
+    /**
+     * Method : get(path, options)
+     *   get compatible with wireclient
+     *   checks for path in _revCache and decides based on that if file has changed
+     *   calls _getFolder if file is a folder
+     *   calls share(path) afterwards to fill the _hrefCache
+     **/
+    get: function(path, options){
+      if (! this.connected) { throw new Error("not connected (path: " + path + ")"); }
+      path = cleanPath(path);
+      var url = 'https://api-content.dropbox.com/1/files/auto' + path;
+      var promise = this._sharePromise(path);
+&nbsp;
+      var savedRev = this._revCache.get(path);
+      <span class="missing-if-branch" title="if path not taken" >I</span>if (savedRev === null) {
+        //file was deleted server side
+<span class="cstat-no" title="statement not covered" >        promise.fulfill(404);</span>
+<span class="cstat-no" title="statement not covered" >        return promise;</span>
+      }
+      if (options &amp;&amp; options.ifNoneMatch &amp;&amp;
+         savedRev &amp;&amp; (savedRev === options.ifNoneMatch)) {
+        // nothing changed.
+        promise.fulfill(304);
+        return promise;
+      }
+&nbsp;
+      //use _getFolder for folders
+      if (path.substr(-1) === '/') { return this._getFolder(path, options); }
+&nbsp;
+      this._request('GET', url, {}, function(err, resp){
+        if (err) {
+          promise.reject(err);
+        } else {
+          var status = resp.status;
+          var meta, body, mime, rev;
+          if (status === 404){
+            promise.fulfill(404);
+          } else <span class="missing-if-branch" title="else path not taken" >E</span>if (status === 200) {
+            body = resp.responseText;
+            try {
+              meta = JSON.parse( resp.getResponseHeader('x-dropbox-metadata') );
+            } catch(e) {
+<span class="cstat-no" title="statement not covered" >              promise.reject(e);</span>
+<span class="cstat-no" title="statement not covered" >              return;</span>
+            }
+            mime = meta.mime_type; //resp.getResponseHeader('Content-Type');
+            rev = meta.rev;
+            this._revCache.set(path, rev);
+&nbsp;
+            // handling binary
+            if ((! resp.getResponseHeader('Content-Type') ) || resp.getResponseHeader('Content-Type').match(/charset=binary/)) {
+              RS.WireClient.readBinaryData(resp.response, mime, function(result) {
+                promise.fulfill(status, result, mime, rev);
+              });
+            } else {
+              // handling json (always try)
+              <span class="missing-if-branch" title="else path not taken" >E</span>if (mime &amp;&amp; mime.search('application/json') &gt;= 0 || true) {
+                try {
+                  body = JSON.parse(body);
+                  mime = 'application/json; charset=UTF-8';
+                } catch(e) {
+                  //Failed parsing Json, assume it is something else then
+                }
+              }
+              promise.fulfill(status, body, mime, rev);
+            }
+&nbsp;
+          } else {
+<span class="cstat-no" title="statement not covered" >            promise.fulfill(status);</span>
+          }
+        }
+      });
+      return promise;
+    },
+    /**
+     * Method : put(path, body, contentType, options)
+     *   put compatible with wireclient
+     *   also uses _revCache to check for version conflicts
+     *   also shares via share(path)
+     **/
+    put: function(path, body, contentType, options){
+      if (! this.connected) { throw new Error("not connected (path: " + path + ")"); }
+      var pathTempBeforeClean = path; // Temp variable to store the value beafore cleanPath, to be used later
+      path = cleanPath(path);
+&nbsp;
+      var self = this;
+      var promise = this._sharePromise(path);
+      var revCache = this._revCache;
+&nbsp;
+      //check if file has changed and return 412
+      var savedRev = revCache.get(path);
+      if (options &amp;&amp; options.ifMatch &amp;&amp;
+          savedRev &amp;&amp; (savedRev !== options.ifMatch)) {
+        promise.fulfill(412, undefined, undefined, savedRev);
+        return promise;
+      }
+      if (options &amp;&amp; (options.ifNoneMatch === '*') &amp;&amp;
+          savedRev &amp;&amp; (savedRev !== 'rev')) {
+        promise.fulfill(412, undefined, undefined, savedRev);
+        return promise;
+      }
+      <span class="missing-if-branch" title="else path not taken" >E</span>if (! contentType.match(/charset=/)) {
+        contentType += '; charset=' + ((body instanceof ArrayBuffer || RS.WireClient.isArrayBufferView(body)) ? <span class="branch-0 cbranch-no" title="branch not covered" >'binary' </span>: 'utf-8');
+      }
+      var url = 'https://api-content.dropbox.com/1/files_put/auto' + path + '?';
+      if (options &amp;&amp; options.ifMatch) {
+        url += "parent_rev="+encodeURIComponent(options.ifMatch);
+      }
+      <span class="missing-if-branch" title="if path not taken" >I</span>if (body.length&gt;150*1024*1024){ //FIXME actual content-length
+        //https://www.dropbox.com/developers/core/docs#chunked-upload
+<span class="cstat-no" title="statement not covered" >        RemoteStorage.log('files larger than 150MB not supported yet');</span>
+      } else {
+        var promiseMetadata = promising();
+        if (options &amp;&amp; (options.ifMatch || (options.ifNoneMatch === '*'))) {
+          this._getMetadata(pathTempBeforeClean).then(function(metadata) {
+            promiseMetadata.fulfill(metadata);
+          });
+        } else {
+          promiseMetadata.fulfill();
+        }
+&nbsp;
+        promiseMetadata.then(function(metadata) {
+          if (options &amp;&amp; (options.ifNoneMatch === '*') &amp;&amp; metadata) {
+            // if !!metadata === true, the file exists
+            promise.fulfill(412, undefined, undefined, metadata.rev);
+            return;
+          }
+          if (options &amp;&amp; options.ifMatch &amp;&amp; metadata &amp;&amp; (metadata.rev !== options.ifMatch)) {
+            promise.fulfill(412, undefined, undefined, metadata.rev);
+            return;
+          }
+          self._request('PUT', url, {body:body, headers:{'Content-Type':contentType}}, function(err, resp) {
+            <span class="missing-if-branch" title="if path not taken" >I</span>if (err) {
+<span class="cstat-no" title="statement not covered" >              promise.reject(err);</span>
+            } else {
+              var response = JSON.parse(resp.responseText);
+              if (response.path === pathTempBeforeClean) {
+                revCache.propagateSet(path, response.rev);
+                promise.fulfill(resp.status);
+              } else {
+                // Conflict happened. Delete the copy created by Dropbox
+                var deleteUrl = 'https://api.dropbox.com/1/fileops/delete?root=auto&amp;path=' + encodeURIComponent(response.path);
+                self._request('POST', deleteUrl, {}, <span class="fstat-no" title="function not covered" >function() {</span>});
+&nbsp;
+                // If we got into this situation here, then it means that the
+                // file changed between the metadata request and this PUT
+                // request. Because of that the previously requested metadata
+                // cannot be reused here and a new request has to be made:
+                self._getMetadata(path).then(function(metadata) {
+                  promise.fulfill(412, undefined, undefined, metadata.rev);
+                });
+              }
+            }
+          });
+        });
+      }
+      return promise;
+    },
+&nbsp;
+    /**
+     * Method : delete(path, options)
+     *   similar to get and set
+     **/
+    'delete': function(path, options){
+      if (! this.connected) { throw new Error("not connected (path: " + path + ")"); }
+      var pathTempBeforeClean = path; // Temp variable to store the value before cleanPath, to be used later
+      path = cleanPath(path);
+&nbsp;
+      var self = this;
+      var promise = promising();
+      var revCache = this._revCache;
+      //check if file has changed and return 412
+      var savedRev = revCache.get(path);
+      if (options &amp;&amp; options.ifMatch &amp;&amp;
+          savedRev &amp;&amp; (options.ifMatch !== savedRev)) {
+        promise.fulfill(412, undefined, undefined, savedRev);
+        return promise;
+      }
+&nbsp;
+      var promiseMetadata = promising();
+      if (options &amp;&amp; options.ifMatch) {
+        this._getMetadata(pathTempBeforeClean).then(function(metadata) {
+          promiseMetadata.fulfill(metadata);
+        });
+      } else {
+        promiseMetadata.fulfill();
+      }
+&nbsp;
+      promiseMetadata.then(function(metadata) {
+        if (options &amp;&amp; options.ifMatch &amp;&amp; metadata &amp;&amp; (metadata.rev !== options.ifMatch)) {
+          promise.fulfill(412, undefined, undefined, metadata.rev);
+          return;
+        }
+&nbsp;
+        var url = 'https://api.dropbox.com/1/fileops/delete?root=auto&amp;path=' + encodeURIComponent(pathTempBeforeClean);
+        self._request('POST', url, {}, function(err, resp){
+          <span class="missing-if-branch" title="if path not taken" >I</span>if (err) {
+<span class="cstat-no" title="statement not covered" >            promise.reject(error);</span>
+          } else {
+            promise.fulfill(resp.status);
+            revCache.delete(path);
+          }
+        });
+      });
+&nbsp;
+      return promise.then(function(){
+        var args = Array.prototype.slice.call(arguments);
+        delete this._itemRefs[path];
+        var p = promising();
+        return p.fulfill.apply(p, args);
+      }.bind(this));
+    },
+&nbsp;
+    /**
+     * Method : _sharePromise(path)
+     *   returns a promise which's then block doesn't touch the arguments given
+     *   and calls share for the path
+     *
+     *  also checks for necessity of shareing this url(already in the itemRefs or not '/public/')
+     **/
+    _sharePromise: function(path){
+      var promise = promising();
+      var self = this;
+      <span class="missing-if-branch" title="if path not taken" >I</span>if (path.match(/^\/public\/.*[^\/]$/) &amp;&amp; <span class="branch-1 cbranch-no" title="branch not covered" >typeof this._itemRefs[path] === 'undefined')</span> {
+<span class="cstat-no" title="statement not covered" >        promise.then(<span class="fstat-no" title="function not covered" >function(){</span></span>
+<span class="cstat-no" title="statement not covered" >          var args = Array.prototype.slice.call(arguments);</span>
+<span class="cstat-no" title="statement not covered" >          var p = promising();</span>
+<span class="cstat-no" title="statement not covered" >          self.share(path).then(<span class="fstat-no" title="function not covered" >function() {</span></span>
+<span class="cstat-no" title="statement not covered" >            p.fulfill.apply(p,args);</span>
+          }, <span class="fstat-no" title="function not covered" >function(err) {</span>
+<span class="cstat-no" title="statement not covered" >            p.fulfill.apply(p,args);</span>
+          });
+<span class="cstat-no" title="statement not covered" >          return p;</span>
+        });
+      }
+      return promise;
+    },
+&nbsp;
+    /**
+     * Method : share(path)
+     *   get sher_url s from dropbox and pushes those into this._hrefCache
+     *   returns promise
+     */
+    share: <span class="fstat-no" title="function not covered" >function(path){</span>
+<span class="cstat-no" title="statement not covered" >      var url = "https://api.dropbox.com/1/media/auto"+path;</span>
+<span class="cstat-no" title="statement not covered" >      var promise = promising();</span>
+<span class="cstat-no" title="statement not covered" >      var itemRefs = this._itemRefs;</span>
+&nbsp;
+      // requesting shareing url
+<span class="cstat-no" title="statement not covered" >      this._request('POST', url, {}, <span class="fstat-no" title="function not covered" >function(err, resp){</span></span>
+<span class="cstat-no" title="statement not covered" >        if (err) {</span>
+<span class="cstat-no" title="statement not covered" >          RemoteStorage.log(err);</span>
+<span class="cstat-no" title="statement not covered" >          err.message = 'Shareing Dropbox Thingie("'+path+'") failed' + err.message;</span>
+<span class="cstat-no" title="statement not covered" >          promise.reject(err);</span>
+        } else {
+<span class="cstat-no" title="statement not covered" >          try{</span>
+<span class="cstat-no" title="statement not covered" >            var response = JSON.parse(resp.responseText);</span>
+<span class="cstat-no" title="statement not covered" >            var url = response.url;</span>
+<span class="cstat-no" title="statement not covered" >            itemRefs[path] = url;</span>
+<span class="cstat-no" title="statement not covered" >            if (hasLocalStorage) {</span>
+<span class="cstat-no" title="statement not covered" >              localStorage[SETTINGS_KEY+":shares"] = JSON.stringify(this._itemRefs);</span>
+            }
+<span class="cstat-no" title="statement not covered" >            promise.fulfill(url);</span>
+          } catch(err) {
+<span class="cstat-no" title="statement not covered" >            err.message += "share error";</span>
+<span class="cstat-no" title="statement not covered" >            promise.reject(err);</span>
+          }
+        }
+      });
+<span class="cstat-no" title="statement not covered" >      return promise;</span>
+    },
+&nbsp;
+    /**
+     * Method : info()
+     *   fetching user info from Dropbox returns promise
+     **/
+    info: function() {
+      var url = 'https://api.dropbox.com/1/account/info';
+      var promise = promising();
+      // requesting user info(mainly for userAdress)
+      this._request('GET', url, {}, <span class="fstat-no" title="function not covered" >function(err, resp){</span>
+<span class="cstat-no" title="statement not covered" >        if (err) {</span>
+<span class="cstat-no" title="statement not covered" >          promise.reject(err);</span>
+        } else {
+<span class="cstat-no" title="statement not covered" >          try {</span>
+<span class="cstat-no" title="statement not covered" >            var info = JSON.parse(resp.responseText);</span>
+<span class="cstat-no" title="statement not covered" >            promise.fulfill(info);</span>
+          } catch(e) {
+<span class="cstat-no" title="statement not covered" >            promise.reject(err);</span>
+          }
+        }
+      });
+      return promise;
+    },
+&nbsp;
+    _request: function(method, url, options, callback) {
+      callback = callback.bind(this);
+      if (! options.headers) { options.headers = {}; }
+      options.headers['Authorization'] = 'Bearer ' + this.token;
+      RS.WireClient.request.call(this, method, url, options, function(err, xhr) {
+        //503 means retry this later
+        <span class="missing-if-branch" title="if path not taken" >I</span>if (xhr &amp;&amp; xhr.status === 503) {
+<span class="cstat-no" title="statement not covered" >          global.setTimeout(this._request(method, url, options, callback), 3210);</span>
+        } else {
+          callback(err, xhr);
+        }
+      });
+    },
+&nbsp;
+    /**
+    * method: fetchDelta
+    *
+    *   this method fetches the deltas from the dropbox api, used to sync the storage
+    *   here we retrive changes and put them into the _revCache, those values will then be used
+    *   to determin if something has changed.
+    **/
+    fetchDelta: <span class="fstat-no" title="function not covered" >function() {</span>
+<span class="cstat-no" title="statement not covered" >      var args = Array.prototype.slice.call(arguments);</span>
+<span class="cstat-no" title="statement not covered" >      var promise = promising();</span>
+<span class="cstat-no" title="statement not covered" >      var self = this;</span>
+<span class="cstat-no" title="statement not covered" >      this._request('POST', 'https://api.dropbox.com/1/delta', {</span>
+        body: this._deltaCursor ? ('cursor=' + encodeURIComponent(this._deltaCursor)) : '',
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded'
+        }
+      }, <span class="fstat-no" title="function not covered" >function(error, response) {</span>
+<span class="cstat-no" title="statement not covered" >        if (error) {</span>
+<span class="cstat-no" title="statement not covered" >          this.rs.log('fetchDeltas',error);</span>
+<span class="cstat-no" title="statement not covered" >          this.rs._emit('error', new RemoteStorage.SyncError('fetchDeltas failed'+error));</span>
+<span class="cstat-no" title="statement not covered" >          promise.reject(error);</span>
+        } else {
+          // break if status != 200
+<span class="cstat-no" title="statement not covered" >          if (response.status !== 200 ) {</span>
+<span class="cstat-no" title="statement not covered" >            if (response.status === 400) {</span>
+<span class="cstat-no" title="statement not covered" >              this.rs._emit('error', new RemoteStorage.Unauthorized());</span>
+<span class="cstat-no" title="statement not covered" >              promise.fulfill.apply(promise, args);</span>
+            } else {
+<span class="cstat-no" title="statement not covered" >              promise.reject("dropbox.fetchDelta returned "+response.status+response.responseText);</span>
+            }
+<span class="cstat-no" title="statement not covered" >            return promise;</span>
+          }
+&nbsp;
+<span class="cstat-no" title="statement not covered" >          var delta;</span>
+<span class="cstat-no" title="statement not covered" >          try {</span>
+<span class="cstat-no" title="statement not covered" >            delta = JSON.parse(response.responseText);</span>
+          } catch(error) {
+<span class="cstat-no" title="statement not covered" >            RS.log('fetchDeltas can not parse response',error);</span>
+<span class="cstat-no" title="statement not covered" >            return promise.reject("can not parse response of fetchDelta : "+error.message);</span>
+          }
+          // break if no entries found
+<span class="cstat-no" title="statement not covered" >          if (!delta.entries) {</span>
+<span class="cstat-no" title="statement not covered" >            return promise.reject('dropbox.fetchDeltas failed, no entries found');</span>
+          }
+&nbsp;
+          // Dropbox sends the complete state
+<span class="cstat-no" title="statement not covered" >          if (delta.reset) {</span>
+<span class="cstat-no" title="statement not covered" >            this._revCache = new LowerCaseCache('rev');</span>
+<span class="cstat-no" title="statement not covered" >            promise.then(<span class="fstat-no" title="function not covered" >function(){</span></span>
+<span class="cstat-no" title="statement not covered" >              var args = Array.prototype.slice.call(arguments);</span>
+<span class="cstat-no" title="statement not covered" >              self._revCache._activatePropagation();</span>
+<span class="cstat-no" title="statement not covered" >              var p = promising();</span>
+<span class="cstat-no" title="statement not covered" >              return p.fulfill.apply(p,args);</span>
+            });
+          }
+&nbsp;
+          //saving the cursor for requesting further deltas in relation to the cursor position
+<span class="cstat-no" title="statement not covered" >          if (delta.cursor) {</span>
+<span class="cstat-no" title="statement not covered" >            this._deltaCursor = delta.cursor;</span>
+          }
+&nbsp;
+          //updating revCache
+<span class="cstat-no" title="statement not covered" >          RemoteStorage.log("Delta : ",delta.entries);</span>
+<span class="cstat-no" title="statement not covered" >          delta.entries.forEach(<span class="fstat-no" title="function not covered" >function(entry) {</span></span>
+<span class="cstat-no" title="statement not covered" >            var path = entry[0];</span>
+<span class="cstat-no" title="statement not covered" >            var rev;</span>
+<span class="cstat-no" title="statement not covered" >            if (!entry[1]){</span>
+<span class="cstat-no" title="statement not covered" >              rev = null;</span>
+            } else {
+<span class="cstat-no" title="statement not covered" >              if (entry[1].is_dir) {</span>
+<span class="cstat-no" title="statement not covered" >                return;</span>
+              }
+<span class="cstat-no" title="statement not covered" >              rev = entry[1].rev;</span>
+            }
+<span class="cstat-no" title="statement not covered" >            self._revCache.set(path, rev);</span>
+          });
+<span class="cstat-no" title="statement not covered" >          promise.fulfill.apply(promise, args);</span>
+        }
+      });
+<span class="cstat-no" title="statement not covered" >      return promise;</span>
+    },
+&nbsp;
+    _getMetadata: function(path, options) {
+      var promise = promising();
+      var self = this;
+      var cached = this._metadataCache[path];
+      var url = 'https://api.dropbox.com/1/metadata/auto' + cleanPath(path);
+      url += '?list=' + ((options &amp;&amp; <span class="branch-1 cbranch-no" title="branch not covered" >options.list)</span> ? <span class="branch-0 cbranch-no" title="branch not covered" >'true' </span>: 'false');
+      <span class="missing-if-branch" title="if path not taken" >I</span>if (cached &amp;&amp; <span class="branch-1 cbranch-no" title="branch not covered" >cached.hash)</span> {
+<span class="cstat-no" title="statement not covered" >        url += '&amp;hash=' + encodeURIComponent(cached.hash);</span>
+      }
+      this._request('GET', url, {}, function(err, resp) {
+        <span class="missing-if-branch" title="if path not taken" >I</span>if (err) {
+<span class="cstat-no" title="statement not covered" >          promise.reject(err);</span>
+<span class="cstat-no" title="statement not covered" >          return;</span>
+        }
+        <span class="missing-if-branch" title="if path not taken" >I</span>if (resp.status === 304) {
+<span class="cstat-no" title="statement not covered" >          promise.fulfill(cached);</span>
+        } else <span class="missing-if-branch" title="else path not taken" >E</span>if (resp.status === 200) {
+          var response = JSON.parse(resp.responseText);
+          self._metadataCache[path] = response;
+          promise.fulfill(response);
+        } else {
+          // The file doesn't exist
+<span class="cstat-no" title="statement not covered" >          promise.fulfill();</span>
+        }
+      });
+&nbsp;
+      return promise;
+    }
+  };
+&nbsp;
+  //hooking and unhooking the sync
+&nbsp;
+<span class="fstat-no" title="function not covered" >  function hookSync(rs) {</span>
+<span class="cstat-no" title="statement not covered" >    if (rs._dropboxOrigSync) { <span class="cstat-no" title="statement not covered" >return; </span>} </span>// already hooked
+<span class="cstat-no" title="statement not covered" >    rs._dropboxOrigSync = rs.sync.bind(rs);</span>
+<span class="cstat-no" title="statement not covered" >    rs.sync = <span class="fstat-no" title="function not covered" >function() {</span></span>
+<span class="cstat-no" title="statement not covered" >      return this.dropbox.fetchDelta.apply(this.dropbox, arguments).</span>
+        then(rs._dropboxOrigSync, <span class="fstat-no" title="function not covered" >function(err){</span>
+<span class="cstat-no" title="statement not covered" >          rs._emit('error', new rs.SyncError(err));</span>
+        });
+    };
+  }
+&nbsp;
+  function unHookSync(rs) {
+    <span class="missing-if-branch" title="else path not taken" >E</span>if (! rs._dropboxOrigSync) { return; } // not hooked
+<span class="cstat-no" title="statement not covered" >    rs.sync = rs._dropboxOrigSync;</span>
+<span class="cstat-no" title="statement not covered" >    delete rs._dropboxOrigSync;</span>
+  }
+&nbsp;
+  // hooking and unhooking getItemURL
+&nbsp;
+<span class="fstat-no" title="function not covered" >  function hookGetItemURL(rs) {</span>
+<span class="cstat-no" title="statement not covered" >    if (rs._origBaseClientGetItemURL) { <span class="cstat-no" title="statement not covered" >return; </span>}</span>
+<span class="cstat-no" title="statement not covered" >    rs._origBaseClientGetItemURL = RS.BaseClient.prototype.getItemURL;</span>
+<span class="cstat-no" title="statement not covered" >    RS.BaseClient.prototype.getItemURL = <span class="fstat-no" title="function not covered" >function(path){</span></span>
+<span class="cstat-no" title="statement not covered" >      var ret = rs.dropbox._itemRefs[path];</span>
+<span class="cstat-no" title="statement not covered" >      return  ret ? ret : '';</span>
+    };
+  }
+&nbsp;
+  function unHookGetItemURL(rs){
+    <span class="missing-if-branch" title="else path not taken" >E</span>if (! rs._origBaseClieNtGetItemURL) { return; }
+<span class="cstat-no" title="statement not covered" >    RS.BaseClient.prototype.getItemURL = rs._origBaseClietGetItemURL;</span>
+<span class="cstat-no" title="statement not covered" >    delete rs._origBaseClietGetItemURL;</span>
+  }
+&nbsp;
+<span class="fstat-no" title="function not covered" >  function hookRemote(rs){</span>
+<span class="cstat-no" title="statement not covered" >    if (rs._origRemote) { <span class="cstat-no" title="statement not covered" >return; </span>}</span>
+<span class="cstat-no" title="statement not covered" >    rs._origRemote = rs.remote;</span>
+<span class="cstat-no" title="statement not covered" >    rs.remote = rs.dropbox;</span>
+  }
+&nbsp;
+  function unHookRemote(rs){
+    <span class="missing-if-branch" title="if path not taken" >I</span>if (rs._origRemote) {
+<span class="cstat-no" title="statement not covered" >      rs.remote = rs._origRemote;</span>
+<span class="cstat-no" title="statement not covered" >      delete rs._origRemote;</span>
+    }
+  }
+&nbsp;
+<span class="fstat-no" title="function not covered" >  function hookIt(rs){</span>
+<span class="cstat-no" title="statement not covered" >    hookRemote(rs);</span>
+<span class="cstat-no" title="statement not covered" >    if (rs.sync) {</span>
+<span class="cstat-no" title="statement not covered" >      hookSync(rs);</span>
+    }
+<span class="cstat-no" title="statement not covered" >    hookGetItemURL(rs);</span>
+  }
+&nbsp;
+  function unHookIt(rs){
+    unHookRemote(rs);
+    unHookSync(rs);
+    unHookGetItemURL(rs);
+  }
+&nbsp;
+  RS.Dropbox._rs_init = function(rs) {
+    hasLocalStorage = rs.localStorageAvailable();
+    <span class="missing-if-branch" title="else path not taken" >E</span>if ( rs.apiKeys.dropbox ) {
+      rs.dropbox = new RS.Dropbox(rs);
+    }
+    <span class="missing-if-branch" title="if path not taken" >I</span>if (rs.backend === 'dropbox') {
+<span class="cstat-no" title="statement not covered" >      hookIt(rs);</span>
+    }
+  };
+&nbsp;
+  RS.Dropbox._rs_supported = <span class="fstat-no" title="function not covered" >function() {</span>
+<span class="cstat-no" title="statement not covered" >    return true;</span>
+  };
+&nbsp;
+  RS.Dropbox._rs_cleanup = function(rs) {
+    unHookIt(rs);
+    <span class="missing-if-branch" title="if path not taken" >I</span>if (hasLocalStorage){
+<span class="cstat-no" title="statement not covered" >      delete localStorage[SETTINGS_KEY];</span>
+    }
+    rs.removeEventListener('error', onErrorCb);
+    rs.setBackend(undefined);
+  };
+})(this);
+&nbsp;</pre></td></tr>
+</table></pre>
+
+</div>
+<div class="footer">
+    <div class="meta">Generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Fri May 30 2014 13:13:15 GMT+0000 (UTC)</div>
+</div>
+
+<script src="../prettify.js"></script>
+
+<script src="http://yui.yahooapis.com/3.6.0/build/yui/yui-min.js"></script>
+<script>
+
+    YUI().use('datatable', function (Y) {
+
+        var formatters = {
+          pct: function (o) {
+              o.className += o.record.get('classes')[o.column.key];
+              try {
+                  return o.value.toFixed(2) + '%';
+              } catch (ex) { return o.value + '%'; }
+          },
+          html: function (o) {
+              o.className += o.record.get('classes')[o.column.key];
+              return o.record.get(o.column.key + '_html');
+          }
+        },
+          defaultFormatter = function (o) {
+              o.className += o.record.get('classes')[o.column.key];
+              return o.value;
+          };
+
+        function getColumns(theadNode) {
+            var colNodes = theadNode.all('tr th'),
+                cols = [],
+                col;
+            colNodes.each(function (colNode) {
+                col = {
+                    key: colNode.getAttribute('data-col'),
+                    label: colNode.get('innerHTML') || ' ',
+                    sortable: !colNode.getAttribute('data-nosort'),
+                    className: colNode.getAttribute('class'),
+                    type: colNode.getAttribute('data-type'),
+                    allowHTML: colNode.getAttribute('data-html') === 'true' || colNode.getAttribute('data-fmt') === 'html'
+                };
+                col.formatter = formatters[colNode.getAttribute('data-fmt')] || defaultFormatter;
+                cols.push(col);
+            });
+            return cols;
+        }
+
+        function getRowData(trNode, cols) {
+            var tdNodes = trNode.all('td'),
+                    i,
+                    row = { classes: {} },
+                    node,
+                    name;
+            for (i = 0; i < cols.length; i += 1) {
+                name = cols[i].key;
+                node = tdNodes.item(i);
+                row[name] = node.getAttribute('data-value') || node.get('innerHTML');
+                row[name + '_html'] = node.get('innerHTML');
+                row.classes[name] = node.getAttribute('class');
+                //Y.log('Name: ' + name + '; Value: ' + row[name]);
+                if (cols[i].type === 'number') { row[name] = row[name] * 1; }
+            }
+            //Y.log(row);
+            return row;
+        }
+
+        function getData(tbodyNode, cols) {
+            var data = [];
+            tbodyNode.all('tr').each(function (trNode) {
+                data.push(getRowData(trNode, cols));
+            });
+            return data;
+        }
+
+        function replaceTable(node) {
+            if (!node) { return; }
+            var cols = getColumns(node.one('thead')),
+                data = getData(node.one('tbody'), cols),
+                table,
+                parent = node.get('parentNode');
+
+            table = new Y.DataTable({
+                columns: cols,
+                data: data,
+                sortBy: 'file'
+            });
+            parent.set('innerHTML', '');
+            table.render(parent);
+        }
+
+        Y.on('domready', function () {
+            replaceTable(Y.one('div.coverage-summary table'));
+            if (typeof prettyPrint === 'function') {
+                prettyPrint();
+            }
+        });
+    });
+</script>
+</body>
+</html>
