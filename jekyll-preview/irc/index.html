@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>remoteStorage – An open protocol for per-user storage</title>
+    <title>Chatroom</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="alternate" type="application/atom+xml" title="The remoteStorage Blog" href="/blog/feed.xml" />
   </head>
@@ -57,48 +57,63 @@
       </div>
     </nav>
 
-    <section id="welcome" class="jumbotron">
+    <section class="jumbotron small">
   <div class="container">
-    <h2>remoteStorage</h2>
-    <p>An open protocol for per-user storage</p>
-    <p class="actions">
-      <a class="btn btn-default" role="button">How it works</a>
-      <a class="btn btn-default" role="button">Get storage</a>
-      <a class="btn btn-default" role="button">Developers</a>
-    </p>
+    <div class="row">
+      <div class="col-sm-6">
+        <h2>Chatroom</h2>
+      </div>
+      <div class="col-sm-6 hidden-xs">
+      </div>
   </div>
 </section>
 
-<section class="benefits">
+<main class="irc">
   <div class="container">
     <div class="row">
-      <div class="col-sm-6 col-md-3">
-        <div class="pictogram hexagon"><i class="icon-archive"></i></div>
-        <h2>Own your data</h2>
-        <p>Use a storage account with a provider you trust, or set up your own
-        storage server. Move house whenever you want.</p>
+      <div class="col-md-3">
+        <aside>
+          <section>
+            <h3>Welcome</h3>
+            <p>Our chatroom allows you to chat with other remoteStorage users and developers.</p>
+            <p>You can either use it directly on this page, or you can access it using your favorite IRC client.</p>
+          </section>
+          <section>
+            <h3>IRC info</h3>
+            <p>
+              Network: <a href="http://freenode.net/" target=_blank"">Freenode</a><br>
+              Channel: <a href="irc://irc.freenode.net:7000/remotestorage">#remotestorage</a>
+            </p>
+          </section>
+        </aside>
       </div>
-      <div class="col-sm-6 col-md-3">
-        <div class="pictogram hexagon"><i class="icon-cycle"></i></div>
-        <h2>Stay in sync</h2>
-        <p>Apps sync your data across all of your devices, from desktop to
-        tablet to smartphone, and even your TV.</p>
-      </div>
-      <div class="col-sm-6 col-md-3">
-        <div class="pictogram hexagon"><i class="icon-publish"></i></div>
-        <h2>Compatibility is king</h2>
-        <p>Use the same data across different apps. Create a to-do list in one
-        app, and track the time on your tasks in another one.</p>
-      </div>
-      <div class="col-sm-6 col-md-3">
-        <div class="pictogram hexagon"><i class="icon-signal"></i></div>
-        <h2>Offline first</h2>
-        <p>Use your apps offline on the go, and automatically sync when you're
-        back online. Try apps before connecting your storage.</p>
+      <div class="col-md-9">
+        <div class="irc-widget">
+          <guppy-irc id="my-guppy"
+                     data-title="Welcome to Guppy IRC"
+                     data-height="300"
+                     data-server="irc.freenode.net"
+                     data-channel="#sockethub"
+                     data-nick="rs_user"
+                     data-display-name="Guppy Example User"
+                     data-password=""
+                     data-autoconnect="true"
+                     data-sockethub-host="silverbucket.net"
+                     data-sockethub-port="443"
+                     data-sockethub-tls="true"
+                     data-sockethub-path="/sockethub"
+                     data-sockethub-secret="1234567890" />
+        </div>
+        <p class="powered-by">
+          Unhosted IRC widget powered by
+          <a href="http://sockethub.org" target="_blank">Sockethub</a>
+          and <a href="https://github.com/silverbucket/guppy-irc" target="_blank">Guppy IRC</a>
+        </p>
       </div>
     </div>
   </div>
- </section>
+</main>
+
 
 
   </body>
