@@ -5340,6 +5340,94 @@ guppy-irc {
   margin: 0;
 }
 
+/* line 1, /Users/basti/src/remotestorage/remotestorage.io/_assets/stylesheets/guppy-irc-theme.scss */
+.guppy-irc-container {
+  border: none;
+  width: 100%;
+  padding: 0;
+}
+
+/* line 6, /Users/basti/src/remotestorage/remotestorage.io/_assets/stylesheets/guppy-irc-theme.scss */
+.guppy-irc-title-container {
+  display: none;
+}
+
+/* line 9, /Users/basti/src/remotestorage/remotestorage.io/_assets/stylesheets/guppy-irc-theme.scss */
+.guppy-irc-messages-container {
+  width: 100%;
+  height: 300px;
+  padding: 1rem 0;
+  background: #fff;
+  border: 1px solid #E6E6E6;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -o-border-radius: 5px;
+  border-radius: 5px;
+}
+/* line 16, /Users/basti/src/remotestorage/remotestorage.io/_assets/stylesheets/guppy-irc-theme.scss */
+.guppy-irc-messages-container p {
+  margin: 0;
+  padding: 2px 1rem;
+  line-height: 1.4em;
+}
+/* line 20, /Users/basti/src/remotestorage/remotestorage.io/_assets/stylesheets/guppy-irc-theme.scss */
+.guppy-irc-messages-container p:last-child {
+  margin-bottom: 1rem;
+}
+/* line 23, /Users/basti/src/remotestorage/remotestorage.io/_assets/stylesheets/guppy-irc-theme.scss */
+.guppy-irc-messages-container p.guppy-irc-message-line-to-me {
+  background: #F7F6F2;
+}
+/* line 26, /Users/basti/src/remotestorage/remotestorage.io/_assets/stylesheets/guppy-irc-theme.scss */
+.guppy-irc-messages-container p.guppy-irc-status-line {
+  color: #888;
+  font-style: italic;
+}
+/* line 30, /Users/basti/src/remotestorage/remotestorage.io/_assets/stylesheets/guppy-irc-theme.scss */
+.guppy-irc-messages-container p.guppy-irc-error-line {
+  color: red;
+  font-style: italic;
+}
+
+/* line 36, /Users/basti/src/remotestorage/remotestorage.io/_assets/stylesheets/guppy-irc-theme.scss */
+.guppy-irc-message-nick {
+  font-weight: normal;
+  color: #888;
+}
+
+/* line 40, /Users/basti/src/remotestorage/remotestorage.io/_assets/stylesheets/guppy-irc-theme.scss */
+.guppy-irc-message-nick-decorator {
+  margin-right: 3px;
+  color: #888;
+}
+
+/* line 44, /Users/basti/src/remotestorage/remotestorage.io/_assets/stylesheets/guppy-irc-theme.scss */
+.guppy-irc-input-container {
+  width: 85%;
+}
+/* line 46, /Users/basti/src/remotestorage/remotestorage.io/_assets/stylesheets/guppy-irc-theme.scss */
+.guppy-irc-input-container input {
+  width: 100%;
+  padding: 0.3rem;
+}
+
+/* line 51, /Users/basti/src/remotestorage/remotestorage.io/_assets/stylesheets/guppy-irc-theme.scss */
+.guppy-irc-submit-button-container {
+  width: 15%;
+}
+/* line 53, /Users/basti/src/remotestorage/remotestorage.io/_assets/stylesheets/guppy-irc-theme.scss */
+.guppy-irc-submit-button-container input {
+  width: 100%;
+}
+
+/* line 59, /Users/basti/src/remotestorage/remotestorage.io/_assets/stylesheets/guppy-irc-theme.scss */
+main.irc p.powered-by {
+  padding-top: 1.5rem;
+  color: #888;
+  font-size: 0.8rem;
+}
+
 @font-face {
   font-family: 'remotestorage';
   src: url("/fonts/remotestorage.eot?q6dyvb");
@@ -5471,48 +5559,48 @@ a {
 /* line 81, /Users/basti/src/remotestorage/remotestorage.io/_assets/stylesheets/main.scss */
 section.benefits {
   padding: 3rem 0;
+  text-align: center;
 }
-/* line 83, /Users/basti/src/remotestorage/remotestorage.io/_assets/stylesheets/main.scss */
+/* line 85, /Users/basti/src/remotestorage/remotestorage.io/_assets/stylesheets/main.scss */
+section.benefits .row > div {
+  margin-bottom: 2rem;
+}
+/* line 89, /Users/basti/src/remotestorage/remotestorage.io/_assets/stylesheets/main.scss */
 section.benefits .pictogram {
   width: 87px;
   height: 100px;
   margin: 0 auto;
 }
-/* line 87, /Users/basti/src/remotestorage/remotestorage.io/_assets/stylesheets/main.scss */
+/* line 93, /Users/basti/src/remotestorage/remotestorage.io/_assets/stylesheets/main.scss */
 section.benefits .pictogram.hexagon {
   position: relative;
   background-image: url(/img/hexagon-yellow-01.svg);
   background-size: contain;
   padding-top: 26px;
 }
-/* line 92, /Users/basti/src/remotestorage/remotestorage.io/_assets/stylesheets/main.scss */
+/* line 98, /Users/basti/src/remotestorage/remotestorage.io/_assets/stylesheets/main.scss */
 section.benefits .pictogram.hexagon i {
   font-size: 50px;
   color: #fff;
 }
-/* line 99, /Users/basti/src/remotestorage/remotestorage.io/_assets/stylesheets/main.scss */
-section.benefits .row > div {
-  text-align: center;
-  padding: 1em 0;
-}
-/* line 104, /Users/basti/src/remotestorage/remotestorage.io/_assets/stylesheets/main.scss */
+/* line 105, /Users/basti/src/remotestorage/remotestorage.io/_assets/stylesheets/main.scss */
 section.benefits h2 {
   font-size: 1.5rem;
 }
 
-/* line 109, /Users/basti/src/remotestorage/remotestorage.io/_assets/stylesheets/main.scss */
+/* line 110, /Users/basti/src/remotestorage/remotestorage.io/_assets/stylesheets/main.scss */
 main {
   padding: 2rem 0;
 }
-/* line 111, /Users/basti/src/remotestorage/remotestorage.io/_assets/stylesheets/main.scss */
+/* line 112, /Users/basti/src/remotestorage/remotestorage.io/_assets/stylesheets/main.scss */
 main aside {
   padding-right: 2rem;
 }
-/* line 113, /Users/basti/src/remotestorage/remotestorage.io/_assets/stylesheets/main.scss */
+/* line 114, /Users/basti/src/remotestorage/remotestorage.io/_assets/stylesheets/main.scss */
 main aside section {
   margin: 0 0 2rem;
 }
-/* line 116, /Users/basti/src/remotestorage/remotestorage.io/_assets/stylesheets/main.scss */
+/* line 117, /Users/basti/src/remotestorage/remotestorage.io/_assets/stylesheets/main.scss */
 main aside h3 {
   font-size: 1rem;
   color: #888;
@@ -5520,31 +5608,31 @@ main aside h3 {
   font-weight: normal;
   text-transform: uppercase;
 }
-/* line 123, /Users/basti/src/remotestorage/remotestorage.io/_assets/stylesheets/main.scss */
+/* line 124, /Users/basti/src/remotestorage/remotestorage.io/_assets/stylesheets/main.scss */
 main aside.recent-posts h3 {
   margin: 0 0 2rem;
 }
-/* line 126, /Users/basti/src/remotestorage/remotestorage.io/_assets/stylesheets/main.scss */
+/* line 127, /Users/basti/src/remotestorage/remotestorage.io/_assets/stylesheets/main.scss */
 main aside ul {
   list-style: none;
   margin: 0;
   padding: 0;
 }
-/* line 130, /Users/basti/src/remotestorage/remotestorage.io/_assets/stylesheets/main.scss */
+/* line 131, /Users/basti/src/remotestorage/remotestorage.io/_assets/stylesheets/main.scss */
 main aside ul h4 {
   font-weight: normal;
   font-size: 1.2rem;
   margin: 0 0 0.5rem 0;
 }
-/* line 135, /Users/basti/src/remotestorage/remotestorage.io/_assets/stylesheets/main.scss */
+/* line 136, /Users/basti/src/remotestorage/remotestorage.io/_assets/stylesheets/main.scss */
 main aside ul p {
   margin: 0;
 }
-/* line 138, /Users/basti/src/remotestorage/remotestorage.io/_assets/stylesheets/main.scss */
+/* line 139, /Users/basti/src/remotestorage/remotestorage.io/_assets/stylesheets/main.scss */
 main aside ul li {
   margin-bottom: 1.2rem;
 }
-/* line 144, /Users/basti/src/remotestorage/remotestorage.io/_assets/stylesheets/main.scss */
+/* line 145, /Users/basti/src/remotestorage/remotestorage.io/_assets/stylesheets/main.scss */
 main.blog article {
   background: #fff;
   border: 1px solid #E6E6E6;
@@ -5555,118 +5643,31 @@ main.blog article {
   -o-border-radius: 5px;
   border-radius: 5px;
 }
-/* line 149, /Users/basti/src/remotestorage/remotestorage.io/_assets/stylesheets/main.scss */
+/* line 150, /Users/basti/src/remotestorage/remotestorage.io/_assets/stylesheets/main.scss */
 main.blog article header {
   border-bottom: 1px solid #E6E6E6;
 }
-/* line 151, /Users/basti/src/remotestorage/remotestorage.io/_assets/stylesheets/main.scss */
+/* line 152, /Users/basti/src/remotestorage/remotestorage.io/_assets/stylesheets/main.scss */
 main.blog article header h2 {
   margin: 0 0 0 0;
   font-size: 2rem;
 }
-/* line 154, /Users/basti/src/remotestorage/remotestorage.io/_assets/stylesheets/main.scss */
+/* line 155, /Users/basti/src/remotestorage/remotestorage.io/_assets/stylesheets/main.scss */
 main.blog article header h2 a {
   text-decoration: underline;
 }
-/* line 159, /Users/basti/src/remotestorage/remotestorage.io/_assets/stylesheets/main.scss */
+/* line 160, /Users/basti/src/remotestorage/remotestorage.io/_assets/stylesheets/main.scss */
 main.blog article header, main.blog article .content {
   padding: 2rem;
 }
-/* line 162, /Users/basti/src/remotestorage/remotestorage.io/_assets/stylesheets/main.scss */
+/* line 163, /Users/basti/src/remotestorage/remotestorage.io/_assets/stylesheets/main.scss */
 main.blog article h3 {
   margin: 2rem 0 1.4rem 0;
 }
 
 @media screen and (min-width: 992px) {
-  /* line 170, /Users/basti/src/remotestorage/remotestorage.io/_assets/stylesheets/main.scss */
+  /* line 171, /Users/basti/src/remotestorage/remotestorage.io/_assets/stylesheets/main.scss */
   main {
     padding: 3rem 0;
   }
-}
-/* line 178, /Users/basti/src/remotestorage/remotestorage.io/_assets/stylesheets/main.scss */
-.guppy-irc-container {
-  border: none;
-  width: 100%;
-  padding: 0;
-}
-
-/* line 183, /Users/basti/src/remotestorage/remotestorage.io/_assets/stylesheets/main.scss */
-.guppy-irc-title-container {
-  display: none;
-}
-
-/* line 186, /Users/basti/src/remotestorage/remotestorage.io/_assets/stylesheets/main.scss */
-.guppy-irc-messages-container {
-  width: 100%;
-  height: 300px;
-  padding: 1rem 0;
-  background: #fff;
-  border: 1px solid #E6E6E6;
-  -webkit-border-radius: 5px;
-  -moz-border-radius: 5px;
-  -ms-border-radius: 5px;
-  -o-border-radius: 5px;
-  border-radius: 5px;
-}
-/* line 193, /Users/basti/src/remotestorage/remotestorage.io/_assets/stylesheets/main.scss */
-.guppy-irc-messages-container p {
-  margin: 0;
-  padding: 2px 1rem;
-  line-height: 1.4em;
-}
-/* line 197, /Users/basti/src/remotestorage/remotestorage.io/_assets/stylesheets/main.scss */
-.guppy-irc-messages-container p:last-child {
-  margin-bottom: 1rem;
-}
-/* line 200, /Users/basti/src/remotestorage/remotestorage.io/_assets/stylesheets/main.scss */
-.guppy-irc-messages-container p.guppy-irc-message-line-to-me {
-  background: #F7F6F2;
-}
-/* line 203, /Users/basti/src/remotestorage/remotestorage.io/_assets/stylesheets/main.scss */
-.guppy-irc-messages-container p.guppy-irc-status-line {
-  color: #888;
-  font-style: italic;
-}
-/* line 207, /Users/basti/src/remotestorage/remotestorage.io/_assets/stylesheets/main.scss */
-.guppy-irc-messages-container p.guppy-irc-error-line {
-  color: red;
-  font-style: italic;
-}
-
-/* line 213, /Users/basti/src/remotestorage/remotestorage.io/_assets/stylesheets/main.scss */
-.guppy-irc-message-nick {
-  font-weight: normal;
-  color: #888;
-}
-
-/* line 217, /Users/basti/src/remotestorage/remotestorage.io/_assets/stylesheets/main.scss */
-.guppy-irc-message-nick-decorator {
-  margin-right: 3px;
-  color: #888;
-}
-
-/* line 221, /Users/basti/src/remotestorage/remotestorage.io/_assets/stylesheets/main.scss */
-.guppy-irc-input-container {
-  width: 85%;
-}
-/* line 223, /Users/basti/src/remotestorage/remotestorage.io/_assets/stylesheets/main.scss */
-.guppy-irc-input-container input {
-  width: 100%;
-  padding: 0.3rem;
-}
-
-/* line 228, /Users/basti/src/remotestorage/remotestorage.io/_assets/stylesheets/main.scss */
-.guppy-irc-submit-button-container {
-  width: 15%;
-}
-/* line 230, /Users/basti/src/remotestorage/remotestorage.io/_assets/stylesheets/main.scss */
-.guppy-irc-submit-button-container input {
-  width: 100%;
-}
-
-/* line 236, /Users/basti/src/remotestorage/remotestorage.io/_assets/stylesheets/main.scss */
-main.irc p.powered-by {
-  padding-top: 1.5rem;
-  color: #888;
-  font-size: 0.8rem;
 }
