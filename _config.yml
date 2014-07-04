@@ -1,7 +1,7 @@
 name: remoteStorage
-description: The Official RemoteStorage Blog
-url: http://remotestorage.io/blog
-pygments: true
+description: Open protocol for per-user storage on the Web
+url: http://remotestorage.io
+highlights: true
 sass:
   syntax: scss        # scss|sass
   style:  compressed  # nested|expanded|compact|compressed
