@@ -2,9 +2,9 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>remoteStorage</title>
-    <description>The Official RemoteStorage Blog</description>
-    <link>http://remotestorage.io/blog</link>
-    <atom:link href="http://remotestorage.io/blog/feed.xml" rel="self" type="application/rss+xml" />
+    <description>Open protocol for per-user storage on the Web</description>
+    <link>http://remotestorage.io</link>
+    <atom:link href="http://remotestorage.io/feed.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Almost there</title>
