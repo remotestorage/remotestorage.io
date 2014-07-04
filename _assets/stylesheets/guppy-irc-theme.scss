@@ -1,0 +1,64 @@
+.guppy-irc-container {
+  border: none;
+  width: 100%;
+  padding: 0;
+}
+.guppy-irc-title-container {
+  display: none;
+}
+.guppy-irc-messages-container {
+  width: 100%;
+  height: 300px;
+  padding: 1rem 0;
+  background: #fff;
+  border: 1px solid #E6E6E6;
+  @include border-radius(5px);
+  p {
+    margin: 0;
+    padding: 2px 1rem;
+    line-height: 1.4em;
+    &:last-child {
+      margin-bottom: 1rem;
+    }
+    &.guppy-irc-message-line-to-me {
+      background: #F7F6F2;
+    }
+    &.guppy-irc-status-line {
+      color: #888;
+      font-style: italic;
+    }
+    &.guppy-irc-error-line {
+      color: red;
+      font-style: italic;
+    }
+  }
+}
+.guppy-irc-message-nick {
+  font-weight: normal;
+  color: #888;
+}
+.guppy-irc-message-nick-decorator {
+  margin-right: 3px;
+  color: #888;
+}
+.guppy-irc-input-container {
+  width: 85%;
+  input {
+    width: 100%;
+    padding: 0.3rem;
+  }
+}
+.guppy-irc-submit-button-container {
+  width: 15%;
+  input {
+    width: 100%;
+  }
+}
+
+main.irc {
+  p.powered-by {
+    padding-top: 1.5rem;
+    color: #888;
+    font-size: 0.8rem;
+  }
+}
