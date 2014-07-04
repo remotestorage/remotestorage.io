@@ -2,6 +2,8 @@ name: remoteStorage
 description: Open protocol for per-user storage on the Web
 url: http://remotestorage.io
 highlights: true
+assets:
+  cachebust: none
 sass:
   syntax: scss        # scss|sass
   style:  compressed  # nested|expanded|compact|compressed
