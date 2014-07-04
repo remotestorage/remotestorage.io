@@ -80,6 +80,12 @@ section#welcome {
 
 section.benefits {
   padding: 3rem 0;
+  text-align: center;
+
+  .row > div {
+    margin-bottom: 2rem;
+  }
+
   .pictogram {
     width: 87px;
     height: 100px;
@@ -94,11 +100,6 @@ section.benefits {
         color: #fff;
       }
     }
-  }
-
-  .row > div {
-    text-align: center;
-    padding: 1em 0;
   }
 
   h2 {
