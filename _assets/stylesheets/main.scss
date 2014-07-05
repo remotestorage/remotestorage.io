@@ -147,21 +147,21 @@ main {
       border: 1px solid #E6E6E6;
       margin-bottom: 2rem;
       @include border-radius(5px);
-      header {
-        border-bottom: 1px solid #E6E6E6;
-        h2 {
-          margin: 0 0 0 0;
-          font-size: 2rem;
-          a {
-            text-decoration: underline;
-          }
-        }
-      }
       header, .content {
         padding: 2rem;
       }
+      header {
+        padding-bottom: 0;
+        h2 {
+          margin: 0 0 0 0;
+          font-size: 2rem;
+        }
+      }
       h3 {
         margin: 2rem 0 1.4rem 0;
+      }
+      p {
+        margin-bottom: 1rem;
       }
     }
   }
