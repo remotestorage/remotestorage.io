@@ -17,6 +17,30 @@ a {
 }
 
 section#welcome {
+  &.jumbotron {
+    padding: 0;
+    background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI1NiIgaGVpZ2h0PSIxMDAiPgo8cmVjdCB3aWR0aD0iNTYiIGhlaWdodD0iMTAwIiBmaWxsPSIjMjE5QkUyIj48L3JlY3Q+CjxwYXRoIGQ9Ik0yOCA2NkwwIDUwTDAgMTZMMjggMEw1NiAxNkw1NiA1MEwyOCA2NkwyOCAxMDAiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzM4QTVFNSIgc3Ryb2tlLXdpZHRoPSIyIj48L3BhdGg+CjxwYXRoIGQ9Ik0yOCAwTDI4IDM0TDAgNTBMMCA4NEwyOCAxMDBMNTYgODRMNTYgNTBMMjggMzQiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzRFQUZFOCIgc3Ryb2tlLXdpZHRoPSIyIj48L3BhdGg+Cjwvc3ZnPg==");
+    background-repeat: repeat;
+    .container {
+      padding-top: 4rem;
+      color: #222;
+      text-align: center;
+      height: 430px;
+      background-image: url(/img/hexagon-wide-white-01.svg);
+      background-repeat: no-repeat;
+      background-position: center -60px;
+      background-size: 800px 693px;
+      .hero {
+        img {
+          height: 200px;
+          margin-bottom: 3rem;
+        }
+        p {
+          color: #888;
+        }
+      }
+    }
+  }
 }
 
 .jumbotron {
@@ -24,9 +48,12 @@ section#welcome {
   margin-bottom: 0;
   padding-left: 0;
   padding-right: 0;
-  background: $blue;
+  background-color: $blue;
   color: #fff;
   font-size: 1.5rem;
+  p {
+    font-weight: normal;
+  }
   &.small {
     padding-top: 1em;
     padding-bottom: 0.5em;
