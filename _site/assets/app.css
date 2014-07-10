@@ -4108,8 +4108,8 @@ tbody.collapse.in {
 
 /* line 528, /Users/basti/.rbenv/versions/1.9.3-p194/lib/ruby/gems/1.9.1/gems/bootstrap-sass-3.2.0.0/assets/stylesheets/bootstrap/_navbar.scss */
 .navbar-inverse {
-  background-color: #222222;
-  border-color: #090909;
+  background-color: #333333;
+  border-color: #1a1a1a;
 }
 /* line 532, /Users/basti/.rbenv/versions/1.9.3-p194/lib/ruby/gems/1.9.1/gems/bootstrap-sass-3.2.0.0/assets/stylesheets/bootstrap/_navbar.scss */
 .navbar-inverse .navbar-brand {
@@ -4136,7 +4136,7 @@ tbody.collapse.in {
 /* line 558, /Users/basti/.rbenv/versions/1.9.3-p194/lib/ruby/gems/1.9.1/gems/bootstrap-sass-3.2.0.0/assets/stylesheets/bootstrap/_navbar.scss */
 .navbar-inverse .navbar-nav > .active > a, .navbar-inverse .navbar-nav > .active > a:hover, .navbar-inverse .navbar-nav > .active > a:focus {
   color: white;
-  background-color: #090909;
+  background-color: #1a1a1a;
 }
 /* line 566, /Users/basti/.rbenv/versions/1.9.3-p194/lib/ruby/gems/1.9.1/gems/bootstrap-sass-3.2.0.0/assets/stylesheets/bootstrap/_navbar.scss */
 .navbar-inverse .navbar-nav > .disabled > a, .navbar-inverse .navbar-nav > .disabled > a:hover, .navbar-inverse .navbar-nav > .disabled > a:focus {
@@ -4158,21 +4158,21 @@ tbody.collapse.in {
 /* line 586, /Users/basti/.rbenv/versions/1.9.3-p194/lib/ruby/gems/1.9.1/gems/bootstrap-sass-3.2.0.0/assets/stylesheets/bootstrap/_navbar.scss */
 .navbar-inverse .navbar-collapse,
 .navbar-inverse .navbar-form {
-  border-color: #101010;
+  border-color: #212121;
 }
 /* line 595, /Users/basti/.rbenv/versions/1.9.3-p194/lib/ruby/gems/1.9.1/gems/bootstrap-sass-3.2.0.0/assets/stylesheets/bootstrap/_navbar.scss */
 .navbar-inverse .navbar-nav > .open > a, .navbar-inverse .navbar-nav > .open > a:hover, .navbar-inverse .navbar-nav > .open > a:focus {
-  background-color: #090909;
+  background-color: #1a1a1a;
   color: white;
 }
 @media (max-width: 767px) {
   /* line 604, /Users/basti/.rbenv/versions/1.9.3-p194/lib/ruby/gems/1.9.1/gems/bootstrap-sass-3.2.0.0/assets/stylesheets/bootstrap/_navbar.scss */
   .navbar-inverse .navbar-nav .open .dropdown-menu > .dropdown-header {
-    border-color: #090909;
+    border-color: #1a1a1a;
   }
   /* line 607, /Users/basti/.rbenv/versions/1.9.3-p194/lib/ruby/gems/1.9.1/gems/bootstrap-sass-3.2.0.0/assets/stylesheets/bootstrap/_navbar.scss */
   .navbar-inverse .navbar-nav .open .dropdown-menu .divider {
-    background-color: #090909;
+    background-color: #1a1a1a;
   }
   /* line 610, /Users/basti/.rbenv/versions/1.9.3-p194/lib/ruby/gems/1.9.1/gems/bootstrap-sass-3.2.0.0/assets/stylesheets/bootstrap/_navbar.scss */
   .navbar-inverse .navbar-nav .open .dropdown-menu > li > a {
@@ -4186,7 +4186,7 @@ tbody.collapse.in {
   /* line 621, /Users/basti/.rbenv/versions/1.9.3-p194/lib/ruby/gems/1.9.1/gems/bootstrap-sass-3.2.0.0/assets/stylesheets/bootstrap/_navbar.scss */
   .navbar-inverse .navbar-nav .open .dropdown-menu > .active > a, .navbar-inverse .navbar-nav .open .dropdown-menu > .active > a:hover, .navbar-inverse .navbar-nav .open .dropdown-menu > .active > a:focus {
     color: white;
-    background-color: #090909;
+    background-color: #1a1a1a;
   }
   /* line 629, /Users/basti/.rbenv/versions/1.9.3-p194/lib/ruby/gems/1.9.1/gems/bootstrap-sass-3.2.0.0/assets/stylesheets/bootstrap/_navbar.scss */
   .navbar-inverse .navbar-nav .open .dropdown-menu > .disabled > a, .navbar-inverse .navbar-nav .open .dropdown-menu > .disabled > a:hover, .navbar-inverse .navbar-nav .open .dropdown-menu > .disabled > a:focus {
@@ -5481,21 +5481,26 @@ a {
 }
 
 /* line 13, /Users/basti/src/remotestorage/remotestorage.io/_assets/stylesheets/main.scss */
+.navbar-inverse {
+  border: none;
+}
+
+/* line 17, /Users/basti/src/remotestorage/remotestorage.io/_assets/stylesheets/main.scss */
 .navbar-brand {
   padding: 8px 15px;
 }
-/* line 15, /Users/basti/src/remotestorage/remotestorage.io/_assets/stylesheets/main.scss */
+/* line 19, /Users/basti/src/remotestorage/remotestorage.io/_assets/stylesheets/main.scss */
 .navbar-brand img {
   height: 34px;
 }
 
-/* line 21, /Users/basti/src/remotestorage/remotestorage.io/_assets/stylesheets/main.scss */
+/* line 25, /Users/basti/src/remotestorage/remotestorage.io/_assets/stylesheets/main.scss */
 section#welcome.jumbotron {
   padding: 0;
   background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI1NiIgaGVpZ2h0PSIxMDAiPgo8cmVjdCB3aWR0aD0iNTYiIGhlaWdodD0iMTAwIiBmaWxsPSIjMjE5QkUyIj48L3JlY3Q+CjxwYXRoIGQ9Ik0yOCA2NkwwIDUwTDAgMTZMMjggMEw1NiAxNkw1NiA1MEwyOCA2NkwyOCAxMDAiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzM4QTVFNSIgc3Ryb2tlLXdpZHRoPSIyIj48L3BhdGg+CjxwYXRoIGQ9Ik0yOCAwTDI4IDM0TDAgNTBMMCA4NEwyOCAxMDBMNTYgODRMNTYgNTBMMjggMzQiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzRFQUZFOCIgc3Ryb2tlLXdpZHRoPSIyIj48L3BhdGg+Cjwvc3ZnPg==");
   background-repeat: repeat;
 }
-/* line 25, /Users/basti/src/remotestorage/remotestorage.io/_assets/stylesheets/main.scss */
+/* line 29, /Users/basti/src/remotestorage/remotestorage.io/_assets/stylesheets/main.scss */
 section#welcome.jumbotron .container {
   padding-top: 4rem;
   color: #222;
@@ -5506,17 +5511,17 @@ section#welcome.jumbotron .container {
   background-position: center -60px;
   background-size: 800px 693px;
 }
-/* line 35, /Users/basti/src/remotestorage/remotestorage.io/_assets/stylesheets/main.scss */
+/* line 39, /Users/basti/src/remotestorage/remotestorage.io/_assets/stylesheets/main.scss */
 section#welcome.jumbotron .container .hero img {
   height: 200px;
   margin-bottom: 3rem;
 }
-/* line 39, /Users/basti/src/remotestorage/remotestorage.io/_assets/stylesheets/main.scss */
+/* line 43, /Users/basti/src/remotestorage/remotestorage.io/_assets/stylesheets/main.scss */
 section#welcome.jumbotron .container .hero p {
   color: #888;
 }
 
-/* line 47, /Users/basti/src/remotestorage/remotestorage.io/_assets/stylesheets/main.scss */
+/* line 51, /Users/basti/src/remotestorage/remotestorage.io/_assets/stylesheets/main.scss */
 .jumbotron {
   font-weight: normal;
   margin-bottom: 0;
@@ -5526,38 +5531,38 @@ section#welcome.jumbotron .container .hero p {
   color: #fff;
   font-size: 1.5rem;
 }
-/* line 55, /Users/basti/src/remotestorage/remotestorage.io/_assets/stylesheets/main.scss */
+/* line 59, /Users/basti/src/remotestorage/remotestorage.io/_assets/stylesheets/main.scss */
 .jumbotron p {
   font-weight: normal;
 }
-/* line 58, /Users/basti/src/remotestorage/remotestorage.io/_assets/stylesheets/main.scss */
+/* line 62, /Users/basti/src/remotestorage/remotestorage.io/_assets/stylesheets/main.scss */
 .jumbotron.small {
   padding-top: 1em;
   padding-bottom: 0.5em;
 }
-/* line 61, /Users/basti/src/remotestorage/remotestorage.io/_assets/stylesheets/main.scss */
+/* line 65, /Users/basti/src/remotestorage/remotestorage.io/_assets/stylesheets/main.scss */
 .jumbotron.small h2 {
   margin-top: 0;
   font-size: 2rem;
 }
-/* line 65, /Users/basti/src/remotestorage/remotestorage.io/_assets/stylesheets/main.scss */
+/* line 69, /Users/basti/src/remotestorage/remotestorage.io/_assets/stylesheets/main.scss */
 .jumbotron.small p.actions {
   padding: 3px 0 0 0;
   text-align: right;
 }
-/* line 70, /Users/basti/src/remotestorage/remotestorage.io/_assets/stylesheets/main.scss */
+/* line 74, /Users/basti/src/remotestorage/remotestorage.io/_assets/stylesheets/main.scss */
 .jumbotron h2 {
   font-size: 2.5rem;
 }
-/* line 72, /Users/basti/src/remotestorage/remotestorage.io/_assets/stylesheets/main.scss */
+/* line 76, /Users/basti/src/remotestorage/remotestorage.io/_assets/stylesheets/main.scss */
 .jumbotron h2 a {
   color: #fff;
 }
-/* line 76, /Users/basti/src/remotestorage/remotestorage.io/_assets/stylesheets/main.scss */
+/* line 80, /Users/basti/src/remotestorage/remotestorage.io/_assets/stylesheets/main.scss */
 .jumbotron p.actions {
   padding-top: 1rem;
 }
-/* line 79, /Users/basti/src/remotestorage/remotestorage.io/_assets/stylesheets/main.scss */
+/* line 83, /Users/basti/src/remotestorage/remotestorage.io/_assets/stylesheets/main.scss */
 .jumbotron .btn-default {
   margin-right: 0.5rem;
   background: none;
@@ -5566,72 +5571,73 @@ section#welcome.jumbotron .container .hero p {
 }
 
 @media screen and (min-width: 768px) {
-  /* line 88, /Users/basti/src/remotestorage/remotestorage.io/_assets/stylesheets/main.scss */
+  /* line 92, /Users/basti/src/remotestorage/remotestorage.io/_assets/stylesheets/main.scss */
   .jumbotron {
     font-size: 1.5rem;
   }
-  /* line 90, /Users/basti/src/remotestorage/remotestorage.io/_assets/stylesheets/main.scss */
+  /* line 94, /Users/basti/src/remotestorage/remotestorage.io/_assets/stylesheets/main.scss */
   .jumbotron.small {
     padding-top: 1.5em;
     padding-bottom: 1em;
   }
-  /* line 93, /Users/basti/src/remotestorage/remotestorage.io/_assets/stylesheets/main.scss */
+  /* line 97, /Users/basti/src/remotestorage/remotestorage.io/_assets/stylesheets/main.scss */
   .jumbotron.small h2 {
     font-size: 2.5rem;
   }
 }
 @media screen and (min-width: 992px) {
-  /* line 102, /Users/basti/src/remotestorage/remotestorage.io/_assets/stylesheets/main.scss */
+  /* line 106, /Users/basti/src/remotestorage/remotestorage.io/_assets/stylesheets/main.scss */
   .jumbotron.small {
     padding-top: 2em;
     padding-bottom: 1.5em;
   }
 }
-/* line 109, /Users/basti/src/remotestorage/remotestorage.io/_assets/stylesheets/main.scss */
+/* line 113, /Users/basti/src/remotestorage/remotestorage.io/_assets/stylesheets/main.scss */
 section.benefits {
   padding: 3rem 0;
   text-align: center;
+  background: #fff;
 }
-/* line 113, /Users/basti/src/remotestorage/remotestorage.io/_assets/stylesheets/main.scss */
+/* line 118, /Users/basti/src/remotestorage/remotestorage.io/_assets/stylesheets/main.scss */
 section.benefits .row > div {
   margin-bottom: 2rem;
 }
-/* line 117, /Users/basti/src/remotestorage/remotestorage.io/_assets/stylesheets/main.scss */
+/* line 122, /Users/basti/src/remotestorage/remotestorage.io/_assets/stylesheets/main.scss */
 section.benefits .pictogram {
   width: 87px;
   height: 100px;
   margin: 0 auto;
 }
-/* line 121, /Users/basti/src/remotestorage/remotestorage.io/_assets/stylesheets/main.scss */
+/* line 126, /Users/basti/src/remotestorage/remotestorage.io/_assets/stylesheets/main.scss */
 section.benefits .pictogram.hexagon {
   position: relative;
   background-image: url(/img/hexagon-yellow-01.svg);
   background-size: contain;
   padding-top: 26px;
 }
-/* line 126, /Users/basti/src/remotestorage/remotestorage.io/_assets/stylesheets/main.scss */
+/* line 131, /Users/basti/src/remotestorage/remotestorage.io/_assets/stylesheets/main.scss */
 section.benefits .pictogram.hexagon i {
   font-size: 50px;
   color: #fff;
 }
-/* line 133, /Users/basti/src/remotestorage/remotestorage.io/_assets/stylesheets/main.scss */
+/* line 138, /Users/basti/src/remotestorage/remotestorage.io/_assets/stylesheets/main.scss */
 section.benefits h2 {
   font-size: 1.5rem;
 }
 
-/* line 138, /Users/basti/src/remotestorage/remotestorage.io/_assets/stylesheets/main.scss */
+/* line 143, /Users/basti/src/remotestorage/remotestorage.io/_assets/stylesheets/main.scss */
 main {
   padding: 2rem 0;
 }
-/* line 140, /Users/basti/src/remotestorage/remotestorage.io/_assets/stylesheets/main.scss */
+/* line 145, /Users/basti/src/remotestorage/remotestorage.io/_assets/stylesheets/main.scss */
 main aside {
   padding-right: 2rem;
 }
-/* line 142, /Users/basti/src/remotestorage/remotestorage.io/_assets/stylesheets/main.scss */
+/* line 147, /Users/basti/src/remotestorage/remotestorage.io/_assets/stylesheets/main.scss */
 main aside section {
   margin: 0 0 2rem;
 }
-/* line 145, /Users/basti/src/remotestorage/remotestorage.io/_assets/stylesheets/main.scss */
+/* line 150, /Users/basti/src/remotestorage/remotestorage.io/_assets/stylesheets/main.scss */
 main aside h3 {
   font-size: 1rem;
   color: #888;
@@ -5639,31 +5645,31 @@ main aside h3 {
   font-weight: normal;
   text-transform: uppercase;
 }
-/* line 152, /Users/basti/src/remotestorage/remotestorage.io/_assets/stylesheets/main.scss */
+/* line 157, /Users/basti/src/remotestorage/remotestorage.io/_assets/stylesheets/main.scss */
 main aside.recent-posts h3 {
   margin: 0 0 2rem;
 }
-/* line 155, /Users/basti/src/remotestorage/remotestorage.io/_assets/stylesheets/main.scss */
+/* line 160, /Users/basti/src/remotestorage/remotestorage.io/_assets/stylesheets/main.scss */
 main aside ul {
   list-style: none;
   margin: 0;
   padding: 0;
 }
-/* line 159, /Users/basti/src/remotestorage/remotestorage.io/_assets/stylesheets/main.scss */
+/* line 164, /Users/basti/src/remotestorage/remotestorage.io/_assets/stylesheets/main.scss */
 main aside ul h4 {
   font-weight: normal;
   font-size: 1.2rem;
   margin: 0 0 0.5rem 0;
 }
-/* line 164, /Users/basti/src/remotestorage/remotestorage.io/_assets/stylesheets/main.scss */
+/* line 169, /Users/basti/src/remotestorage/remotestorage.io/_assets/stylesheets/main.scss */
 main aside ul p {
   margin: 0;
 }
-/* line 167, /Users/basti/src/remotestorage/remotestorage.io/_assets/stylesheets/main.scss */
+/* line 172, /Users/basti/src/remotestorage/remotestorage.io/_assets/stylesheets/main.scss */
 main aside ul li {
   margin-bottom: 1.2rem;
 }
-/* line 173, /Users/basti/src/remotestorage/remotestorage.io/_assets/stylesheets/main.scss */
+/* line 178, /Users/basti/src/remotestorage/remotestorage.io/_assets/stylesheets/main.scss */
 main.blog article {
   background: #fff;
   border: 1px solid #E6E6E6;
@@ -5674,30 +5680,30 @@ main.blog article {
   -o-border-radius: 5px;
   border-radius: 5px;
 }
-/* line 178, /Users/basti/src/remotestorage/remotestorage.io/_assets/stylesheets/main.scss */
+/* line 183, /Users/basti/src/remotestorage/remotestorage.io/_assets/stylesheets/main.scss */
 main.blog article header, main.blog article .content {
   padding: 2rem;
 }
-/* line 181, /Users/basti/src/remotestorage/remotestorage.io/_assets/stylesheets/main.scss */
+/* line 186, /Users/basti/src/remotestorage/remotestorage.io/_assets/stylesheets/main.scss */
 main.blog article header {
   padding-bottom: 0;
 }
-/* line 183, /Users/basti/src/remotestorage/remotestorage.io/_assets/stylesheets/main.scss */
+/* line 188, /Users/basti/src/remotestorage/remotestorage.io/_assets/stylesheets/main.scss */
 main.blog article header h2 {
   margin: 0 0 0 0;
   font-size: 2rem;
 }
-/* line 188, /Users/basti/src/remotestorage/remotestorage.io/_assets/stylesheets/main.scss */
+/* line 193, /Users/basti/src/remotestorage/remotestorage.io/_assets/stylesheets/main.scss */
 main.blog article h3 {
   margin: 2rem 0 1.4rem 0;
 }
-/* line 191, /Users/basti/src/remotestorage/remotestorage.io/_assets/stylesheets/main.scss */
+/* line 196, /Users/basti/src/remotestorage/remotestorage.io/_assets/stylesheets/main.scss */
 main.blog article p {
   margin-bottom: 1rem;
 }
 
 @media screen and (min-width: 992px) {
-  /* line 199, /Users/basti/src/remotestorage/remotestorage.io/_assets/stylesheets/main.scss */
+  /* line 204, /Users/basti/src/remotestorage/remotestorage.io/_assets/stylesheets/main.scss */
   main {
     padding: 3rem 0;
   }
