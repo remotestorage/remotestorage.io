@@ -10,6 +10,10 @@ a {
   color: $blue;
 }
 
+.navbar-inverse {
+  border: none;
+}
+
 .navbar-brand {
   padding: 8px 15px;
   img {
@@ -109,6 +113,7 @@ section#welcome {
 section.benefits {
   padding: 3rem 0;
   text-align: center;
+  background: #fff;
 
   .row > div {
     margin-bottom: 2rem;
