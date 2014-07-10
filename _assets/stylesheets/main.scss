@@ -27,7 +27,7 @@ section#welcome {
     background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI1NiIgaGVpZ2h0PSIxMDAiPgo8cmVjdCB3aWR0aD0iNTYiIGhlaWdodD0iMTAwIiBmaWxsPSIjMjE5QkUyIj48L3JlY3Q+CjxwYXRoIGQ9Ik0yOCA2NkwwIDUwTDAgMTZMMjggMEw1NiAxNkw1NiA1MEwyOCA2NkwyOCAxMDAiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzM4QTVFNSIgc3Ryb2tlLXdpZHRoPSIyIj48L3BhdGg+CjxwYXRoIGQ9Ik0yOCAwTDI4IDM0TDAgNTBMMCA4NEwyOCAxMDBMNTYgODRMNTYgNTBMMjggMzQiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzRFQUZFOCIgc3Ryb2tlLXdpZHRoPSIyIj48L3BhdGg+Cjwvc3ZnPg==");
     background-repeat: repeat;
     .container {
-      padding-top: 4rem;
+      padding-top: 48px;
       color: #222;
       text-align: center;
       height: 430px;
@@ -37,8 +37,8 @@ section#welcome {
       background-size: 800px 693px;
       .hero {
         img {
-          height: 200px;
-          margin-bottom: 3rem;
+          height: 228px;
+          margin-bottom: 22px;
         }
         p {
           color: #888;
