@@ -5502,7 +5502,7 @@ section#welcome.jumbotron {
 }
 /* line 29, /Users/basti/src/remotestorage/remotestorage.io/_assets/stylesheets/main.scss */
 section#welcome.jumbotron .container {
-  padding-top: 4rem;
+  padding-top: 48px;
   color: #222;
   text-align: center;
   height: 430px;
@@ -5513,8 +5513,8 @@ section#welcome.jumbotron .container {
 }
 /* line 39, /Users/basti/src/remotestorage/remotestorage.io/_assets/stylesheets/main.scss */
 section#welcome.jumbotron .container .hero img {
-  height: 200px;
-  margin-bottom: 3rem;
+  height: 228px;
+  margin-bottom: 22px;
 }
 /* line 43, /Users/basti/src/remotestorage/remotestorage.io/_assets/stylesheets/main.scss */
 section#welcome.jumbotron .container .hero p {
