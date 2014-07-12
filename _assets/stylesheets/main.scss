@@ -58,13 +58,18 @@ section#welcome {
   font-size: 1.5rem;
   p {
     font-weight: normal;
+    margin: 0;
   }
   &.small {
     padding-top: 1em;
-    padding-bottom: 0.5em;
+    padding-bottom: 1em;
     h2 {
       margin-top: 0;
+      margin-bottom: 0;
       font-size: 2rem;
+    }
+    p.subhead {
+      margin-top: 10px;
     }
     p.actions {
       padding: 3px 0 0 0;
@@ -93,7 +98,7 @@ section#welcome {
     font-size: 1.5rem;
     &.small {
       padding-top: 1.5em;
-      padding-bottom: 1em;
+      padding-bottom: 1.5em;
       h2 {
         font-size: 2.5rem;
       }
@@ -105,9 +110,14 @@ section#welcome {
   .jumbotron {
     &.small {
       padding-top: 2em;
-      padding-bottom: 1.5em;
+      padding-bottom: 2em;
     }
   }
+}
+
+.jumbotron.get {
+  text-align: center;
+  // background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI1NiIgaGVpZ2h0PSIxMDAiPgo8cmVjdCB3aWR0aD0iNTYiIGhlaWdodD0iMTAwIiBmaWxsPSIjMjE5QkUyIj48L3JlY3Q+CjxwYXRoIGQ9Ik0yOCA2NkwwIDUwTDAgMTZMMjggMEw1NiAxNkw1NiA1MEwyOCA2NkwyOCAxMDAiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzM4QTVFNSIgc3Ryb2tlLXdpZHRoPSIyIj48L3BhdGg+CjxwYXRoIGQ9Ik0yOCAwTDI4IDM0TDAgNTBMMCA4NEwyOCAxMDBMNTYgODRMNTYgNTBMMjggMzQiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzRFQUZFOCIgc3Ryb2tlLXdpZHRoPSIyIj48L3BhdGg+Cjwvc3ZnPg==");
 }
 
 section.benefits {
