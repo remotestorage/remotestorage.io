@@ -12,8 +12,13 @@
       .providers
         h3 Get an account with a hoster
         :markdown
-          Storage providers are still preparing for the brandnew remoteStorage.
-          In the meantime, you can get an account with one of these services:
+          Using a hosted accounts means entrusting someone else with your data,
+          in exchange for not having to set up or maintain a storage server
+          yourself.
+
+          As remoteStorage is an open protocol, you can use migration programs
+          to move all of your data to any other remoteStorage-capable provider,
+          server or local machine at any time.
         ul
           li
             :markdown
@@ -26,11 +31,34 @@
               Providing remoteStorage to users, but not on this list? [Add your
               service](https://github.com/remotestorage/remotestorage.io/edit/master/views/get/index.jade)!
 
+        h3 Third-party Integrations
+        :markdown
+          You can use remoteStorage with other open-source cloud software,
+          which integrates server functionality either directly or via add-ons.
+          You can have someone host it for you, or set up your own server.
+        ul
+          li
+            :markdown
+              #### [Cozy Cloud](http://cozy.io/)
+              Cozy is "a personal cloud you can host, hack and delete". There's
+              a remoteStorage add-on available. The [company behind
+              it](https://www.cozycloud.cc/) is offering free hosted accounts for
+              trials as well.
+          li
+            :markdown
+              #### Add yours!
+              Interested in integrating remoteStorage in your open-source cloud
+              project? [Tell
+              us!](http://community.remotestorage.io/category/integrations) It
+              might get [done in a
+              day](http://blog.cozycloud.cc/news/2014/08/12/when-unhosted-meets-cozy-cloud/).
+
       .selfhost
         h3 Host your own storage server
         :markdown
-          You can set up remoteStorage on your own server by using one of the
-          following implementations, or [creating your own](/provide):
+          You can set up remoteStorage on your own server or integrate it into
+          your infrastructure by using one of the following implementations, or
+          [creating your own](/provide):
         ul
           li
             h4
@@ -38,6 +66,13 @@
             :markdown
               remoteStorage server based on node.js. Supports both Redis and the
               filesystem as storage backend.
+          li
+            h4
+              a(href="https://www.npmjs.org/package/remotestorage-server") remotestorage-server
+            :markdown
+              An NPM package you can use as basis for your own remoteStorage
+              server, implementing the core HTTP behavior. Always supports the
+              latest protocol version.
           li
             h4
               a(href="https://github.com/remotestorage/rs-serve") rs-serve
@@ -52,30 +87,19 @@
               compatible at the moment.
           li
             h4
-              a(href="https://github.com/remotestorage/remotestorage-ruby") remoteStorage-ruby
-            :markdown
-              Basic remoteStorage server written in Ruby, storing data in PostgreSQL.
-          li
-            h4
               a(href="https://github.com/5apps/liquor-cabinet") Liquor Cabinet
             :markdown
               remoteStorage server API based on Sinatra (Ruby). Excludes the
               OAuth portion! Supports multiple backends, but only Riak is
               implemented at the moment.
-          // li
-          //   h4
-          //     a(href="http://owncloud.org") OwnCloud
-          //   :markdown
-          //     Open-source personal cloud platform, running on the LAMP stack.
-          //     Currently needs [an
-          //     extension](https://github.com/michielbdejong/owncloud-owa), which
-          //     will be included by default soon.
+          li
+            h4
+              a(href="https://github.com/remotestorage/remotestorage-ruby") remoteStorage-ruby
+            :markdown
+              Basic remoteStorage server written in Ruby, storing data in
+              PostgreSQL. Uses a deprecated version of the protocol (`2012.04`).
           li
             :markdown
               #### Add yours!
               Why not [create your own storage server](/provide)? If you do, [add it to this
               list](https://github.com/remotestorage/remotestorage.io/edit/master/views/get/index.jade)!
-
-    .unfinished
-      :markdown
-        This page is still incomplete. Check back soon.
