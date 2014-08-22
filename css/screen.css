@@ -636,7 +636,7 @@ section.content .get-storage .providers ul,
 section.content .get-storage .selfhost ul {
   list-style: none;
   margin-left: 0;
-  margin-bottom: 0;
+  margin-bottom: 40px;
 }
 section.content .get-storage .providers li,
 section.content .get-storage .selfhost li {
