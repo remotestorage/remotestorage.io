@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Adding remoteStorage to your app</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/assets/app.css">
+    <script src="/assets/main.js"></script>
+    <link rel="shortcut icon" href="/assets/favicon.png" type="image/x-icon">
+<link rel="apple-touch-icon-precomposed" href="/assets/favicon-touch.png">
+
+    <link rel="alternate" type="application/atom+xml" title="The remoteStorage Blog" href="/blog/feed.xml" />
+  </head>
+  <body>
+    <nav class="navbar navbar-inverse topbar" role="navigation">
+      <!-- Brand and toggle get grouped for better mobile display -->
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="/">
+            <img src="/img/remotestorage-wide.svg">
+          </a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+          <ul class="nav navbar-nav navbar-right">
+            <!-- <li class="active"><a href="#">Link</a></li> -->
+            <li><a href="/get/">Get storage</a></li>
+            <li><a href="https://apps.unhosted.org/">Apps</a></li>
+            <li>
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Community <b class="caret"></b></a>
+              <ul class="dropdown-menu">
+                <li><a href="http://community.remotestorage.io">Forums</a></li>
+                <li><a href="/irc/">Chatroom</a></li>
+                <li><a href="http://community.remotestorage.io/category/events">Events</a></li>
+                <li><a href="/blog/">Blog</a></li>
+                <!-- <li class="divider"></li> -->
+                <li><a href="https://twitter.com/remotestorage_" target="_blank">Twitter</a></li>
+              </ul>
+            </li>
+            <li>
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Developers <b class="caret"></b></a>
+              <ul class="dropdown-menu">
+                <li><a href="/integrate/">remoteStorage.js</a></li>
+                <li><a href="/doc/code/">JavaScript API docs</a></li>
+                <li class="divider"></li>
+                <li><a href="/provide/">Provide storage</a></li>
+                <li class="divider"></li>
+                <li><a href="http://tools.ietf.org/html/draft-dejong-remotestorage-03">Protocol specification</a></li>
+              </ul>
+            </li>
+            <li><a href="/blog/">Blog</a></li>
+          </ul>
+        </div><!-- /.navbar-collapse -->
+      </div>
+    </nav>
+
+    <section class="jumbotron small get">
+  <div class="container">
+    <h2>Getting started</h2>
+    <p class="subhead">Adding remoteStorage to your app</p>
+  </div>
+</section>
+  <div class="container">
+    <section class="content">
+      <div class="integrate"><h3 id="adding-remotestorage-to-your-app">Adding remoteStorage to your app</h3>
+        <p>First, download the latest remoteStorage.js release linked above, and
+        add it to your page:</p>
+        <pre><code>&lt;script type=&quot;text/javascript&quot; src=&quot;remoteStorage.min.js&quot;&gt;&lt;/script&gt;</code></pre>
+        <h4 id="create-a-module">Create a module</h4>
+        <p>remoteStorage.js is based on modules, so if you&#39;re not using an
+        existing one, define a new reusable module in order to access and
+        manipulate data from your app.</p>
+        <p>The <a href="http://remotestorage.io/doc/code/files/modules-js.html">defineModule</a>
+        method expects a module name and a builder function.  The builder
+        will be called immediately, with two arguments, which are both instances of
+        <a href="http://remotestorage.io/doc/code/files/baseclient-js.html">BaseClient</a>:</p>
+        <pre><code>RemoteStorage.defineModule(&#39;tasks&#39;, function(privateClient, publicClient) {
+
+          // Define a common data type using JSON Schema
+          privateClient.declareType(&#39;task&#39;, {
+            &quot;description&quot;: &quot;a task&quot;,
+            &quot;type&quot;: &quot;object&quot;,
+            &quot;properties&quot;: {
+              &quot;id&quot;: {
+                &quot;type&quot;: &quot;string&quot;,
+                &quot;format&quot;: &quot;id&quot;
+              },
+              &quot;title&quot;: {
+                &quot;type&quot;: &quot;string&quot;
+              },
+              &quot;completed&quot;: {
+                &quot;type&quot;: &quot;boolean&quot;
+              }
+            }
+          });
+        
+          return {
+            exports: {
+              // Add functions for retrieving and manipulating data using
+              // methods provided by BaseClient
+              addTask: function (title) {
+                var id = new Date().getTime().toString();
+                return privateClient.storeObject(&#39;task&#39;, id, {
+                  id: id,
+                  title: title,
+                  completed: false
+                });
+              }
+              // define more functions...
+            }
+          };
+        });</code></pre>
+        <h4 id="using-the-module-in-your-app">Using the module in your app</h4>
+        <p>First, you need to <a href="http://remotestorage.io/doc/code/files/access-js.html#RemoteStorage.Access.claim">claim access</a>
+        for the module:</p>
+        <pre><code>remoteStorage.access.claim(&#39;tasks&#39;, &#39;rw&#39;);</code></pre>
+        <p>Then you can <a href="http://remotestorage.io/doc/code/files/widget-js.html#RemoteStorage.Widget.displayWidget">include the remoteStorage widget</a>,
+        which allows the user to connect to their storage server:</p>
+        <pre><code>remoteStorage.displayWidget();</code></pre>
+        <p>Now create your first task! You can start storing data immediately,
+        even before the user has connected their storage account:</p>
+        <pre><code>remoteStorage.tasks.addTask(&#39;Conquer the world&#39;).then(
+          function(){
+            // object was stored
+          },
+          function(error) {
+            // something went wrong
+          }
+        );</code></pre>
+        <p>That&#39;s it. Now add some more functions to the module, or <a href="https://github.com/remotestorage/modules">check out the
+        existing modules</a>.
+        Whenever you create a new module, you should share it with the
+        community, so that apps stay interoperable and everybody&#39;s happy.</p>
+
+      </div>
+    </section>
+  </div>
+</div>
+</html>
+
+
+  </body>
+</html>
