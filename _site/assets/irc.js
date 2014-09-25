@@ -69,10 +69,11 @@
   var app = 'guppy-irc';
   var document = window.document;
   var SockethubClient = window.SockethubClient;
+  var instances = {}; // guppy-irc object instances
 
   if ((typeof SockethubClient === 'undefined') ||
       (typeof SockethubClient.connect === 'undefined')) {
-    console.log(app + ' ERROR: SockethubClient object not found, be sure to include sockethub-client.js before guppy-irc.js.');
+    console.error(app + ' ERROR: SockethubClient object not found, be sure to include sockethub-client.js before guppy-irc.js.');
     return false;
   }
 
@@ -169,7 +170,6 @@
       x[1] = add32(b, x[1]);
       x[2] = add32(c, x[2]);
       x[3] = add32(d, x[3]);
-
     }
 
     function cmn(q, a, b, x, s, t) {
@@ -337,34 +337,63 @@
    *
    *   config object
    */
-  function getGuppyConfig(e) {
-    var cfg = {};
-    cfg.id = e.id;
-    cfg.title = e.getAttribute('data-title') || 'Guppy IRC Console';
-    cfg.width = e.getAttribute('data-width');
-    cfg.height = e.getAttribute('data-height');
-    cfg.server = e.getAttribute('data-server') || 'irc.freenode.net';
-    cfg.channel = e.getAttribute('data-channel') || '#sockethub';
-    cfg.nick = e.getAttribute('data-nick') || 'guppy_user';
-    cfg.displayName = e.getAttribute('data-display-name') || 'Guppy User';
-    cfg.password = e.getAttribute('data-password');
-    cfg.autoconnect = e.getAttribute('data-autoconnect');
-    if (cfg.autoconnect === 'true') {
-      cfg.autoconnect = true;
-    } else {
-      cfg.autoconnect = false;
+  function getGuppyConfig(e, cfg) {
+    if (typeof cfg !== 'object') {
+      cfg = {};
     }
+    cfg.id = cfg.id || e.id || 'UndefinedID';
+    cfg.title = cfg.title || e.getAttribute('data-title');
+    cfg.width = cfg.width || e.getAttribute('data-width');
+    cfg.height = cfg.height || e.getAttribute('data-height');
+    cfg.server = cfg.server || e.getAttribute('data-server') || 'irc.freenode.net';
+    cfg.channel = cfg.channel || e.getAttribute('data-channel') || '#sockethub';
+    cfg.nick = cfg.nick || e.getAttribute('data-nick') || 'guppy_user';
+    cfg.renderWidget = cfg.renderWidget || e.getAttribute('data-render-widget');
+    cfg.enableNickChange = cfg.enableNickChange || e.getAttribute('data-enable-nick-change');
+    cfg.enableNickChangeButton = cfg.enableNickChangeButton || e.getAttribute('data-enable-nick-change-button');
+    cfg.enableMessageButton = cfg.enableMessageButton || e.getAttribute('data-enable-message-button');
+    cfg.enableHistory = cfg.enableHistory || e.getAttribute('data-enable-history');
+    cfg.enableUserList= cfg.enableUserList || e.getAttribute('data-enable-user-list');
+    cfg.displayName = cfg.displayName || e.getAttribute('data-display-name') || 'Guppy User';
+    cfg.password = cfg.password || e.getAttribute('data-password');
+    cfg.autoconnect = cfg.autoconnect || e.getAttribute('data-autoconnect');
+
+
+    //
+    // check for preset IDs for components
+    //
+    cfg.definedElements = {};
+    cfg.definedElements.infoContainer =  document.getElementById(cfg.id + '-info');
+    cfg.definedElements.userListContainer =  document.getElementById(cfg.id + '-user-list-container');
+    cfg.definedElements.controlsContainer =  document.getElementById(cfg.id + '-controls');
+    cfg.definedElements.messageInput =  document.getElementById(cfg.id + '-message-input');
+    cfg.definedElements.messageSubmitButton =  document.getElementById(cfg.id + '-message-submit-button');
+    cfg.definedElements.messagesContainer=  document.getElementById(cfg.id + '-messages-container');
+    cfg.definedElements.nickChangeInput =  document.getElementById(cfg.id + '-nick-change-input');
+    cfg.definedElements.nickChangeSubmitButton =  document.getElementById(cfg.id + '-nick-change-submit-button');
+
+    //
+    // set boolean flags
+    //
+    cfg.renderWidget  = (cfg.renderWidget === 'false') ? false : true;
+    cfg.autoconnect = (cfg.autoconnect === 'true') ? true : false;
+    cfg.enableNickChange = (cfg.enableNickChange === 'false') ? false : true;
+    cfg.enableNickChangeButton = (cfg.enableNickChangeButton === 'false') ? false : true;
+    cfg.enableMessageButton = (cfg.enableMessageButton === 'false') ? false : true;
+    cfg.enableHistory = (cfg.enableHistory === 'false') ? false : true;
+    cfg.enableUserList = (cfg.enableUserList === 'false') ? false : true;
+
     if ((typeof cfg.password === 'string') && (cfg.password === '')) {
       cfg.password = undefined;
     }
 
     // sockethub config
-    cfg.sockethub = {};
-    cfg.sockethub.host = e.getAttribute('data-sockethub-host');
-    cfg.sockethub.port = e.getAttribute('data-sockethub-port');
-    cfg.sockethub.tls = e.getAttribute('data-sockethub-tls');
-    cfg.sockethub.path = e.getAttribute('data-sockethub-path');
-    cfg.sockethub.secret = e.getAttribute('data-sockethub-secret');
+    cfg.sockethub = (typeof cfg.sockethub === 'object') ? cfg.sockethub : {};
+    cfg.sockethub.host = cfg.sockethub.host || e.getAttribute('data-sockethub-host');
+    cfg.sockethub.port = cfg.sockethub.port || e.getAttribute('data-sockethub-port');
+    cfg.sockethub.tls = cfg.sockethub.tls || e.getAttribute('data-sockethub-tls');
+    cfg.sockethub.path = cfg.sockethub.path || e.getAttribute('data-sockethub-path');
+    cfg.sockethub.secret = cfg.sockethub.secret || e.getAttribute('data-sockethub-secret');
     if (cfg.sockethub.tls === 'true') {
       cfg.sockethub.tls = true;
       cfg.sockethub.connectString = 'wss://';
@@ -401,6 +430,7 @@
    *   UniqueNick string
    */
   function generateUniqueNick(cfg, key) {
+    key = key + '-uid';
     var uid = window.localStorage.getItem(key);
     if (!uid) {
       // generate random number
@@ -430,17 +460,17 @@
    *
    *   Guppy instance
    */
-  var instances = []; // guppy-irc object instances
-  var Guppy = function (e) {
+  var Guppy = function (e, cfg) {
     var self = this;
     self.setState('initializing');
-    self.config = getGuppyConfig(e);
+    self.config = getGuppyConfig(e, cfg);
     self.id = self.config.id;
     self.log_id = app + '#' + self.id;
     self.DOMElements = {};
     self.DOMElements.original = e;
 
-    self.config.nick = generateUniqueNick(self.config, self.log_id); // make sure each user is unique
+    // make sure each user is unique
+    self.config.nick = self.getNick() || generateUniqueNick(self.config, self.log_id);
 
     console.log('NEW GUPPY ' + self.id + ' nick: ' + self.config.nick + ' :', self.config);
 
@@ -456,38 +486,50 @@
         self.sockethubClient = sc;
       }
 
-      // set our credentials for the sockethub platform
-      // (does not activate the IRC session, just stores the data)
-      var credentialObject = {};
-      self.actor = {
-        address: self.config.nick,
-        name: self.config.displayName
-      };
-      credentialObject[self.config.nick] = {
-        nick: self.config.nick,
-        password: self.config.password,
-        server: self.config.server,
-        channels: [ self.config.channel ],
-        actor: self.actor
-      };
-
       function joinRooms() {
-        sc.set('irc', {
-          credentials: credentialObject
+        // set our credentials for the sockethub platform
+        // (does not activate the IRC session, just stores the data)
+        self.actor = {
+          address: self.config.nick,
+          name: self.config.displayName
+        };
+
+        sc.sendObject({
+          platform: 'irc',
+          verb: 'set',
+          actor: self.actor,
+          object: {
+            objectType: 'credentials',
+            nick: self.config.nick,
+            password: self.config.password,
+            server: self.config.server,
+          }
         }).then(function () {
           // successful set credentials
           console.log(self.log_id + ' set credentials!');
           return sc.sendObject({
-            verb: 'update',
+            verb: 'join',
             platform: 'irc',
             actor: self.actor,
-            target: []
+            target: [{ address: self.config.channel }]
           });
         }).then(function () {
           console.log(self.log_id + ' connected to ' + self.config.channel);
-          self.displaySystemMessage('status', 'connected to ' + self.config.server +
-                                              ' on channel ' + self.config.channel);
+          self.displaySystemMessage('status', 'connected to ' + self.config.server);
+                                              //' on channel ' + self.config.channel);
           self.setState('connected');
+
+          return sc.sendObject({
+            verb: 'observe',
+            platform: 'irc',
+            actor: self.actor,
+            target: [{
+              address: self.config.channel
+            }],
+            object: {
+              objectType: 'attendance'
+            }
+          });
         }, function (err) {
           // error setting credentials
           self.setError(err.message, 'Sockethub Error: ' + err);
@@ -495,10 +537,59 @@
       }
       joinRooms();
 
-      sc.on('message', function (obj) {
-        if ((obj.platform === 'irc') &&
-            (obj.verb === 'send')) {
-          self.displayMessage(obj);
+      sc.on('message', function (m) {
+        if (m.platform !== 'irc') {
+          console.log("SC received object for unkown platform: ", m);
+          return;
+        } else if ((typeof m.status === 'boolean') && (!m.status)) {
+          console.log("SC received error: ", m);
+          self.displaySystemMessage('error', m.message);
+          return;
+        }
+
+        switch (m.verb) {
+          case 'send':
+            //console.log("SC received message: ", m);
+            self.displayMessage(m);
+            break;
+          case 'join':
+            if (m.actor.address) {
+              self.displaySystemMessage('status', m.actor.address + ' has joined ' + m.target[0].address);
+            }
+            self.populateUserList(null, [m.actor.address]);
+            break;
+          case 'leave':
+            self.displaySystemMessage('status', m.actor.address + ' has left ' + m.target[0].address);
+            self.populateUserList(null, [m.actor.address]);
+            break;
+          case 'update':
+            switch (m.object.objectType) {
+              case 'topic':
+                self.displaySystemMessage('status', m.actor.address + ' has set the topic of ' + m.target[0].address + ' to: ' + m.object.topic);
+                break;
+              case 'address':
+                if (m.actor.address === self.config.nick) {
+                  self.setNick(m.target[0].address);
+                }
+                self.populateUserList([m.actor.address], [m.target[0].address]);
+                self.displaySystemMessage('status', m.actor.address + ' is now known as ' + m.target[0].address);
+                break;
+              default:
+                console.log('SC unknown update received: ', m);
+            }
+            break;
+          case 'observe':
+            switch (m.object.objectType) {
+              case 'attendance':
+                //self.displaySystemMessage('status', 'users: ' + m.object.members.join(', '));
+                self.populateUserList(null, m.object.members);
+                break;
+              default:
+                console.log('SC unknown observe received: ', m);
+            }
+            break;
+          default:
+            console.log("SC received unkown message: ", m);
         }
       });
 
@@ -510,6 +601,7 @@
         self.displaySystemMessage('status', 'reconnected to sockethub.');
         joinRooms();
       });
+
     }
 
     //
@@ -525,25 +617,91 @@
     //
     // do all the ugly DOM stuff.
     self.buildWidget();
-    self.displaySystemMessage('status', 'connecting to ' + self.config.server + ' ...');
 
+    self.displaySystemMessage('status', 'connecting to ' + self.config.server + ' ...', true);
+
+
+    /******************
+    / REGISTER EVENTS
+    *******************/
     //
     // listen for input submition text
-    function onEnterHandler(event) {
+    function onInput(event) {
       event.which = event.which || event.keyCode;
-      if (event.which === 13) {
+      if ((event.which === 13) ||
+         (event.type === 'click')) {
         //console.log('got enter!!', event);
         // send message
-        self.DOMElements.input.disabled = true;
-        var text = self.DOMElements.input.value;
-        self.DOMElements.input.value = '';
+        self.DOMElements.messageInput.disabled = true;
+        var text = self.DOMElements.messageInput.value;
+        self.DOMElements.messageInput.value = '';
         self.sendMessage(text);
-        self.DOMElements.input.disabled = false;
+        self.DOMElements.messageInput.disabled = false;
       }
     }
-    self.DOMElements.input.addEventListener('keyup', onEnterHandler);
+    self.DOMElements.messageInput.addEventListener('keyup', onInput);
+    self.DOMElements.messageSubmit.addEventListener('click', onInput);
+
+    //
+    // listen for nickchange submition
+    function onNickChange(event) {
+      event.which = event.which || event.keyCode;
+      if ((event.which === 13) ||
+         (event.type === 'click')) {
+        //console.log('got enter!!', event);
+        if (nick === self.actor.address) {
+          // nothing to change
+          return;
+        }
+        // send message
+        self.DOMElements.nickChangeInput.disabled = true;
+        var nick = self.DOMElements.nickChangeInput.value;
+        self.changeNick(nick);
+        self.DOMElements.nickChangeInput.disabled = false;
+      }
+    }
+    if ((this.config.enableNickChange) &&
+        (self.DOMElements.nickChangeInput) &&
+        (self.DOMElements.nickChangeSubmit)) {
+      self.DOMElements.nickChangeInput.addEventListener('keyup', onNickChange);
+      self.DOMElements.nickChangeSubmit.addEventListener('click', onNickChange);
+    }
 
     return this;
+  };
+
+  /**
+   * Function: getNick
+   *
+   * retreives previously used nickname from localStorage
+   *
+   * Returns:
+   *
+   *   string
+   */
+  Guppy.prototype.getNick = function () {
+    var key = self.log_id + '-nick';
+    var nick = window.localStorage.getItem(key);
+    return nick;
+  };
+
+  /**
+   * Function: setNick
+   *
+   * stores specified nickname to localstorage
+   *
+   * Parameters:
+   *
+   *   nick - nickname
+   *
+   */
+  Guppy.prototype.setNick = function (nick) {
+    var key = self.log_id + '-nick';
+    if (nick) {
+      this.actor.address = nick;
+      this.config.nick = nick;
+      window.localStorage.setItem(key, nick);
+    }
   };
 
   /**
@@ -555,9 +713,11 @@
    * Parameters:
    *
    *   ml - <p> element (message line)
+   *   systemMessage - boolean indicating if this is a system message or not
+   *   jumpToBottom - boolean to force the focus back to bottom (default: false)
    *
    */
-  Guppy.prototype.writeToMessageContainer = function (ml) {
+  Guppy.prototype.writeToMessageContainer = function (ml, systemMessage, jumpToBottom) {
     //
     // only autoscroll if the user is not scrolling up in the history, because
     // that would be irritating, wouldn't it?
@@ -565,12 +725,20 @@
     // Subtract height of window from scrollHeight, and if the result doesn't
     // match with scrollTop, then we know the user is viewing the buffer.
     var autoScroll = true;
-    if (this.DOMElements.messagesContainer.scrollTop !== (this.DOMElements.messagesContainer.scrollHeight - this.config.height)) {
+    if ((!jumpToBottom) &&
+        (this.DOMElements.messagesContainer.scrollTop !== (this.DOMElements.messagesContainer.scrollHeight - this.config.height))) {
       autoScroll = false;
     }
     this.DOMElements.messagesContainer.appendChild(ml);
     if (autoScroll) {
       this.DOMElements.messagesContainer.scrollTop = this.DOMElements.messagesContainer.scrollHeight;
+    }
+
+    if ((this.config.enableHistory) && (!systemMessage)) {
+      // store output to localStorage for page refreshes
+      console.log(this.log_id + ' storing to history buffer ', ml);
+      var key = this.log_id + '-messages-container';
+      window.localStorage.setItem(key, this.DOMElements.messagesContainer.innerHTML);
     }
   };
 
@@ -583,18 +751,20 @@
    *
    *   type - 'error', 'status'
    *   text - text string to display
+   *   jumpToBottom - boolean to force the focus back to bottom (default: false)
    *
    */
-  Guppy.prototype.displaySystemMessage = function (type, text) {
+  Guppy.prototype.displaySystemMessage = function (type, text, jumpToBottom) {
     var messageLine = document.createElement('p');
     if (type === 'error') {
       messageLine.className = 'guppy-irc-error-line guppy-irc-' + this.config.id + '-error-line';
       messageLine.innerHTML = 'ERROR: ' + text;
+      console.error('ERROR: ' + text);
     } else {
       messageLine.className = 'guppy-irc-status-line guppy-irc-' + this.config.id + '-status-line';
       messageLine.innerHTML = text;
     }
-    this.writeToMessageContainer(messageLine);
+    this.writeToMessageContainer(messageLine, true, jumpToBottom);
   };
 
   /**
@@ -608,13 +778,14 @@
    *   obj - sockethub activity stream object of verb 'send' and platform 'irc'.
    *         ( tip: this function only uses the obj.actor.address,
    *                obj.actor.name, and obj.object.text properties )
+   *   jumpToBottom - boolean to force the focus back to bottom (default: false)
    *
    */
-  Guppy.prototype.displayMessage = function (obj) {
+  Guppy.prototype.displayMessage = function (obj, jumpToBottom) {
     // check if my nick is mentioned
     var toMeClassEnding = '-to-me';
     isToMe = false;
-    if (obj.object.text.search(this.config.nick) >= 0) {
+    if ((typeof obj.object.text === 'string') && (obj.object.text.search(this.config.nick) >= 0)) {
       isToMe = true;
     }
 
@@ -649,8 +820,7 @@
                                ' guppy-irc-' + this.config.id + '-message-line' + toMeClassEnding;
     }
     messageLine.innerHTML = nick.outerHTML + decorator.outerHTML + text.outerHTML;
-
-    this.writeToMessageContainer(messageLine);
+    this.writeToMessageContainer(messageLine, false, jumpToBottom);
   };
 
   /**
@@ -669,7 +839,6 @@
     if (!message) {
       return false;
     }
-
     var obj = {
       verb: 'send',
       platform: 'irc',
@@ -682,7 +851,13 @@
       }
     };
 
+    message = message.replace(/^\s+|\s+$/g, "");
+
     console.log('sendMessage called: ', obj);
+    if (!self.sockethubClient) {
+      self.displaySystemMessage('error', 'cannot send message, not connected to sockethub');
+      return;
+    }
     self.sockethubClient.sendObject(obj).then(function () {
       // completed
       // add name to message output
@@ -698,6 +873,51 @@
     }, function (err) {
       // error
       self.setError(err.message, err);
+    });
+  };
+
+  /**
+   * Function: changeNick
+   *
+   * Sends a message to Sockethub's IRC platform to change users nick.
+   *
+   * Parameters:
+   *
+   *   nick - text string of nickname to change to.
+   *
+   */
+  Guppy.prototype.changeNick = function (nick) {
+    var self = this;
+    if (!nick) {
+      return false;
+    }
+    self.DOMElements.messageInput.disabled = true;
+
+    var obj = {
+      verb: 'update',
+      platform: 'irc',
+      actor: self.actor,
+      target: [{
+        address: nick
+      }],
+      object: {
+        objectType: 'address'
+      }
+    };
+
+    console.log('changeNick called: ', obj);
+    self.sockethubClient.sendObject(obj).then(function () {
+      // completed
+      //self.displaySystemMessage('status', self.actor.address + ' changed nick to ' + nick);
+      console.log('changeNick return as success: ', obj);
+      console.log('SELF: ', self);
+      self.setNick(nick);
+      self.DOMElements.messageInput.disabled = false;
+    }, function (err) {
+      console.log('changeNick return as error: ', err);
+      // error
+      self.setError(err.message, err);
+      self.DOMElements.messageInput.disabled = false;
     });
   };
 
@@ -740,6 +960,55 @@
     this.state = state;
   };
 
+  var userList = [];
+  Guppy.prototype.populateUserList = function (rem, add) {
+    if (!this.config.enableUserList) {
+      return false;
+    }
+    var i = 0,
+        j = 0,
+        u = userList;
+
+    rem = (rem) ? rem : [];
+    add = (add) ? add : [];
+
+    console.log('rem: ', rem);
+    console.log('add: ', add);
+    // remove
+    for (i = 0, len = rem.length; i < len; i = i + 1) {
+      u = u.filter(function (item) {
+        return item !== rem[i];
+      });
+    }
+
+    // add
+    for (i = 0, len = add.length; i < len; i = i + 1) {
+      var exists = false;
+      for (j = 0, jlen = u.length; j < jlen; j = j + 1) {
+        if (add[i] === u[j]) {
+          exists = true;
+        }
+      }
+
+      if (!exists) {
+        console.log('adding '+add[i]);
+        u.push(add[i]);
+      }
+    }
+
+    userList = u;
+    console.log('USER LIST: ', u);
+    console.log('USER LIST CONTAINER: ', this.DOMElements.userListContainer.innerHTML);
+    this.DOMElements.userListContainer.innerHTML = '';
+    for (j = 0, jlen = u.length; j < jlen; j = j + 1) {
+      var userListEntry = document.createElement('p');
+      userListEntry.className = 'guppy-irc-user-list-entry guppy-irc-' + this.config.id + '-user-list-entry';
+      userListEntry.innerHTML = u[j];
+      this.DOMElements.userListContainer.appendChild(userListEntry);
+    }
+
+  };
+
   /**
    * Function: buildWidget
    *
@@ -751,74 +1020,264 @@
     var e = this.DOMElements.original;
 
     // encapsulating container
-    var container = document.createElement('div');
-    container.className = 'guppy-irc-container guppy-irc-' + this.config.id + '-container';
+    var container;
+    if (this.config.renderWidget) {
+      container = document.createElement('div');
+      container.className = 'guppy-irc-container guppy-irc-' + this.config.id + '-container';
 
-    // title of widget
-    var title = document.createElement('h1');
-    title.className = 'guppy-irc-title guppy-irc-' + this.config.id + '-title';
-    title.innerHTML = this.config.title;
-    var titleContainer = document.createElement('div');
-    titleContainer.className = 'guppy-irc-title-container guppy-irc-' + this.config.id + '-title-container';
-    titleContainer.appendChild(title);
-    container.appendChild(titleContainer); // put inside container
+      // title of widget
+      if (this.config.title) {
+        var title = document.createElement('h1');
+        title.className = 'guppy-irc-title guppy-irc-' + this.config.id + '-title';
+        title.innerHTML = this.config.title;
+        var titleContainer = document.createElement('div');
+        titleContainer.className = 'guppy-irc-title-container guppy-irc-' + this.config.id + '-title-container';
+        titleContainer.appendChild(title);
+        container.appendChild(titleContainer); // put inside container
+      }
+    }
 
+
+    //
+    //
     // connection information
-    var infoContainer = document.createElement('div');
-    infoContainer.className = 'guppy-irc-info-container guppy-irc-info-' + this.config.id + '-container';
-    container.appendChild(infoContainer);
+    //
+    // info container
+    //
+    // - declare in this scope so we can attach to dom lookup (below)
+    var infoContainer, nickChangeInput, nickChangeSubmit, nickChangeInputContainer;
+    if (this.config.definedElements.infoContainer) {
+      // allow the user to use their own defined locations for components
+      infoContainer = this.config.infoContainer;
+    } else if (this.config.renderWidget) {
+      infoContainer = document.createElement('div');
+      infoContainer.className = 'guppy-irc-info-container guppy-irc-info-' + this.config.id + '-container';
+    }
 
-    // message area
-    var messagesContainer = document.createElement('div');
-    messagesContainer.className = 'guppy-irc-messages-container guppy-irc-' + this.config.id + '-messages-container';
-    messagesContainer.style.width = this.config.width + 'px';
-    messagesContainer.style.height = this.config.height + 'px';
-    container.appendChild(messagesContainer);
+    if (this.config.definedElements.nickChangeInput) {
+      nickChangeInput = this.config.definedElments.nickChangeInput;
+    } else if ((this.config.renderWidget) && (this.config.enableNickChange)) {
+      // nick change input
+      nickChangeInput = document.createElement('input');
+      nickChangeInput.value = this.config.nick;
+      nickChangeInput.className = 'guppy-irc-nick-change-input guppy-irc-' + this.config.id + '-nick-change-input';
+      nickChangeInputContainer = document.createElement('div');
+      nickChangeInputContainer.className = 'guppy-irc-nick-change-input-container guppy-irc-' + this.config.id + '-nick-change-input-container';
+      nickChangeInputContainer.appendChild(nickChangeInput);
+    }
 
-    // input
-    var input = document.createElement('input');
-    input.className = 'guppy-irc-input guppy-irc-' + this.config.id + '-input';
-    var inputContainer = document.createElement('div');
-    inputContainer.className = 'guppy-irc-input-container guppy-irc-' + this.config.id + '-input-container';
-    inputContainer.appendChild(input);
+    if (this.config.definedElements.nickChangeSubmitButton) {
+      nickChangeSubmitButton = this.config.definedElments.nickChangeSubmitButton;
+    } else if ((this.config.renderWidget) && (this.config.enableNickChange)) {
+      // nick change submit button
+      nickChangeSubmit = document.createElement('input');
+      nickChangeSubmit.className = 'guppy-irc-nick-change-submit-button guppy-irc-' + this.config.id + '-nick-change-submit-button';
+      nickChangeSubmit.type = 'submit';
+      nickChangeSubmit.name = 'Change';
+      nickChangeSubmit.value = 'Change';
+      nickChangeSubmit.id = 'guppy-irc-' + this.config.id + '-nick-change-submit-button';
+      var nickChangeSubmitContainer = document.createElement('div');
+      nickChangeSubmitContainer.className = 'guppy-irc-nick-change-submit-button-container guppy-irc-' + this.config.id + '-nick-change-submit-button-container';
+      nickChangeSubmitContainer.appendChild(nickChangeSubmit);
 
-    // submit button
-    var submit = document.createElement('input');
-    submit.className = 'guppy-irc-submit-button guppy-irc-' + this.config.id + '-submit-button';
-    submit.type = 'submit';
-    submit.name = 'Send';
-    submit.value = 'Send';
-    submit.id = 'guppy-irc-' + this.config.id + '-submit-button';
-    var submitContainer = document.createElement('div');
-    submitContainer.className = 'guppy-irc-submit-button-container guppy-irc-' + this.config.id + '-submit-button-container';
-    submitContainer.appendChild(submit);
+      if (! this.config.enableNickChangeButton) {
+        nickChangeInputContainer.style.width = "100%";
+        nickChangeInput.style.width = "100%";
+        nickChangeSubmit.style.display = 'none';
+        nickChangeSubmitContainer.style.display = 'none';
+      }
 
+      infoContainer.appendChild(nickChangeInputContainer);
+      infoContainer.appendChild(nickChangeSubmitContainer);
+    }
+    if ((this.config.renderWidget) && (!this.config.definedElements.infoContainer)) {
+      container.appendChild(infoContainer);
+    }
+
+
+    //
+    //
+    // middle container
+    //
+    var middleContainer;
+    if (this.config.renderWidget) {
+      middleContainer  = document.createElement('div');
+      middleContainer.className = 'guppy-irc-middle-container guppy-irc-' + this.config.id + '-middle-container';
+    }
+
+    //
+    //
+    // message area container
+    //
+    var messagesContainer;
+    if (this.config.definedElements.messagesContainer) {
+      messagesContainer = this.config.definedElements.messagesContainer;
+    } else if (this.config.renderWidget) {
+      messagesContainer = document.createElement('div');
+      messagesContainer.className = 'guppy-irc-messages-container guppy-irc-' + this.config.id + '-messages-container';
+      if (this.config.width) {
+        messagesContainer.style.width = this.config.width + 'px';
+      }
+      if (this.config.height) {
+        messagesContainer.style.height = this.config.height + 'px';
+      }
+      middleContainer.appendChild(messagesContainer);
+    }
+
+    //
+    //
+    // user list container
+    //
+    var userListContainer;
+    if (this.config.definedElements.userListContainer) {
+      // allow the user to use their own defined locations for components
+      userListContainer = this.config.userListContainer;
+    } else if ((this.config.renderWidget) && (this.config.enableUserList)) {
+      //
+      // user list
+      //
+      userListContainer = document.createElement('div');
+      userListContainer.className = 'guppy-irc-user-list-container guppy-irc-' + this.config.id + '-user-list-container';
+
+      if (!this.config.definedElements.userListContainer) {
+        if (this.config.height) {
+          userListContainer.style.height = this.config.height + 'px';
+        }
+        middleContainer.appendChild(userListContainer);
+      }
+    }
+
+    //
+    if (this.config.renderWidget) {
+      container.appendChild(middleContainer);
+    }
+
+    //
+    //
+    // message controls
+    //
+    // message input
+    var messageInput, messageInputContainer;
+    if (this.config.definedElements.messageInput) {
+      messageInput = this.config.definedElements.messageInput;
+    } else {
+      messageInput = document.createElement('textarea');
+      messageInput.className = 'guppy-irc-message-input guppy-irc-' + this.config.id + '-input';
+      messageInputContainer = document.createElement('div');
+      messageInputContainer.className = 'guppy-irc-message-input-container guppy-irc-' + this.config.id + '-message-input-container';
+      messageInputContainer.appendChild(messageInput);
+    }
+
+    // message submit button
+    var messageSubmit, messageSubmitContainer;
+    if (this.config.definedElements.messageSubmitButton) {
+      messageSubmit = this.config.definedElements.messageSubmitButton;
+    } else {
+      messageSubmit = document.createElement('input');
+      messageSubmit.className = 'guppy-irc-message-submit-button guppy-irc-' + this.config.id + '-message-submit-button';
+      messageSubmit.type = 'submit';
+      messageSubmit.name = 'Send';
+      messageSubmit.value = 'Send';
+      messageSubmit.id = 'guppy-irc-' + this.config.id + '-message-submit-button';
+      messageSubmitContainer = document.createElement('div');
+      messageSubmitContainer.className = 'guppy-irc-message-submit-button-container guppy-irc-' + this.config.id + '-message-submit-button-container';
+
+      if (! this.config.enableMessageButton) {
+        messageInputContainer.style.width = "100%";
+        messageInput.style.width = "100%";
+        messageSubmitContainer.style.display = 'none';
+      }
+      messageSubmitContainer.appendChild(messageSubmit);
+    }
+
+    //
     // controls - contain input and submit button
-    var controlsContainer = document.createElement('div');
-    controlsContainer.className = 'guppy-irc-controls-container guppy-irc-' + this.config.id + '-controls-container';
-    controlsContainer.appendChild(inputContainer);
-    controlsContainer.appendChild(submitContainer);
-    container.appendChild(controlsContainer);
+    //
+    if (!this.config.definedElements.messageInput) {
+      var controlsContainer;
+      if (this.config.definedElements.controlsContainer) {
+        // allow the user to use their own defined locations for components
+        controlsContainer = this.config.controlsContainer;
+      } else {
+        controlsContainer = document.createElement('div');
+      }
+      controlsContainer.className = 'guppy-irc-controls-container guppy-irc-' + this.config.id + '-controls-container';
+      controlsContainer.appendChild(messageInputContainer);
+      controlsContainer.appendChild(messageSubmitContainer);
+      if (!this.config.definedElements.controlsContainer) {
+        container.appendChild(controlsContainer);
+      }
+    }
 
     this.DOMElements.widget = container;
-    this.DOMElements.input = input;
-    this.DOMElements.submit = submit;
+    this.DOMElements.nickChangeInput = nickChangeInput;
+    this.DOMElements.nickChangeSubmit = nickChangeSubmit;
+    this.DOMElements.messageInput = messageInput;
+    this.DOMElements.messageSubmit = messageSubmit;
     this.DOMElements.messagesContainer = messagesContainer;
+    this.DOMElements.userListContainer = userListContainer;
 
-    e.parentNode.replaceChild(container, e);
+    //
+    // load history buffer if enabled
+    if (this.config.enableHistory) {
+      // check for existing history
+      var historyContainer = document.createElement('div');
+      historyContainer.className = 'guppy-irc-messages-history-container guppy-irc-' + this.config.id + '-messages-history-container';
+      var key = this.log_id + '-messages-container';
+      var history = window.localStorage.getItem(key);
+      if (history) {
+        historyContainer.innerHTML = history;
+      }
+      try {
+        historyContainer.firstChild.firstChild.firstChild.firstChild.
+                         firstChild.firstChild.firstChild.innerHTML = '';
+      } catch (err) {
+        // ignore...
+      }
+      this.DOMElements.historyContainer = historyContainer;
+
+      // we call the method instead of appending directly so the scroll buffer
+      // adjusts
+      this.writeToMessageContainer(historyContainer, true, true);
+    }
+
+    if (this.config.renderWidget) {
+      e.parentNode.replaceChild(container, e);
+    }
   };
 
-  var tags = document.getElementsByTagName('guppy-irc');
-  console.log('Guppy tags: ' + typeof tags, tags);
-  // foreach tag we create a separate object instance, this way multiple embeds
-  // are supported on the same page.
-  for (var i = 0, len = tags.length; i < len; i = i + 1) {
+  window.guppyIRC = {
+    instances: instances
+  };
+
+  function create (elem, cfg) {
     try {
-      instances.push(new Guppy(tags[i]));
+      var guppy = new Guppy(elem, cfg);
+      window.guppyIRC.instances[guppy.id] = guppy;
     } catch (e) {
       console.log(app + ' ERROR: ' + e, e.stack);
     }
   }
+
+  window.guppyIRC.create = function (cfg) {
+    var stub = {
+      getAttribute: function () {
+        return '';
+      }
+    };
+    create(stub, cfg);
+  };
+
+  var tags = document.getElementsByTagName('guppy-irc');
+  // foreach tag we create a separate object instance, this way multiple embeds
+  // are supported on the same page.
+  for (var i = 0, len = tags.length; i < len; i = i + 1) {
+    console.log('Guppy tag: '+i, tags[i]);
+    create(tags[i], {});
+  }
+
+
+
 
 })(window);
 
