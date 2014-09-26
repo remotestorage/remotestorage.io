@@ -259,7 +259,7 @@ main {
 }
 .container section.content .actions ul li {
   float: left;
-  margin: 0 0 0 20px;
+  margin: 20px 0 0 20px;
   text-align: center;
 }
 .container section.content .actions ul li p {
@@ -279,7 +279,7 @@ main {
   font-size: 13px;
   padding: 9.945px 21.879px;
   border-radius: 3.000002307694083px;
-  background: url("noise.png") repeat, #e14205 linear-gradient(top, #1e5bfb 0%, #0542e1 100%) repeat-x;
+  background-color: #0542e1;
   text-shadow: 1px 1px 1px rgba(0,0,0,0.1);
   border: 1px solid #0542e1;
   color: #fff;
