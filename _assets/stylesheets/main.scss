@@ -241,3 +241,67 @@ main {
   width: 90%;
   margin: auto;
 }
+
+// /integrate/index.html
+.container section.content div {
+  float: left;
+  clear: left;
+  display: inline;
+  overflow: hidden;
+  width: 90%;
+  margin: auto;
+  padding-top: 20px;
+}
+.container section.content .actions ul {
+  float: right;
+  list-style: none;
+  margin: 0;
+}
+.container section.content .actions ul li {
+  float: left;
+  margin: 0 0 0 20px;
+  text-align: center;
+}
+.container section.content .actions ul li p {
+  margin: 0 0 10px 0;
+}
+.container section.content .actions ul li p:last-child {
+  margin: 0;
+}
+.container section.content .actions ul li p.meta {
+  font-size: 12px;
+  color: #888;
+}
+.container section.content .actions ul li p .divider {
+  margin: 0 5px;
+}
+.container section.content .actions a.btn {
+  font-size: 13px;
+  padding: 9.945px 21.879px;
+  border-radius: 3.000002307694083px;
+  background: url("noise.png") repeat, #e14205 linear-gradient(top, #1e5bfb 0%, #0542e1 100%) repeat-x;
+  text-shadow: 1px 1px 1px rgba(0,0,0,0.1);
+  border: 1px solid #0542e1;
+  color: #fff;
+  color: rgba(255,255,255,0.95);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.3);
+  cursor: pointer;
+  font-weight: bold;
+  font-family: "Helvetica Neue", HelveticaNeue, Helvetica, Arial, sans-serif;
+  line-height: 1;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+}
+.container section.content .actions a.btn:hover,
+.container section.content .actions a.btn:focus {
+  background-position: 0 -9.945px;
+  color: #f7f7f7;
+  color: rgba(247,247,247,0.95);
+  text-shadow: 1px 1px 1px rgba(0,0,0,0.2);
+}
+.container section.content .actions a.btn:active {
+  box-shadow: inset 0 1px 5px rgba(4,55,187,0.6);
+  text-shadow: 0 -1px 1px rgba(0,0,0,0.2);
+  border-color: #043ccd;
+}
