@@ -216,6 +216,28 @@ main {
   }
 }
 
+// /irc/index.html
 .guppy-irc-user-list-container {
   display: none
+}
+
+// /get/index.html
+.providers {
+  width: 45%;
+  float: left;
+}
+.selfhost {
+  width: 45%;
+  float: right;
+}
+
+// /provide/index.html
+.provide-storage {
+  width: 90%;
+  margin: auto;
+  margin-top: 20px;
+}
+.unfinished {
+  width: 90%;
+  margin: auto;
 }

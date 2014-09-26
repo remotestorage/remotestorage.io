@@ -5719,7 +5719,32 @@ main.blog article p {
     padding: 3rem 0;
   }
 }
-/* line 219, /home/michiel/other-dev/remotestorage.io/_assets/stylesheets/main.scss */
+/* line 220, /home/michiel/other-dev/remotestorage.io/_assets/stylesheets/main.scss */
 .guppy-irc-user-list-container {
   display: none;
+}
+
+/* line 225, /home/michiel/other-dev/remotestorage.io/_assets/stylesheets/main.scss */
+.providers {
+  width: 45%;
+  float: left;
+}
+
+/* line 229, /home/michiel/other-dev/remotestorage.io/_assets/stylesheets/main.scss */
+.selfhost {
+  width: 45%;
+  float: right;
+}
+
+/* line 235, /home/michiel/other-dev/remotestorage.io/_assets/stylesheets/main.scss */
+.provide-storage {
+  width: 90%;
+  margin: auto;
+  margin-top: 20px;
+}
+
+/* line 240, /home/michiel/other-dev/remotestorage.io/_assets/stylesheets/main.scss */
+.unfinished {
+  width: 90%;
+  margin: auto;
 }
