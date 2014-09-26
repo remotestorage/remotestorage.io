@@ -5719,3 +5719,7 @@ main.blog article p {
     padding: 3rem 0;
   }
 }
+/* line 219, /home/michiel/other-dev/remotestorage.io/_assets/stylesheets/main.scss */
+.guppy-irc-user-list-container {
+  display: none;
+}
