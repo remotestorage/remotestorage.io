@@ -596,9 +596,9 @@ section.content .community-channels section {
   display: inline;
   float: left;
   overflow: hidden;
-  width: 290px;
+  width: 450px;
   margin: 0 15px;
-  *width: 290px -correction;
+  *width: 450px -correction;
   *margin: 0 15px -correction;
 }
 .benefits section h3 {
