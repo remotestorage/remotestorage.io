@@ -22,5 +22,5 @@ cp -R tmp/* .
 git add .
 git commit -a -m "Update release - `date -u`"
 git push origin gh-pages
-git checkout master
+git checkout old
 rm -rf tmp
