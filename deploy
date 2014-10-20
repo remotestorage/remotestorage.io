@@ -2,10 +2,10 @@
 
 set -e
 
-if [ "$(which roots)" != "" ] ; then
+if [ -x node_modules/roots/bin/roots ] ; then
+    roots=./node_modules/roots/bin/roots
+elif [ "$(which roots)" != "" ] ; then
     roots=`which roots`
-elif [ -x node_modules/.bin/roots ] ; then
-    roots=node_modules/.bin/roots
 else
     echo "Grow some roots, man!"
     exit -2
