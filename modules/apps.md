@@ -8,8 +8,8 @@ the console:
 * laverna - laverna
 * mcnotes - mcnotes
 * ghost - pictures
-* dogfeed - sockethub, feeds, articls
-* dogtalk - sockethub, messages, contacts
+* dogfeed - sockethub-credentials, feeds, articles
+* dogtalk - sockethub-credentials, irc-credentials, xmpp-credentials, messages, contacts
 * sharesome - shares
 * grouptabs - gruppenkasse
 * unhosted time tracker - tasks
