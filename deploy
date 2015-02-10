@@ -18,6 +18,7 @@ $roots compile --no-compress
 rm -rf tmp
 cp -R public tmp
 git checkout gh-pages
+git pull origin gh-pages
 cp -R tmp/* .
 git add .
 git commit -a -m "Update release - `date -u`"
