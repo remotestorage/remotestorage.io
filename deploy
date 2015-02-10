@@ -24,5 +24,6 @@ git commit -a -m "Update release - `date -u`"
 # Need to add the 5apps remote:
 #   git remote add 5apps git@5apps.com:remotestorage_remotestorageio.git
 git push 5apps gh-pages:master
+git push origin gh-pages
 git checkout master
 rm -rf tmp
