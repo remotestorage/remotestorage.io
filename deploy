@@ -21,6 +21,8 @@ git checkout gh-pages
 cp -R tmp/* .
 git add .
 git commit -a -m "Update release - `date -u`"
-git push origin gh-pages
+# Need to add the 5apps remote:
+#   git remote add 5apps git@5apps.com:remotestorage_remotestorageio.git
+git push 5apps gh-pages:master
 git checkout master
 rm -rf tmp
