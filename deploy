@@ -13,6 +13,7 @@ fi
 
 echo "roots found in ${roots}"
 
+git pull --rebase origin master
 $roots compile --no-compress
 
 rm -rf tmp
@@ -27,3 +28,4 @@ git push 5apps gh-pages:master
 git push origin gh-pages
 git checkout master
 rm -rf tmp
+git push origin master
